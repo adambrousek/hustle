@@ -4,15 +4,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   BG_SECTIONS,
   DARK_CTA_BG,
+  DARK_CTA_CHROME_BOTTOM,
   DARK_CTA_THEME,
   DEFAULT_RED_BG,
+  DEFAULT_RED_CHROME_BOTTOM,
   DEFAULT_RED_THEME,
   DEEP_RED_BG,
+  DEEP_RED_CHROME_BOTTOM,
   DEEP_RED_THEME,
   HERO_BG,
+  HERO_CHROME_BOTTOM,
   HERO_THEME,
 } from '../data/proofs';
-import { syncPageBackground, transitionPageBackground } from '../utils/browserChrome';
+import { syncPageBackground } from '../utils/browserChrome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -136,21 +140,22 @@ export function useScrollEffects(refs) {
 
     gsap.set(bgA, { background: HERO_BG, opacity: 1 });
     gsap.set(bgB, { background: HERO_BG, opacity: 0 });
-    syncPageBackground(HERO_BG, HERO_THEME);
+    syncPageBackground(HERO_BG, HERO_THEME, HERO_CHROME_BOTTOM);
 
-    const setBgInstant = (newBg, themeColor) => {
+    const setBgInstant = (newBg, chromeTop, chromeBottom = chromeTop) => {
       currentBg.current = newBg;
-      syncPageBackground(newBg, themeColor);
+      syncPageBackground(newBg, chromeTop, chromeBottom);
       gsap.killTweensOf([bgA, bgB]);
       activeIsA.current = true;
       gsap.set(bgA, { background: newBg, opacity: 1 });
       gsap.set(bgB, { opacity: 0 });
     };
 
-    const crossfadeBg = (newBg, themeColor, duration = 1.0) => {
-      if (currentBg.current === newBg) return;
+    const crossfadeBg = (newBg, chromeTop, chromeBottom = chromeTop, duration = 1.0) => {
+      const bgChanged = currentBg.current !== newBg;
       currentBg.current = newBg;
-      transitionPageBackground(newBg, themeColor, duration);
+      syncPageBackground(newBg, chromeTop, chromeBottom);
+      if (!bgChanged) return;
 
       const next = activeIsA.current ? bgB : bgA;
       const curr = activeIsA.current ? bgA : bgB;
@@ -171,11 +176,12 @@ export function useScrollEffects(refs) {
           start: 'top top',
           end: 'bottom top',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(HERO_BG, HERO_THEME);
+            if (self.isActive) crossfadeBg(HERO_BG, HERO_THEME, HERO_CHROME_BOTTOM);
           },
         });
         t.vars.__bg = HERO_BG;
         t.vars.__themeColor = HERO_THEME;
+        t.vars.__chromeBottom = HERO_CHROME_BOTTOM;
         bgTriggers.push(t);
       }
 
@@ -225,11 +231,14 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(bgConfig.bg, bgConfig.color);
+            if (self.isActive) {
+              crossfadeBg(bgConfig.bg, bgConfig.color, bgConfig.chromeBottom ?? bgConfig.color);
+            }
           },
         });
         t.vars.__bg = bgConfig.bg;
         t.vars.__themeColor = bgConfig.color;
+        t.vars.__chromeBottom = bgConfig.chromeBottom ?? bgConfig.color;
         bgTriggers.push(t);
 
         const claim = section.querySelector('.claim');
@@ -245,11 +254,12 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME);
+            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME, DEEP_RED_CHROME_BOTTOM);
           },
         });
         t.vars.__bg = DEEP_RED_BG;
         t.vars.__themeColor = DEEP_RED_THEME;
+        t.vars.__chromeBottom = DEEP_RED_CHROME_BOTTOM;
         bgTriggers.push(t);
       }
 
@@ -259,11 +269,14 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME);
+            if (self.isActive) {
+              crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME, DEFAULT_RED_CHROME_BOTTOM);
+            }
           },
         });
         t.vars.__bg = DEFAULT_RED_BG;
         t.vars.__themeColor = DEFAULT_RED_THEME;
+        t.vars.__chromeBottom = DEFAULT_RED_CHROME_BOTTOM;
         bgTriggers.push(t);
       }
 
@@ -273,11 +286,12 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME);
+            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME, DEEP_RED_CHROME_BOTTOM);
           },
         });
         t.vars.__bg = DEEP_RED_BG;
         t.vars.__themeColor = DEEP_RED_THEME;
+        t.vars.__chromeBottom = DEEP_RED_CHROME_BOTTOM;
         bgTriggers.push(t);
       }
 
@@ -287,11 +301,14 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME);
+            if (self.isActive) {
+              crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME, DEFAULT_RED_CHROME_BOTTOM);
+            }
           },
         });
         t.vars.__bg = DEFAULT_RED_BG;
         t.vars.__themeColor = DEFAULT_RED_THEME;
+        t.vars.__chromeBottom = DEFAULT_RED_CHROME_BOTTOM;
         bgTriggers.push(t);
       }
 
@@ -301,11 +318,12 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom bottom',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DARK_CTA_BG, DARK_CTA_THEME);
+            if (self.isActive) crossfadeBg(DARK_CTA_BG, DARK_CTA_THEME, DARK_CTA_CHROME_BOTTOM);
           },
         });
         t.vars.__bg = DARK_CTA_BG;
         t.vars.__themeColor = DARK_CTA_THEME;
+        t.vars.__chromeBottom = DARK_CTA_CHROME_BOTTOM;
         bgTriggers.push(t);
       }
 
@@ -313,7 +331,11 @@ export function useScrollEffects(refs) {
       ScrollTrigger.addEventListener('refresh', () => {
         const active = bgTriggers.find((t) => t && t.isActive);
         if (active?.vars?.__bg) {
-          setBgInstant(active.vars.__bg, active.vars.__themeColor || HERO_THEME);
+          setBgInstant(
+            active.vars.__bg,
+            active.vars.__themeColor || HERO_THEME,
+            active.vars.__chromeBottom || HERO_CHROME_BOTTOM,
+          );
         }
       });
 
@@ -321,7 +343,11 @@ export function useScrollEffects(refs) {
       requestAnimationFrame(() => {
         const active = bgTriggers.find((t) => t && t.isActive);
         if (active?.vars?.__bg) {
-          setBgInstant(active.vars.__bg, active.vars.__themeColor || HERO_THEME);
+          setBgInstant(
+            active.vars.__bg,
+            active.vars.__themeColor || HERO_THEME,
+            active.vars.__chromeBottom || HERO_CHROME_BOTTOM,
+          );
         }
       });
     });

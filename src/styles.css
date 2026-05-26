@@ -212,9 +212,21 @@ ul {
   position: relative;
 }
 
-/* iPhone: top gap color synced via browserChrome (--shell-chrome-color) */
+/* iPhone: solid chrome masks over gradient (colors from browserChrome.js) */
 html.ios-app-shell {
-  background-color: var(--shell-chrome-color, #f01818);
+  background-color: var(--chrome-edge-top, #f01818);
+}
+
+html.ios-app-shell::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: env(safe-area-inset-bottom, 0px);
+  background-color: var(--chrome-edge-bottom, #cd0010);
+  z-index: 99;
+  pointer-events: none;
 }
 
 html.ios-app-shell .app-shell {
@@ -241,6 +253,7 @@ html.ios-app-shell .header {
   left: 0;
   right: 0;
   padding-top: calc(clamp(16px, 2.2vw, 24px) + env(safe-area-inset-top, 0px) * 0.15);
+  background-color: var(--chrome-edge-top, #f01818);
 }
 
 html.ios-app-shell .build-stamp {
