@@ -5,6 +5,11 @@ let currentChromeTop = '#F01818';
 let currentChromeBottom = '#CD0010';
 let colorTween = null;
 
+let blendFromTop = '#F01818';
+let blendFromBottom = '#CD0010';
+let blendToTop = '#F01818';
+let blendToBottom = '#CD0010';
+
 function applyChromeColors(chromeTop, chromeBottom) {
   document.documentElement.style.setProperty('--chrome-edge-top', chromeTop);
 
@@ -29,44 +34,39 @@ function applyChromeColors(chromeTop, chromeBottom) {
   currentChromeBottom = isIosAppShell() ? chromeTop : chromeBottom;
 }
 
-/** Instant sync (refresh / snap). */
-export function syncPageBackground(_gradientBg, chromeTop, chromeBottom = chromeTop) {
+function killChromeTween() {
   if (colorTween) {
     colorTween.kill();
     colorTween = null;
   }
-  if (chromeTop === currentChromeTop && chromeBottom === currentChromeBottom) return;
+}
+
+/** Start of bg crossfade — chrome will follow layer opacity (0–1). */
+export function startChromeBlend(chromeTop, chromeBottom = chromeTop) {
+  killChromeTween();
+  blendFromTop = currentChromeTop;
+  blendFromBottom = currentChromeBottom;
+  blendToTop = chromeTop;
+  blendToBottom = isIosAppShell() ? chromeTop : chromeBottom;
+}
+
+/** Step chrome to match visible bg crossfade (t = incoming layer opacity). */
+export function applyChromeBlend(progress) {
+  const t = Math.max(0, Math.min(1, progress));
+  applyChromeColors(
+    gsap.utils.interpolate(blendFromTop, blendToTop, t),
+    gsap.utils.interpolate(blendFromBottom, blendToBottom, t),
+  );
+}
+
+export function commitChrome(chromeTop, chromeBottom = chromeTop) {
+  killChromeTween();
   applyChromeColors(chromeTop, chromeBottom);
 }
 
-/** Tween chrome with bg crossfade so the bottom band does not snap ahead of the gradient. */
-export function transitionPageBackground(_gradientBg, chromeTop, chromeBottom = chromeTop, duration = 1) {
-  const targetBottom = isIosAppShell() ? chromeTop : chromeBottom;
-  if (chromeTop === currentChromeTop && targetBottom === currentChromeBottom) return;
-
-  if (colorTween) {
-    colorTween.kill();
-    colorTween = null;
-  }
-
-  const fromTop = currentChromeTop;
-  const fromBottom = currentChromeBottom;
-  const progress = { value: 0 };
-
-  colorTween = gsap.to(progress, {
-    value: 1,
-    duration,
-    ease: 'power2.inOut',
-    overwrite: true,
-    onUpdate: () => {
-      const t = progress.value;
-      const top = gsap.utils.interpolate(fromTop, chromeTop, t);
-      const bottom = gsap.utils.interpolate(fromBottom, targetBottom, t);
-      applyChromeColors(top, bottom);
-    },
-    onComplete: () => {
-      applyChromeColors(chromeTop, chromeBottom);
-      colorTween = null;
-    },
-  });
+/** Instant sync (refresh / snap). */
+export function syncPageBackground(_gradientBg, chromeTop, chromeBottom = chromeTop) {
+  killChromeTween();
+  if (chromeTop === currentChromeTop && chromeBottom === currentChromeBottom) return;
+  applyChromeColors(chromeTop, chromeBottom);
 }

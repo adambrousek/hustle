@@ -16,7 +16,12 @@ import {
   HERO_CHROME_BOTTOM,
   HERO_THEME,
 } from '../data/proofs';
-import { syncPageBackground, transitionPageBackground } from '../utils/browserChrome';
+import {
+  applyChromeBlend,
+  commitChrome,
+  startChromeBlend,
+  syncPageBackground,
+} from '../utils/browserChrome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -132,6 +137,20 @@ export function useScrollEffects(refs) {
 
   const activeIsA = useRef(true);
   const currentBg = useRef(null);
+  const scrollSample = useRef({ y: 0, t: performance.now() });
+
+  const getCrossfadeDuration = () => {
+    const now = performance.now();
+    const y = window.scrollY;
+    const dy = Math.abs(y - scrollSample.current.y);
+    const dt = Math.max(now - scrollSample.current.t, 16);
+    scrollSample.current.y = y;
+    scrollSample.current.t = now;
+    const velocity = dy / dt;
+    if (velocity > 2.5) return 0.38;
+    if (velocity > 1.1) return 0.58;
+    return 0.92;
+  };
 
   useEffect(() => {
     const bgA = bgARef.current;
@@ -151,24 +170,43 @@ export function useScrollEffects(refs) {
       gsap.set(bgB, { opacity: 0 });
     };
 
-    const crossfadeBg = (newBg, chromeTop, chromeBottom = chromeTop, duration = 1.0) => {
+    const crossfadeBg = (newBg, chromeTop, chromeBottom = chromeTop, duration = getCrossfadeDuration()) => {
       const bgChanged = currentBg.current !== newBg;
       currentBg.current = newBg;
 
-      if (bgChanged) {
-        transitionPageBackground(newBg, chromeTop, chromeBottom, duration);
-      } else {
+      if (!bgChanged) {
         syncPageBackground(newBg, chromeTop, chromeBottom);
+        return;
       }
-      if (!bgChanged) return;
 
       const next = activeIsA.current ? bgB : bgA;
       const curr = activeIsA.current ? bgA : bgB;
 
+      startChromeBlend(chromeTop, chromeBottom);
+
       gsap.killTweensOf([bgA, bgB]);
-      gsap.set(next, { background: newBg });
-      gsap.to(curr, { opacity: 0, duration, ease: 'power2.inOut', overwrite: true });
-      gsap.to(next, { opacity: 1, duration, ease: 'power2.inOut', overwrite: true });
+      gsap.set(next, { background: newBg, opacity: 0 });
+      gsap.set(curr, { opacity: Number(gsap.getProperty(curr, 'opacity')) || 1 });
+
+      const syncChromeToBg = () => {
+        applyChromeBlend(Number(gsap.getProperty(next, 'opacity')) || 0);
+      };
+
+      gsap.to(curr, {
+        opacity: 0,
+        duration,
+        ease: 'power2.inOut',
+        overwrite: true,
+        onUpdate: syncChromeToBg,
+      });
+      gsap.to(next, {
+        opacity: 1,
+        duration,
+        ease: 'power2.inOut',
+        overwrite: true,
+        onUpdate: syncChromeToBg,
+        onComplete: () => commitChrome(chromeTop, chromeBottom),
+      });
       activeIsA.current = !activeIsA.current;
     };
 
