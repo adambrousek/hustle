@@ -1,18 +1,17 @@
 const IMG = '/extracted';
 const LOGO = '/logos';
 
-/** Light top, rounded dark pool in lower third, lift to top color at bottom (iOS chrome). */
+/** Light top + bottom (chrome), rounded dark pool in lower third only — not at the edge. */
 function spatialBg(top, mid, dark, opts = {}) {
   const { highlight, highlightAt = '70% 14%' } = opts;
   const layers = [
-    `radial-gradient(ellipse 125% 68% at 50% 108%, ${dark} 0%, ${mid} 46%, transparent 72%)`,
-    `radial-gradient(ellipse 80% 42% at 50% 96%, rgba(0,0,0,0.2) 0%, transparent 58%)`,
+    `radial-gradient(ellipse 105% 52% at 50% 78%, ${dark} 0%, ${mid} 36%, transparent 60%)`,
   ];
   if (highlight) {
     layers.push(`radial-gradient(circle at ${highlightAt}, ${highlight} 0%, transparent 34%)`);
   }
   layers.push(
-    `linear-gradient(180deg, ${top} 0%, ${top} 56%, ${mid} 80%, ${top} 93%, ${top} 100%)`,
+    `linear-gradient(180deg, ${top} 0%, ${top} 58%, ${mid} 74%, ${top} 86%, ${top} 100%)`,
   );
   return layers.join(', ');
 }
