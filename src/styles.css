@@ -212,35 +212,48 @@ ul {
   position: relative;
 }
 
-/* iPhone: black Safari chrome + app card (square top — step 1) */
+/* iPhone: black status bar strip + full-bleed content (no top gap line) */
 html.ios-app-shell {
   background-color: #000 !important;
 }
 
+html.ios-app-shell::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top, 0px);
+  background: #000;
+  z-index: 101;
+  pointer-events: none;
+}
+
 html.ios-app-shell .app-shell {
-  --shell-top: max(10px, env(safe-area-inset-top, 10px));
-  margin-top: var(--shell-top);
-  min-height: calc(100dvh - var(--shell-top));
+  --shell-top: env(safe-area-inset-top, 0px);
+  margin-top: 0;
+  padding-top: var(--shell-top);
+  min-height: 100dvh;
   border-radius: 0;
   overflow: hidden;
   isolation: isolate;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.55);
+  box-shadow: none;
 }
 
 html.ios-app-shell .background-stage-wrap,
 html.ios-app-shell .background-highlight,
 html.ios-app-shell .noise-overlay {
-  top: var(--shell-top);
+  top: 0;
   bottom: 0;
   border-radius: 0;
   overflow: hidden;
 }
 
 html.ios-app-shell .header {
-  top: var(--shell-top);
+  top: 0;
   left: 0;
   right: 0;
-  padding-top: calc(clamp(16px, 2.2vw, 24px) + env(safe-area-inset-top, 0px) * 0.15);
+  padding-top: calc(clamp(16px, 2.2vw, 24px) + var(--shell-top));
 }
 
 html.ios-app-shell .build-stamp {
