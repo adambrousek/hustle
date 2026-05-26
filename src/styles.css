@@ -211,6 +211,25 @@ ul {
   position: relative;
 }
 
+/*
+  Desktop Safari (newer versions) ignores dynamic `theme-color` and instead tints
+  its UI by sampling the background of elements pinned to viewport edges.
+  We provide a tiny, (nearly) invisible probe that follows `--chrome-edge-top`.
+  Menu stays transparent; this only exists to influence Safari chrome tint.
+*/
+html:not(.ios-app-shell)::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 6px;
+  background: var(--chrome-edge-top, #f01818);
+  opacity: 0.001;
+  pointer-events: none;
+  z-index: 9999;
+}
+
 /* iPhone: solid chrome masks over gradient (colors from browserChrome.js) */
 html.ios-app-shell {
   background-color: var(--chrome-edge-top, #f01818);
