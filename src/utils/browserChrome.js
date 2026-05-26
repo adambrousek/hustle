@@ -12,7 +12,7 @@ function applyChromeColors(chromeTop, chromeBottom) {
   }
 
   document.documentElement.style.backgroundColor = chromeTop;
-  document.body.style.backgroundColor = isIosAppShell() ? chromeBottom : chromeTop;
+  document.body.style.backgroundColor = chromeTop;
 
   let meta = document.querySelector('meta[name="theme-color"]');
   if (!meta) {
