@@ -84,7 +84,7 @@ function ProofSection({ proof, sectionRef, isFirst }) {
               <span
                 key={line}
                 className="claim-line"
-                style={{ marginLeft: proof.lineXs[i] }}
+                style={{ '--claim-indent': proof.lineXs[i] }}
               >
                 {line}
               </span>

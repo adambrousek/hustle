@@ -378,7 +378,7 @@ section {
   position: relative;
   z-index: 16;
   display: grid;
-  grid-template-columns: minmax(auto, 760px) minmax(300px, 420px);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
   column-gap: clamp(64px, 7vw, 160px);
   align-items: start;
   padding-top: clamp(96px, 16vh, 160px);
@@ -410,18 +410,27 @@ section {
   top: auto;
   left: auto;
   right: auto;
-  padding: 0.12em clamp(20px, 3vw, 48px) 0.28em 0;
-  margin: -0.12em 0 -0.28em 0;
-  width: 100%;
-  max-width: 760px;
+  z-index: 2;
+  width: auto;
+  max-width: min(720px, 100%);
+  min-width: 0;
+  padding: 0.15em 0 0.35em;
+  margin: 0;
   overflow: visible;
+  line-height: 1.1;
+  text-shadow: 0 2px 20px rgba(43, 0, 4, 0.36);
 }
 
 .claim span,
 .claim-line {
   display: block;
   position: relative;
-  text-shadow: 0 2px 18px rgba(43, 0, 4, 0.38);
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-left: var(--claim-indent, 0);
+  padding-top: 0.06em;
+  padding-bottom: 0.06em;
+  text-shadow: none;
 }
 
 .proof-signature {
@@ -460,6 +469,21 @@ section {
 
 .layout-pilulka .proof-signature {
   max-width: 420px;
+}
+
+/* KitKat: wide logo sits lower — do not overlap first headline line */
+.layout-kitkat .proof-signature {
+  padding-top: clamp(64px, 11vh, 128px);
+}
+
+.layout-kitkat .proof-logo--color {
+  max-width: min(280px, 100%);
+}
+
+@media (min-width: 901px) {
+  .proof-section .claim-line {
+    padding-left: min(var(--claim-indent, 0px), 11rem);
+  }
 }
 
 .proof-logos {
@@ -955,10 +979,17 @@ section {
 
   .proof-section .claim {
     font-size: clamp(40px, 11vw, 72px);
-    max-height: none;
+    max-width: 100%;
+    line-height: 1.08;
   }
 
-  /* Keep per-line offsets (proof.lineXs) on mobile too. */
+  .proof-section .claim-line {
+    padding-left: min(var(--claim-indent, 0px), 12vw);
+  }
+
+  .layout-kitkat .proof-signature {
+    padding-top: 0;
+  }
 
   .proof-section .proof-signature {
     max-width: 100%;
