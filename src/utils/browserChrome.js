@@ -9,6 +9,10 @@ function applyChromeColors(chromeTop, chromeBottom) {
 
   if (isIosAppShell()) {
     document.documentElement.style.setProperty('--shell-chrome-color', chromeTop);
+    // Bottom band matches top chrome (gradient lifts to top color at viewport base).
+    document.documentElement.style.setProperty('--chrome-edge-bottom', chromeTop);
+  } else {
+    document.documentElement.style.setProperty('--chrome-edge-bottom', chromeBottom);
   }
 
   document.documentElement.style.backgroundColor = chromeTop;
