@@ -212,28 +212,16 @@ ul {
   position: relative;
 }
 
-/* iPhone: black status bar strip + full-bleed content (no top gap line) */
+/* iPhone: black top chrome (margin offset) — keep this for status bar behavior */
 html.ios-app-shell {
   background-color: #000 !important;
 }
 
-html.ios-app-shell::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: env(safe-area-inset-top, 0px);
-  background: #000;
-  z-index: 101;
-  pointer-events: none;
-}
-
 html.ios-app-shell .app-shell {
+  /* Only safe-area inset, no extra 10px gap (was causing visible black line) */
   --shell-top: env(safe-area-inset-top, 0px);
-  margin-top: 0;
-  padding-top: var(--shell-top);
-  min-height: 100dvh;
+  margin-top: var(--shell-top);
+  min-height: calc(100dvh - var(--shell-top));
   border-radius: 0;
   overflow: hidden;
   isolation: isolate;
@@ -243,17 +231,18 @@ html.ios-app-shell .app-shell {
 html.ios-app-shell .background-stage-wrap,
 html.ios-app-shell .background-highlight,
 html.ios-app-shell .noise-overlay {
-  top: 0;
+  /* 1px overlap kills the seam between black strip and slide bg */
+  top: calc(var(--shell-top) - 1px);
   bottom: 0;
   border-radius: 0;
   overflow: hidden;
 }
 
 html.ios-app-shell .header {
-  top: 0;
+  top: var(--shell-top);
   left: 0;
   right: 0;
-  padding-top: calc(clamp(16px, 2.2vw, 24px) + var(--shell-top));
+  padding-top: clamp(16px, 2.2vw, 24px);
 }
 
 html.ios-app-shell .build-stamp {
