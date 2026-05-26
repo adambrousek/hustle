@@ -285,12 +285,15 @@ function System({ sectionRef }) {
 }
 
 function BuildStamp() {
-  const stamp =
-    typeof __BUILD_COMMIT_TIME__ !== 'undefined' ? __BUILD_COMMIT_TIME__ : 'dev';
+  const buildTime =
+    typeof __BUILD_TIME__ !== 'undefined' ? __BUILD_TIME__ : 'dev';
+  const commitHash =
+    typeof __BUILD_COMMIT_HASH__ !== 'undefined' ? __BUILD_COMMIT_HASH__ : '';
 
   return (
     <div className="build-stamp" aria-hidden="true">
-      build {stamp}
+      build {buildTime}
+      {commitHash ? ` · ${commitHash}` : ''}
     </div>
   );
 }
