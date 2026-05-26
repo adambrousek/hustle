@@ -4,15 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   BG_SECTIONS,
   DARK_CTA_BG,
-  DARK_CTA_THEME,
   DEFAULT_RED_BG,
-  DEFAULT_RED_THEME,
   DEEP_RED_BG,
-  DEEP_RED_THEME,
   HERO_BG,
-  HERO_THEME,
 } from '../data/proofs';
-import { syncPageBackground } from '../utils/browserChrome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -136,21 +131,18 @@ export function useScrollEffects(refs) {
 
     gsap.set(bgA, { background: HERO_BG, opacity: 1 });
     gsap.set(bgB, { background: HERO_BG, opacity: 0 });
-    syncPageBackground(HERO_BG, HERO_THEME);
 
-    const setBgInstant = (newBg, themeColor) => {
+    const setBgInstant = (newBg) => {
       currentBg.current = newBg;
-      syncPageBackground(newBg, themeColor);
       gsap.killTweensOf([bgA, bgB]);
       activeIsA.current = true;
       gsap.set(bgA, { background: newBg, opacity: 1 });
       gsap.set(bgB, { opacity: 0 });
     };
 
-    const crossfadeBg = (newBg, themeColor, duration = 1.0) => {
+    const crossfadeBg = (newBg, duration = 1.0) => {
       if (currentBg.current === newBg) return;
       currentBg.current = newBg;
-      syncPageBackground(newBg, themeColor);
 
       const next = activeIsA.current ? bgB : bgA;
       const curr = activeIsA.current ? bgA : bgB;
@@ -171,11 +163,10 @@ export function useScrollEffects(refs) {
           start: 'top top',
           end: 'bottom top',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(HERO_BG, HERO_THEME);
+            if (self.isActive) crossfadeBg(HERO_BG);
           },
         });
         t.vars.__bg = HERO_BG;
-        t.vars.__themeColor = HERO_THEME;
         bgTriggers.push(t);
       }
 
@@ -225,11 +216,10 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(bgConfig.bg, bgConfig.color);
+            if (self.isActive) crossfadeBg(bgConfig.bg);
           },
         });
         t.vars.__bg = bgConfig.bg;
-        t.vars.__themeColor = bgConfig.color;
         bgTriggers.push(t);
 
         const claim = section.querySelector('.claim');
@@ -245,11 +235,10 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME);
+            if (self.isActive) crossfadeBg(DEEP_RED_BG);
           },
         });
         t.vars.__bg = DEEP_RED_BG;
-        t.vars.__themeColor = DEEP_RED_THEME;
         bgTriggers.push(t);
       }
 
@@ -259,11 +248,10 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME);
+            if (self.isActive) crossfadeBg(DEFAULT_RED_BG);
           },
         });
         t.vars.__bg = DEFAULT_RED_BG;
-        t.vars.__themeColor = DEFAULT_RED_THEME;
         bgTriggers.push(t);
       }
 
@@ -273,11 +261,10 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME);
+            if (self.isActive) crossfadeBg(DEEP_RED_BG);
           },
         });
         t.vars.__bg = DEEP_RED_BG;
-        t.vars.__themeColor = DEEP_RED_THEME;
         bgTriggers.push(t);
       }
 
@@ -287,11 +274,10 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom 45%',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME);
+            if (self.isActive) crossfadeBg(DEFAULT_RED_BG);
           },
         });
         t.vars.__bg = DEFAULT_RED_BG;
-        t.vars.__themeColor = DEFAULT_RED_THEME;
         bgTriggers.push(t);
       }
 
@@ -301,28 +287,23 @@ export function useScrollEffects(refs) {
           start: 'top 55%',
           end: 'bottom bottom',
           onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DARK_CTA_BG, DARK_CTA_THEME);
+            if (self.isActive) crossfadeBg(DARK_CTA_BG);
           },
         });
         t.vars.__bg = DARK_CTA_BG;
-        t.vars.__themeColor = DARK_CTA_THEME;
         bgTriggers.push(t);
       }
 
       // Ensure correct bg after refresh / fast scroll / direct jumps.
       ScrollTrigger.addEventListener('refresh', () => {
         const active = bgTriggers.find((t) => t && t.isActive);
-        if (active?.vars?.__bg) {
-          setBgInstant(active.vars.__bg, active.vars.__themeColor || HERO_THEME);
-        }
+        if (active?.vars?.__bg) setBgInstant(active.vars.__bg);
       });
 
       // One-time: after initial layout + triggers, snap to currently active section.
       requestAnimationFrame(() => {
         const active = bgTriggers.find((t) => t && t.isActive);
-        if (active?.vars?.__bg) {
-          setBgInstant(active.vars.__bg, active.vars.__themeColor || HERO_THEME);
-        }
+        if (active?.vars?.__bg) setBgInstant(active.vars.__bg);
       });
     });
 

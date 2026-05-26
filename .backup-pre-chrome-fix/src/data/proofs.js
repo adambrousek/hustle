@@ -4,12 +4,6 @@ const LOGO = '/logos';
 export const HERO_BG =
   'radial-gradient(circle at 70% 15%, #FF3A3A 0%, transparent 30%), linear-gradient(180deg, #F01818 0%, #CD0010 100%)';
 
-/** Solid colors for Safari/macOS browser chrome (theme-color + html/body fallback). */
-export const HERO_THEME = '#F01818';
-export const DEFAULT_RED_THEME = '#F01818';
-export const DEEP_RED_THEME = '#7A0000';
-export const DARK_CTA_THEME = '#660008';
-
 export const DEFAULT_RED_BG =
   'radial-gradient(circle at 65% 20%, #FF3A3A 0%, transparent 28%), linear-gradient(180deg, #F01818 0%, #CD0010 100%)';
 
