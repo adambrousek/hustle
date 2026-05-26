@@ -32,9 +32,9 @@ const MOBILE_MQ = '(max-width: 900px)';
  * startY/endY (vh) + scrub — pod textem; scroll končí když slide sedí nahoře (top top).
  */
 const MOBILE_IMG_MOTION = [
-  { startY: 78, endY: -92, scrub: 0.24 },
-  { startY: 72, endY: -78, scrub: 0.4 },
-  { startY: 66, endY: -64, scrub: 0.56 },
+  { startY: 86, endY: -74, scrub: 0.24 },
+  { startY: 80, endY: -62, scrub: 0.4 },
+  { startY: 74, endY: -50, scrub: 0.56 },
 ];
 
 function isMobileLayout() {
