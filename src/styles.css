@@ -379,7 +379,9 @@ section {
   z-index: 16;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+  grid-template-rows: auto auto;
   column-gap: clamp(64px, 7vw, 160px);
+  row-gap: clamp(32px, 5vh, 64px);
   align-items: start;
   padding-top: clamp(96px, 16vh, 160px);
   padding-left: clamp(20px, 4vw, 48px);
@@ -411,10 +413,12 @@ section {
   left: auto;
   right: auto;
   z-index: 2;
+  grid-column: 1;
+  grid-row: 1;
   width: auto;
   max-width: min(720px, 100%);
   min-width: 0;
-  padding: 0.15em 0 0.35em;
+  padding: 0.15em 0 0;
   margin: 0;
   overflow: visible;
   line-height: 1.1;
@@ -441,16 +445,25 @@ section {
 }
 
 .proof-section .proof-signature {
-  position: relative;
-  top: auto;
-  right: auto;
-  left: auto;
-  bottom: auto;
+  display: contents;
+}
+
+.proof-section .proof-logos {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: start;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 0;
+}
+
+.proof-section .proof-signature-body {
+  grid-column: 2;
+  grid-row: 2;
   width: 100%;
   max-width: 420px;
   text-align: left;
-  padding: 0;
-  margin: 0;
 }
 
 /* CS layout closer to deck: big claim left, proof block right */
@@ -469,11 +482,6 @@ section {
 
 .layout-pilulka .proof-signature {
   max-width: 420px;
-}
-
-/* KitKat: wide logo sits lower — do not overlap first headline line */
-.layout-kitkat .proof-signature {
-  padding-top: clamp(64px, 11vh, 128px);
 }
 
 .layout-kitkat .proof-logo--color {
@@ -972,12 +980,29 @@ section {
   }
 
   .proof-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 5vh, 48px);
     padding: 96px 20px 40px;
     height: auto;
   }
 
+  .proof-section .proof-signature {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .proof-section .proof-logos,
+  .proof-section .proof-signature-body {
+    grid-column: auto;
+    grid-row: auto;
+    max-width: 100%;
+  }
+
   .proof-section .claim {
+    grid-column: auto;
+    grid-row: auto;
     font-size: clamp(40px, 11vw, 72px);
     max-width: 100%;
     line-height: 1.08;
@@ -987,14 +1012,8 @@ section {
     padding-left: min(var(--claim-indent, 0px), 12vw);
   }
 
-  .layout-kitkat .proof-signature {
-    padding-top: 0;
-  }
-
-  .proof-section .proof-signature {
-    max-width: 100%;
-    margin-top: 32px;
-    padding: 0;
+  .proof-section .proof-signature-body {
+    margin-top: 0;
   }
 
   .proof-img {

@@ -106,27 +106,29 @@ function ProofSection({ proof, sectionRef, isFirst }) {
                 ))}
               </div>
             )}
-            <p className="proof-description text-body">{proof.description}</p>
-            {proof.description2 && (
-              <p className="proof-description proof-description--second text-body">
-                {proof.description2}
-              </p>
-            )}
-            {proof.links?.length > 0 && (
-              <div className="proof-links">
-                {proof.links.map((l) => (
-                  <a
-                    key={l.href}
-                    className="proof-link"
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {l.label}
-                  </a>
-                ))}
-              </div>
-            )}
+            <div className="proof-signature-body">
+              <p className="proof-description text-body">{proof.description}</p>
+              {proof.description2 && (
+                <p className="proof-description proof-description--second text-body">
+                  {proof.description2}
+                </p>
+              )}
+              {proof.links?.length > 0 && (
+                <div className="proof-links">
+                  {proof.links.map((l) => (
+                    <a
+                      key={l.href}
+                      className="proof-link"
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

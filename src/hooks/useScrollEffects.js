@@ -26,41 +26,23 @@ import { isIosAppShell } from '../utils/iosAppShell';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function setupParallax(section, claim, signature, visual) {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: section,
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 0.8,
-    },
-  });
-
-  tl.fromTo(
-    claim,
-    { y: '20vh', opacity: 0 },
-    { y: '0vh', opacity: 1, duration: 0.35, ease: 'none' },
-    0,
-  ).to(claim, { y: '-14vh', opacity: 0, duration: 0.35, ease: 'none' }, 0.65);
-
-  if (signature) {
-    const sigTl = gsap.timeline({
+function setupParallax(section, contentRoot, visual) {
+  if (contentRoot) {
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top bottom',
         end: 'bottom top',
-        scrub: 0.85,
+        scrub: 0.8,
       },
     });
 
-    sigTl
-      .fromTo(
-        signature,
-        { y: '26vh', opacity: 0 },
-        { y: '2vh', opacity: 1, duration: 0.38, ease: 'none' },
-        0,
-      )
-      .to(signature, { y: '-4vh', opacity: 0, duration: 0.32, ease: 'none' }, 0.62);
+    tl.fromTo(
+      contentRoot,
+      { y: '20vh', opacity: 0 },
+      { y: '0vh', opacity: 1, duration: 0.35, ease: 'none' },
+      0,
+    ).to(contentRoot, { y: '-14vh', opacity: 0, duration: 0.35, ease: 'none' }, 0.65);
   }
 
   if (visual) {
@@ -333,11 +315,10 @@ export function useScrollEffects(refs) {
         t.vars.__chromeBottom = bgConfig.chromeBottom ?? bgConfig.color;
         bgTriggers.push(t);
 
-        const claim = section.querySelector('.claim');
-        const signature = section.querySelector('.proof-signature');
+        const contentRoot = section.querySelector('.proof-content');
         const visual = section.querySelector('.proof-visual');
 
-        if (claim) setupParallax(section, claim, signature, visual);
+        if (contentRoot) setupParallax(section, contentRoot, visual);
       });
 
       if (positioningRef?.current) {
