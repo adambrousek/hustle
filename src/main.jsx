@@ -2,9 +2,11 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import { initIosAppShell } from './utils/iosAppShell';
+import { initDesktopSafari } from './utils/desktopSafari';
 import './styles.css';
 
 initIosAppShell();
+initDesktopSafari();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
