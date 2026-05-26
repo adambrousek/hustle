@@ -20,7 +20,7 @@ export const DEFAULT_RED_BG =
   'radial-gradient(circle at 65% 20%, #FF3A3A 0%, transparent 28%), linear-gradient(180deg, #F01818 0%, #CD0010 100%)';
 
 export const DEEP_RED_BG =
-  'radial-gradient(circle at 50% 30%, rgba(255,58,58,0.4) 0%, transparent 40%), linear-gradient(180deg, #F01818 0%, #7A0000 45%, #2B0004 100%)';
+  'radial-gradient(circle at 50% 55%, rgba(122,0,0,0.35) 0%, transparent 42%), linear-gradient(180deg, #7A0000 0%, #4A0006 48%, #2B0004 100%)';
 
 export const DARK_CTA_BG =
   'radial-gradient(circle at 40% 80%, rgba(122,0,0,0.5) 0%, transparent 45%), linear-gradient(180deg, #660008 0%, #2B0004 100%)';

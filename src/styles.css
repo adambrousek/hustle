@@ -248,6 +248,33 @@ html.ios-app-shell .noise-overlay {
   overflow: hidden;
 }
 
+/* Blend scroll bg into chrome edge colors (header / bottom bar) */
+html.ios-app-shell .background-stage-wrap::before,
+html.ios-app-shell .background-stage-wrap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+html.ios-app-shell .background-stage-wrap::before {
+  top: 0;
+  height: clamp(80px, 16vh, 160px);
+  background: linear-gradient(to bottom, var(--chrome-edge-top), transparent);
+}
+
+html.ios-app-shell .background-stage-wrap::after {
+  bottom: 0;
+  height: clamp(100px, 20vh, 200px);
+  background: linear-gradient(to top, var(--chrome-edge-bottom), transparent);
+}
+
+html.ios-app-shell .background-highlight {
+  opacity: 0.45;
+}
+
 html.ios-app-shell .header {
   top: var(--shell-top);
   left: 0;
