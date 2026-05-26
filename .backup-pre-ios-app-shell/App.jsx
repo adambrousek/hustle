@@ -341,7 +341,7 @@ export default function App() {
   });
 
   return (
-    <div className="app-shell">
+    <>
       <div className="background-stage-wrap" aria-hidden="true">
         <div className="background-stage" ref={bgARef} />
         <div className="background-stage" ref={bgBRef} />
@@ -372,6 +372,6 @@ export default function App() {
         <System sectionRef={systemRef} />
         <FinalCta sectionRef={ctaRef} />
       </main>
-    </div>
+    </>
   );
 }
