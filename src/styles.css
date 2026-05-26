@@ -95,9 +95,7 @@ ul {
 .background-stage {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 70% 15%, #ff3a3a 0%, transparent 30%),
-    linear-gradient(180deg, #f01818 0%, #cd0010 100%);
+  background-color: #f01818;
   will-change: opacity;
 }
 
