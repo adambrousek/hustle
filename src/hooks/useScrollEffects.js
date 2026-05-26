@@ -28,11 +28,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MOBILE_MQ = '(max-width: 900px)';
 
-/** startY/endY (vh) + scrub — různé rychlosti, v půli scrollu nad odstavcem */
+/**
+ * startY/endY (vh) + scrub — nízko → průlet přes odstavec → v p~0.5 už nad headlinem.
+ * Při plné case study (střed sekce) jsou všechny snímky nad textem.
+ */
 const MOBILE_IMG_MOTION = [
-  { startY: 10, endY: -58, scrub: 0.2 },
-  { startY: 20, endY: -6, scrub: 0.45 },
-  { startY: 14, endY: 32, scrub: 0.7 },
+  { startY: 128, endY: -118, scrub: 0.2 },
+  { startY: 118, endY: -102, scrub: 0.38 },
+  { startY: 108, endY: -88, scrub: 0.56 },
 ];
 
 function isMobileLayout() {
@@ -82,8 +85,8 @@ function setupParallax(section, contentRoot, visual) {
     imgs.forEach((img, i) => {
       const centered = img.classList.contains('proof-img--center');
       const lane = MOBILE_IMG_MOTION[i % MOBILE_IMG_MOTION.length];
-      const startY = mobile ? lane.startY + i * 2 : 58 + i * 10;
-      const endY = mobile ? lane.endY - i * 3 : -62 - i * 6;
+      const startY = mobile ? lane.startY + i * 4 : 58 + i * 10;
+      const endY = mobile ? lane.endY - i * 5 : -62 - i * 6;
       const scrub = mobile ? lane.scrub : 0.4;
 
       gsap.fromTo(
@@ -128,7 +131,7 @@ function setupParallax(section, contentRoot, visual) {
             const p = self.progress;
             // peak fade in middle
             const mid = 1 - Math.min(1, Math.abs(p - 0.5) / 0.22);
-            const fade = isMobileLayout() ? 0.3 : 0.75;
+            const fade = isMobileLayout() ? 0.2 : 0.75;
             const target = 1 - mid * fade;
             gsap.to(visual, { opacity: target, duration: 0.08, overwrite: true });
           },
