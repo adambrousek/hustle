@@ -73,8 +73,8 @@ function setupParallax(section, contentRoot, visual) {
   if (visual) {
     const imgs = visual.querySelectorAll('.proof-img');
     imgs.forEach((img, i) => {
-      const startY = mobile ? 18 + i * 5 : 58 + i * 10;
-      const endY = mobile ? -22 - i * 4 : -62 - i * 6;
+      const startY = mobile ? 24 + i * 6 : 58 + i * 10;
+      const endY = mobile ? 34 + i * 5 : -62 - i * 6;
       const centered = img.classList.contains('proof-img--center');
 
       gsap.fromTo(
@@ -191,10 +191,17 @@ export function useScrollEffects(refs) {
       const velocity = getScrollVelocity();
       const { instant, duration } = getCrossfadePlan(velocity);
       const bgChanged = currentBg.current !== newBg;
+      const ios = isIosAppShell();
       currentBg.current = newBg;
 
-      if (!bgChanged) {
+      // Desktop Safari: theme-color / html bg must update immediately on section enter.
+      // iOS keeps chrome locked to bg crossfade opacity.
+      if (!ios) {
         syncPageBackground(newBg, chromeTop, chromeBottom);
+      }
+
+      if (!bgChanged) {
+        if (ios) syncPageBackground(newBg, chromeTop, chromeBottom);
         return;
       }
 
@@ -202,34 +209,50 @@ export function useScrollEffects(refs) {
         setBgInstant(newBg, chromeTop, chromeBottom);
         return;
       }
+
       const next = activeIsA.current ? bgB : bgA;
       const curr = activeIsA.current ? bgA : bgB;
-
-      startChromeBlend(chromeTop, chromeBottom);
 
       gsap.killTweensOf([bgA, bgB]);
       gsap.set(next, { background: newBg, opacity: 0 });
       gsap.set(curr, { opacity: Number(gsap.getProperty(curr, 'opacity')) || 1 });
 
-      const syncChromeToBg = () => {
-        applyChromeBlend(Number(gsap.getProperty(next, 'opacity')) || 0);
-      };
+      if (ios) {
+        startChromeBlend(chromeTop, chromeBottom);
+        const syncChromeToBg = () => {
+          applyChromeBlend(Number(gsap.getProperty(next, 'opacity')) || 0);
+        };
 
-      gsap.to(curr, {
-        opacity: 0,
-        duration,
-        ease: 'power2.inOut',
-        overwrite: true,
-        onUpdate: syncChromeToBg,
-      });
-      gsap.to(next, {
-        opacity: 1,
-        duration,
-        ease: 'power2.inOut',
-        overwrite: true,
-        onUpdate: syncChromeToBg,
-        onComplete: () => commitChrome(chromeTop, chromeBottom),
-      });
+        gsap.to(curr, {
+          opacity: 0,
+          duration,
+          ease: 'power2.inOut',
+          overwrite: true,
+          onUpdate: syncChromeToBg,
+        });
+        gsap.to(next, {
+          opacity: 1,
+          duration,
+          ease: 'power2.inOut',
+          overwrite: true,
+          onUpdate: syncChromeToBg,
+          onComplete: () => commitChrome(chromeTop, chromeBottom),
+        });
+      } else {
+        gsap.to(curr, {
+          opacity: 0,
+          duration,
+          ease: 'power2.inOut',
+          overwrite: true,
+        });
+        gsap.to(next, {
+          opacity: 1,
+          duration,
+          ease: 'power2.inOut',
+          overwrite: true,
+        });
+      }
+
       activeIsA.current = !activeIsA.current;
     };
 

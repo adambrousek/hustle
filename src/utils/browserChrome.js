@@ -29,7 +29,7 @@ function applyChromeColors(chromeTop, chromeBottom) {
     meta.name = 'theme-color';
     document.head.appendChild(meta);
   }
-  meta.content = chromeTop;
+  meta.setAttribute('content', chromeTop);
   currentChromeTop = chromeTop;
   currentChromeBottom = isIosAppShell() ? chromeTop : chromeBottom;
 }
