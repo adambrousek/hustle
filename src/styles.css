@@ -137,14 +137,7 @@ ul {
   font-size: var(--label-size);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-/* Default: keep header transparent (all non‑iOS). */
-
-/* Desktop Safari only: tint header to match bg chrome variable. */
-html.desktop-safari .header {
-  background-color: var(--chrome-edge-top, #f01818);
-  transition: background-color 0.2s ease;
+  background: transparent;
 }
 
 .header-logo {
