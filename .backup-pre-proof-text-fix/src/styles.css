@@ -859,13 +859,14 @@ section {
   }
 
   .proof-section .sticky-stage {
-    /* Let proof-content own the padding so headline + paragraph stay aligned */
-    padding: 0;
+    padding: 96px 20px 40px;
   }
 
   .proof-content {
     display: block;
-    padding: 96px 20px 40px;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
     height: auto;
   }
 
@@ -874,7 +875,9 @@ section {
     max-height: none;
   }
 
-  /* Keep per-line offsets (proof.lineXs) on mobile too. */
+  .claim span {
+    margin-left: clamp(12px, 4vw, 24px) !important;
+  }
 
   .proof-section .proof-signature {
     max-width: 100%;
