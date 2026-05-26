@@ -218,21 +218,19 @@ html.ios-app-shell {
 }
 
 html.ios-app-shell .app-shell {
-  /* Only safe-area inset, no extra 10px gap (was causing visible black line) */
-  --shell-top: env(safe-area-inset-top, 0px);
+  --shell-top: max(0px, env(safe-area-inset-top, 0px));
   margin-top: var(--shell-top);
   min-height: calc(100dvh - var(--shell-top));
   border-radius: 0;
   overflow: hidden;
   isolation: isolate;
-  box-shadow: none;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.55);
 }
 
 html.ios-app-shell .background-stage-wrap,
 html.ios-app-shell .background-highlight,
 html.ios-app-shell .noise-overlay {
-  /* 1px overlap kills the seam between black strip and slide bg */
-  top: calc(var(--shell-top) - 1px);
+  top: var(--shell-top);
   bottom: 0;
   border-radius: 0;
   overflow: hidden;
@@ -242,7 +240,7 @@ html.ios-app-shell .header {
   top: var(--shell-top);
   left: 0;
   right: 0;
-  padding-top: clamp(16px, 2.2vw, 24px);
+  padding-top: calc(clamp(16px, 2.2vw, 24px) + env(safe-area-inset-top, 0px) * 0.15);
 }
 
 html.ios-app-shell .build-stamp {
