@@ -1,25 +1,8 @@
 const IMG = '/extracted';
 const LOGO = '/logos';
 
-/** Light top, rounded dark pool in lower third, lift to top color at bottom (iOS chrome). */
-function spatialBg(top, mid, dark, opts = {}) {
-  const { highlight, highlightAt = '70% 14%' } = opts;
-  const layers = [
-    `radial-gradient(ellipse 125% 68% at 50% 108%, ${dark} 0%, ${mid} 46%, transparent 72%)`,
-    `radial-gradient(ellipse 80% 42% at 50% 96%, rgba(0,0,0,0.2) 0%, transparent 58%)`,
-  ];
-  if (highlight) {
-    layers.push(`radial-gradient(circle at ${highlightAt}, ${highlight} 0%, transparent 34%)`);
-  }
-  layers.push(
-    `linear-gradient(180deg, ${top} 0%, ${top} 56%, ${mid} 80%, ${top} 93%, ${top} 100%)`,
-  );
-  return layers.join(', ');
-}
-
-export const HERO_BG = spatialBg('#F01818', '#C81818', '#8E0010', {
-  highlight: 'rgba(255,58,58,0.55)',
-});
+export const HERO_BG =
+  'radial-gradient(circle at 70% 15%, #FF3A3A 0%, transparent 30%), linear-gradient(180deg, #F01818 0%, #CD0010 38%, #F01818 68%, #F01818 100%)';
 
 /** Solid colors for Safari/macOS browser chrome (theme-color + html/body fallback). */
 export const HERO_THEME = '#F01818';
@@ -33,20 +16,14 @@ export const DEFAULT_RED_CHROME_BOTTOM = '#CD0010';
 export const DEEP_RED_CHROME_BOTTOM = '#2B0004';
 export const DARK_CTA_CHROME_BOTTOM = '#2B0004';
 
-export const DEFAULT_RED_BG = spatialBg('#F01818', '#C81818', '#8E0010', {
-  highlight: 'rgba(255,58,58,0.5)',
-  highlightAt: '65% 18%',
-});
+export const DEFAULT_RED_BG =
+  'radial-gradient(circle at 65% 20%, #FF3A3A 0%, transparent 28%), linear-gradient(180deg, #F01818 0%, #CD0010 38%, #F01818 68%, #F01818 100%)';
 
-export const DEEP_RED_BG = spatialBg('#7A0000', '#4A0006', '#2B0004', {
-  highlight: 'rgba(180,40,40,0.22)',
-  highlightAt: '50% 20%',
-});
+export const DEEP_RED_BG =
+  'radial-gradient(circle at 50% 38%, rgba(122,0,0,0.28) 0%, transparent 42%), linear-gradient(180deg, #7A0000 0%, #3A0004 40%, #7A0000 68%, #7A0000 100%)';
 
-export const DARK_CTA_BG = spatialBg('#660008', '#420006', '#2B0004', {
-  highlight: 'rgba(140,30,30,0.25)',
-  highlightAt: '48% 18%',
-});
+export const DARK_CTA_BG =
+  'radial-gradient(circle at 50% 35%, rgba(102,0,8,0.4) 0%, transparent 45%), linear-gradient(180deg, #660008 0%, #3A0004 40%, #660008 68%, #660008 100%)';
 
 /** Barvy a gradienty z PDF (case study slidy) */
 export const BG_SECTIONS = [
@@ -54,55 +31,37 @@ export const BG_SECTIONS = [
     id: 'cs',
     color: '#1868F0',
     chromeBottom: '#0E48B8',
-    bg: spatialBg('#1868F0', '#1048C8', '#0A2878', {
-      highlight: 'rgba(255,255,255,0.14)',
-      highlightAt: '78% 20%',
-    }),
+    bg: 'radial-gradient(circle at 78% 22%, rgba(255,255,255,0.12) 0%, transparent 42%), linear-gradient(180deg, #1868F0 0%, #0E48B8 42%, #1868F0 68%, #1868F0 100%)',
   },
   {
     id: 'pilulka',
     color: '#006858',
     chromeBottom: '#003830',
-    bg: spatialBg('#006858', '#004840', '#003830', {
-      highlight: 'rgba(255,255,255,0.09)',
-      highlightAt: '22% 16%',
-    }),
+    bg: 'radial-gradient(circle at 22% 18%, rgba(255,255,255,0.08) 0%, transparent 40%), linear-gradient(180deg, #006858 0%, #003830 44%, #006858 68%, #006858 100%)',
   },
   {
     id: 'sportisimo',
     color: '#0058B0',
     chromeBottom: '#002858',
-    bg: spatialBg('#0058B0', '#003878', '#002858', {
-      highlight: 'rgba(255,255,255,0.11)',
-      highlightAt: '72% 24%',
-    }),
+    bg: 'radial-gradient(circle at 72% 28%, rgba(255,255,255,0.1) 0%, transparent 38%), linear-gradient(180deg, #0058B0 0%, #002858 44%, #0058B0 68%, #0058B0 100%)',
   },
   {
     id: 'kitkat',
     color: '#E81828',
     chromeBottom: '#7A0008',
-    bg: spatialBg('#E81828', '#B80018', '#7A0008', {
-      highlight: 'rgba(255,80,80,0.38)',
-      highlightAt: '60% 18%',
-    }),
+    bg: 'radial-gradient(circle at 60% 20%, rgba(255,58,58,0.35) 0%, transparent 45%), linear-gradient(180deg, #E81828 0%, #7A0008 46%, #E81828 68%, #E81828 100%)',
   },
   {
     id: 'partnership',
     color: '#1868F0',
     chromeBottom: '#0A2878',
-    bg: spatialBg('#1868F0', '#1040A8', '#0A2878', {
-      highlight: 'rgba(255,255,255,0.11)',
-      highlightAt: '50% 22%',
-    }),
+    bg: 'radial-gradient(circle at 50% 35%, rgba(255,255,255,0.1) 0%, transparent 42%), linear-gradient(180deg, #1868F0 0%, #0A2878 46%, #1868F0 68%, #1868F0 100%)',
   },
   {
     id: 'dofe',
     color: '#9C2088',
     chromeBottom: '#5C1048',
-    bg: spatialBg('#9C2088', '#781868', '#5C1048', {
-      highlight: 'rgba(255,220,120,0.14)',
-      highlightAt: '30% 20%',
-    }),
+    bg: 'radial-gradient(circle at 30% 25%, rgba(255,220,100,0.12) 0%, transparent 40%), linear-gradient(180deg, #9C2088 0%, #5C1048 44%, #9C2088 68%, #9C2088 100%)',
   },
 ];
 
