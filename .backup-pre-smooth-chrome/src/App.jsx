@@ -284,17 +284,6 @@ function System({ sectionRef }) {
   );
 }
 
-function BuildStamp() {
-  const stamp =
-    typeof __BUILD_COMMIT_TIME__ !== 'undefined' ? __BUILD_COMMIT_TIME__ : 'dev';
-
-  return (
-    <div className="build-stamp" aria-hidden="true">
-      build {stamp}
-    </div>
-  );
-}
-
 function FinalCta({ sectionRef }) {
   return (
     <section className="final-cta" ref={sectionRef} id="kontakt">
@@ -348,7 +337,6 @@ export default function App() {
       </div>
       <div className="background-highlight" aria-hidden="true" />
       <div className="noise-overlay" aria-hidden="true" />
-      <BuildStamp />
 
       <Header />
 
