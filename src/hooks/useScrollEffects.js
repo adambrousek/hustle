@@ -16,7 +16,7 @@ import {
   HERO_CHROME_BOTTOM,
   HERO_THEME,
 } from '../data/proofs';
-import { syncPageBackground } from '../utils/browserChrome';
+import { syncPageBackground, transitionPageBackground } from '../utils/browserChrome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -154,7 +154,12 @@ export function useScrollEffects(refs) {
     const crossfadeBg = (newBg, chromeTop, chromeBottom = chromeTop, duration = 1.0) => {
       const bgChanged = currentBg.current !== newBg;
       currentBg.current = newBg;
-      syncPageBackground(newBg, chromeTop, chromeBottom);
+
+      if (bgChanged) {
+        transitionPageBackground(newBg, chromeTop, chromeBottom, duration);
+      } else {
+        syncPageBackground(newBg, chromeTop, chromeBottom);
+      }
       if (!bgChanged) return;
 
       const next = activeIsA.current ? bgB : bgA;
