@@ -1,15 +1,16 @@
 import gsap from 'gsap';
 import { isIosAppShell } from './iosAppShell';
 
-const IOS_APP_CHROME = '#000000';
-
 let currentThemeColor = '#F01818';
 let colorTween = null;
 
 function applyThemeColor(themeColor) {
   const iosShell = isIosAppShell();
-  // iOS shell: keep TOP frame black (html), but keep page + bottom chrome dynamic.
-  document.documentElement.style.backgroundColor = iosShell ? IOS_APP_CHROME : themeColor;
+  // iOS shell: paint the margin-top gap (html) with the active slide color.
+  document.documentElement.style.backgroundColor = themeColor;
+  if (iosShell) {
+    document.documentElement.style.setProperty('--shell-chrome-color', themeColor);
+  }
   document.body.style.backgroundColor = themeColor;
 
   let meta = document.querySelector('meta[name="theme-color"]');

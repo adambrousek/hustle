@@ -212,9 +212,9 @@ ul {
   position: relative;
 }
 
-/* iPhone: black Safari chrome, square top (margin offset keeps header chrome in sync) */
+/* iPhone: top gap color synced via browserChrome (--shell-chrome-color) */
 html.ios-app-shell {
-  background-color: #000 !important;
+  background-color: var(--shell-chrome-color, #f01818);
 }
 
 html.ios-app-shell .app-shell {
