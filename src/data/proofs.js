@@ -1,17 +1,17 @@
 const IMG = '/extracted';
 const LOGO = '/logos';
 
-/** Light top + bottom (chrome), rounded dark pool in lower third only — not at the edge. */
+/** Light top + bottom (chrome). Flat ellipse “pool” floats above base — never touches bottom. */
 function spatialBg(top, mid, dark, opts = {}) {
   const { highlight, highlightAt = '70% 14%' } = opts;
   const layers = [
-    `radial-gradient(ellipse 105% 52% at 50% 78%, ${dark} 0%, ${mid} 36%, transparent 60%)`,
+    `radial-gradient(ellipse 150% 28% at 50% 62%, ${dark} 0%, ${mid} 28%, transparent 48%)`,
   ];
   if (highlight) {
     layers.push(`radial-gradient(circle at ${highlightAt}, ${highlight} 0%, transparent 34%)`);
   }
   layers.push(
-    `linear-gradient(180deg, ${top} 0%, ${top} 58%, ${mid} 74%, ${top} 86%, ${top} 100%)`,
+    `linear-gradient(180deg, ${top} 0%, ${top} 52%, ${mid} 66%, ${top} 76%, ${top} 100%)`,
   );
   return layers.join(', ');
 }
