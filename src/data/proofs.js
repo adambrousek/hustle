@@ -2,7 +2,7 @@ const IMG = '/extracted';
 const LOGO = '/logos';
 
 export const HERO_BG =
-  'radial-gradient(circle at 70% 15%, #FF3A3A 0%, transparent 30%), linear-gradient(180deg, #F01818 0%, #CD0010 42%, #F01818 100%)';
+  'radial-gradient(circle at 70% 15%, #FF3A3A 0%, transparent 30%), linear-gradient(180deg, #F01818 0%, #CD0010 38%, #F01818 68%, #F01818 100%)';
 
 /** Solid colors for Safari/macOS browser chrome (theme-color + html/body fallback). */
 export const HERO_THEME = '#F01818';
@@ -17,13 +17,13 @@ export const DEEP_RED_CHROME_BOTTOM = '#2B0004';
 export const DARK_CTA_CHROME_BOTTOM = '#2B0004';
 
 export const DEFAULT_RED_BG =
-  'radial-gradient(circle at 65% 20%, #FF3A3A 0%, transparent 28%), linear-gradient(180deg, #F01818 0%, #CD0010 42%, #F01818 100%)';
+  'radial-gradient(circle at 65% 20%, #FF3A3A 0%, transparent 28%), linear-gradient(180deg, #F01818 0%, #CD0010 38%, #F01818 68%, #F01818 100%)';
 
 export const DEEP_RED_BG =
-  'radial-gradient(circle at 50% 38%, rgba(122,0,0,0.32) 0%, transparent 42%), linear-gradient(180deg, #7A0000 0%, #3A0004 46%, #7A0000 100%)';
+  'radial-gradient(circle at 50% 38%, rgba(122,0,0,0.28) 0%, transparent 42%), linear-gradient(180deg, #7A0000 0%, #3A0004 40%, #7A0000 68%, #7A0000 100%)';
 
 export const DARK_CTA_BG =
-  'radial-gradient(circle at 50% 35%, rgba(102,0,8,0.45) 0%, transparent 45%), linear-gradient(180deg, #660008 0%, #3A0004 46%, #660008 100%)';
+  'radial-gradient(circle at 50% 35%, rgba(102,0,8,0.4) 0%, transparent 45%), linear-gradient(180deg, #660008 0%, #3A0004 40%, #660008 68%, #660008 100%)';
 
 /** Barvy a gradienty z PDF (case study slidy) */
 export const BG_SECTIONS = [
@@ -31,37 +31,37 @@ export const BG_SECTIONS = [
     id: 'cs',
     color: '#1868F0',
     chromeBottom: '#0E48B8',
-    bg: 'radial-gradient(circle at 78% 22%, rgba(255,255,255,0.12) 0%, transparent 42%), linear-gradient(180deg, #1868F0 0%, #0E48B8 48%, #1868F0 100%)',
+    bg: 'radial-gradient(circle at 78% 22%, rgba(255,255,255,0.12) 0%, transparent 42%), linear-gradient(180deg, #1868F0 0%, #0E48B8 42%, #1868F0 68%, #1868F0 100%)',
   },
   {
     id: 'pilulka',
     color: '#006858',
     chromeBottom: '#003830',
-    bg: 'radial-gradient(circle at 22% 18%, rgba(255,255,255,0.08) 0%, transparent 40%), linear-gradient(180deg, #006858 0%, #003830 50%, #006858 100%)',
+    bg: 'radial-gradient(circle at 22% 18%, rgba(255,255,255,0.08) 0%, transparent 40%), linear-gradient(180deg, #006858 0%, #003830 44%, #006858 68%, #006858 100%)',
   },
   {
     id: 'sportisimo',
     color: '#0058B0',
     chromeBottom: '#002858',
-    bg: 'radial-gradient(circle at 72% 28%, rgba(255,255,255,0.1) 0%, transparent 38%), linear-gradient(180deg, #0058B0 0%, #002858 50%, #0058B0 100%)',
+    bg: 'radial-gradient(circle at 72% 28%, rgba(255,255,255,0.1) 0%, transparent 38%), linear-gradient(180deg, #0058B0 0%, #002858 44%, #0058B0 68%, #0058B0 100%)',
   },
   {
     id: 'kitkat',
     color: '#E81828',
     chromeBottom: '#7A0008',
-    bg: 'radial-gradient(circle at 60% 20%, rgba(255,58,58,0.35) 0%, transparent 45%), linear-gradient(180deg, #E81828 0%, #7A0008 52%, #E81828 100%)',
+    bg: 'radial-gradient(circle at 60% 20%, rgba(255,58,58,0.35) 0%, transparent 45%), linear-gradient(180deg, #E81828 0%, #7A0008 46%, #E81828 68%, #E81828 100%)',
   },
   {
     id: 'partnership',
     color: '#1868F0',
     chromeBottom: '#0A2878',
-    bg: 'radial-gradient(circle at 50% 35%, rgba(255,255,255,0.1) 0%, transparent 42%), linear-gradient(180deg, #1868F0 0%, #0A2878 52%, #1868F0 100%)',
+    bg: 'radial-gradient(circle at 50% 35%, rgba(255,255,255,0.1) 0%, transparent 42%), linear-gradient(180deg, #1868F0 0%, #0A2878 46%, #1868F0 68%, #1868F0 100%)',
   },
   {
     id: 'dofe',
     color: '#9C2088',
     chromeBottom: '#5C1048',
-    bg: 'radial-gradient(circle at 30% 25%, rgba(255,220,100,0.12) 0%, transparent 40%), linear-gradient(180deg, #9C2088 0%, #5C1048 50%, #9C2088 100%)',
+    bg: 'radial-gradient(circle at 30% 25%, rgba(255,220,100,0.12) 0%, transparent 40%), linear-gradient(180deg, #9C2088 0%, #5C1048 44%, #9C2088 68%, #9C2088 100%)',
   },
 ];
 

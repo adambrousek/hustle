@@ -139,17 +139,14 @@ export function useScrollEffects(refs) {
   const currentBg = useRef(null);
   const scrollSample = useRef({ y: 0, t: performance.now() });
 
-  const getCrossfadeDuration = () => {
+  const getScrollVelocity = () => {
     const now = performance.now();
     const y = window.scrollY;
     const dy = Math.abs(y - scrollSample.current.y);
     const dt = Math.max(now - scrollSample.current.t, 16);
     scrollSample.current.y = y;
     scrollSample.current.t = now;
-    const velocity = dy / dt;
-    if (velocity > 2.5) return 0.38;
-    if (velocity > 1.1) return 0.58;
-    return 0.92;
+    return dy / dt;
   };
 
   useEffect(() => {
@@ -170,7 +167,8 @@ export function useScrollEffects(refs) {
       gsap.set(bgB, { opacity: 0 });
     };
 
-    const crossfadeBg = (newBg, chromeTop, chromeBottom = chromeTop, duration = getCrossfadeDuration()) => {
+    const crossfadeBg = (newBg, chromeTop, chromeBottom = chromeTop) => {
+      const velocity = getScrollVelocity();
       const bgChanged = currentBg.current !== newBg;
       currentBg.current = newBg;
 
@@ -179,6 +177,13 @@ export function useScrollEffects(refs) {
         return;
       }
 
+      // Fast scroll: skip crossfade — avoids bottom chrome / gradient seam.
+      if (velocity > 0.55) {
+        setBgInstant(newBg, chromeTop, chromeBottom);
+        return;
+      }
+
+      const duration = velocity > 0.95 ? 0.42 : 0.62;
       const next = activeIsA.current ? bgB : bgA;
       const curr = activeIsA.current ? bgA : bgB;
 
@@ -209,6 +214,40 @@ export function useScrollEffects(refs) {
       });
       activeIsA.current = !activeIsA.current;
     };
+
+    const pickBgTrigger = (triggers) => {
+      const actives = triggers.filter((t) => t?.isActive);
+      if (actives.length === 0) return null;
+      if (actives.length === 1) return actives[0];
+
+      const mid = window.innerHeight * 0.5;
+      let best = actives[0];
+      let bestDist = Infinity;
+      actives.forEach((t) => {
+        const el = t.trigger;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const center = rect.top + rect.height * 0.5;
+        const dist = Math.abs(center - mid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = t;
+        }
+      });
+      return best;
+    };
+
+    const snapActiveBg = (triggers) => {
+      const active = pickBgTrigger(triggers);
+      if (!active?.vars?.__bg) return;
+      setBgInstant(
+        active.vars.__bg,
+        active.vars.__themeColor || HERO_THEME,
+        active.vars.__chromeBottom || HERO_CHROME_BOTTOM,
+      );
+    };
+
+    let onBgSnap = null;
 
     const ctx = gsap.context(() => {
       const bgTriggers = [];
@@ -370,32 +409,20 @@ export function useScrollEffects(refs) {
         bgTriggers.push(t);
       }
 
-      // Ensure correct bg after refresh / fast scroll / direct jumps.
-      ScrollTrigger.addEventListener('refresh', () => {
-        const active = bgTriggers.find((t) => t && t.isActive);
-        if (active?.vars?.__bg) {
-          setBgInstant(
-            active.vars.__bg,
-            active.vars.__themeColor || HERO_THEME,
-            active.vars.__chromeBottom || HERO_CHROME_BOTTOM,
-          );
-        }
-      });
+      onBgSnap = () => snapActiveBg(bgTriggers);
+      ScrollTrigger.addEventListener('refresh', onBgSnap);
+      ScrollTrigger.addEventListener('scrollEnd', onBgSnap);
 
-      // One-time: after initial layout + triggers, snap to currently active section.
-      requestAnimationFrame(() => {
-        const active = bgTriggers.find((t) => t && t.isActive);
-        if (active?.vars?.__bg) {
-          setBgInstant(
-            active.vars.__bg,
-            active.vars.__themeColor || HERO_THEME,
-            active.vars.__chromeBottom || HERO_CHROME_BOTTOM,
-          );
-        }
-      });
+      requestAnimationFrame(onBgSnap);
     });
 
-    return () => ctx.revert();
+    return () => {
+      if (onBgSnap) {
+        ScrollTrigger.removeEventListener('refresh', onBgSnap);
+        ScrollTrigger.removeEventListener('scrollEnd', onBgSnap);
+      }
+      ctx.revert();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }
