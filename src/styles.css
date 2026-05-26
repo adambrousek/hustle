@@ -994,7 +994,7 @@ section {
   }
 
   .proof-section .sticky-stage {
-    min-height: 100dvh;
+    min-height: 90dvh;
     padding: 0;
   }
 
@@ -1009,8 +1009,8 @@ section {
     display: block;
     grid-template-columns: none;
     grid-template-rows: none;
-    min-height: calc(100dvh - 72px);
-    padding: 88px 20px 32px;
+    min-height: calc(90dvh - 72px);
+    padding: 80px 20px 26px;
     height: auto;
   }
 
