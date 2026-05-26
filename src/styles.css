@@ -378,7 +378,7 @@ section {
   position: relative;
   z-index: 16;
   display: grid;
-  grid-template-columns: minmax(0, 760px) minmax(300px, 420px);
+  grid-template-columns: minmax(auto, 760px) minmax(300px, 420px);
   column-gap: clamp(64px, 7vw, 160px);
   align-items: start;
   padding-top: clamp(96px, 16vh, 160px);
@@ -410,21 +410,18 @@ section {
   top: auto;
   left: auto;
   right: auto;
-  padding: 0;
+  padding: 0.12em clamp(20px, 3vw, 48px) 0.28em 0;
+  margin: -0.12em 0 -0.28em 0;
   width: 100%;
   max-width: 760px;
-  max-height: 62vh;
-  margin: 0;
-  /* Hard guarantee: headline can never paint into the right column */
-  overflow: hidden;
-  padding-right: clamp(24px, 3vw, 56px);
+  overflow: visible;
 }
 
 .claim span,
 .claim-line {
   display: block;
   position: relative;
-  text-shadow: 0 4px 48px rgba(43, 0, 4, 0.45);
+  text-shadow: 0 2px 18px rgba(43, 0, 4, 0.38);
 }
 
 .proof-signature {
