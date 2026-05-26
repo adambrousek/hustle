@@ -214,7 +214,6 @@ ul {
 
 /* iPhone: solid chrome masks over gradient (colors from browserChrome.js) */
 html.ios-app-shell {
-  --chrome-bottom-fill: calc(env(safe-area-inset-bottom, 0px) + 3.5rem);
   background-color: var(--chrome-edge-top, #f01818);
 }
 
@@ -224,7 +223,7 @@ html.ios-app-shell::after {
   left: 0;
   right: 0;
   bottom: 0;
-  height: var(--chrome-bottom-fill);
+  height: env(safe-area-inset-bottom, 0px);
   background-color: var(--chrome-edge-bottom, #cd0010);
   z-index: 99;
   pointer-events: none;
@@ -268,31 +267,8 @@ html.ios-app-shell .background-stage-wrap::before {
 
 html.ios-app-shell .background-stage-wrap::after {
   bottom: 0;
-  height: calc(clamp(120px, 26vh, 280px) + var(--chrome-bottom-fill));
-  background: linear-gradient(
-    to top,
-    var(--chrome-edge-bottom) 0px,
-    var(--chrome-edge-bottom) calc(var(--chrome-bottom-fill) + 3rem),
-    transparent 100%
-  );
-}
-
-/* Fade content bg into bottom chrome (above Safari bar) */
-html.ios-app-shell .app-shell::after {
-  content: '';
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: calc(clamp(72px, 14vh, 160px) + var(--chrome-bottom-fill));
-  background: linear-gradient(
-    to top,
-    var(--chrome-edge-bottom) 0%,
-    var(--chrome-edge-bottom) var(--chrome-bottom-fill),
-    transparent 100%
-  );
-  z-index: 50;
-  pointer-events: none;
+  height: clamp(100px, 20vh, 200px);
+  background: linear-gradient(to top, var(--chrome-edge-bottom), transparent);
 }
 
 html.ios-app-shell .background-highlight {
