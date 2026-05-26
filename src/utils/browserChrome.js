@@ -7,9 +7,10 @@ let currentThemeColor = '#F01818';
 let colorTween = null;
 
 function applyThemeColor(themeColor) {
-  const resolved = isIosAppShell() ? IOS_APP_CHROME : themeColor;
-  document.documentElement.style.backgroundColor = resolved;
-  document.body.style.backgroundColor = resolved;
+  const iosShell = isIosAppShell();
+  // iOS shell: keep TOP frame black (html), but keep page + bottom chrome dynamic.
+  document.documentElement.style.backgroundColor = iosShell ? IOS_APP_CHROME : themeColor;
+  document.body.style.backgroundColor = themeColor;
 
   let meta = document.querySelector('meta[name="theme-color"]');
   if (!meta) {
@@ -17,8 +18,8 @@ function applyThemeColor(themeColor) {
     meta.name = 'theme-color';
     document.head.appendChild(meta);
   }
-  meta.content = resolved;
-  currentThemeColor = resolved;
+  meta.content = themeColor;
+  currentThemeColor = themeColor;
 }
 
 /** Instant sync (refresh / initial load). */
@@ -32,10 +33,6 @@ export function syncPageBackground(_gradientBg, themeColor) {
 
 /** Smooth chrome color transition synced with bg crossfade. */
 export function transitionPageBackground(_gradientBg, themeColor, duration = 1) {
-  if (isIosAppShell()) {
-    applyThemeColor(IOS_APP_CHROME);
-    return;
-  }
   if (themeColor === currentThemeColor) return;
 
   if (colorTween) {

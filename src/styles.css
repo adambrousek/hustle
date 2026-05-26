@@ -217,10 +217,6 @@ html.ios-app-shell {
   background-color: #000 !important;
 }
 
-html.ios-app-shell body {
-  background-color: #000 !important;
-}
-
 html.ios-app-shell .app-shell {
   --shell-top: max(10px, env(safe-area-inset-top, 10px));
   --shell-radius: 22px;
