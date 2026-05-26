@@ -280,7 +280,6 @@ html.ios-app-shell .header {
   left: 0;
   right: 0;
   padding-top: calc(clamp(16px, 2.2vw, 24px) + env(safe-area-inset-top, 0px) * 0.15);
-  background-color: var(--chrome-edge-top, #f01818);
 }
 
 html.ios-app-shell .build-stamp {
