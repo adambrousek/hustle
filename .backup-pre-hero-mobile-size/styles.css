@@ -896,10 +896,6 @@ section {
     white-space: normal;
   }
 
-  .hero-headline {
-    font-size: clamp(52px, 11.5vw, 86px);
-  }
-
   .hero-support {
     left: clamp(16px, 5vw, 32px);
     margin-top: 32px;
