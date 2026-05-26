@@ -26,30 +26,55 @@ import { isIosAppShell } from '../utils/iosAppShell';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function setupParallax(section, contentRoot, visual) {
-  if (contentRoot) {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.8,
-      },
-    });
+const MOBILE_MQ = '(max-width: 900px)';
 
-    tl.fromTo(
-      contentRoot,
-      { y: '20vh', opacity: 0 },
-      { y: '0vh', opacity: 1, duration: 0.35, ease: 'none' },
-      0,
-    ).to(contentRoot, { y: '-14vh', opacity: 0, duration: 0.35, ease: 'none' }, 0.65);
+function isMobileLayout() {
+  return typeof window !== 'undefined' && window.matchMedia(MOBILE_MQ).matches;
+}
+
+function setupParallax(section, contentRoot, visual) {
+  const mobile = isMobileLayout();
+
+  if (contentRoot) {
+    if (mobile) {
+      gsap.fromTo(
+        contentRoot,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            end: 'top 45%',
+            scrub: 0.6,
+          },
+        },
+      );
+    } else {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.8,
+        },
+      });
+
+      tl.fromTo(
+        contentRoot,
+        { y: '20vh', opacity: 0 },
+        { y: '0vh', opacity: 1, duration: 0.35, ease: 'none' },
+        0,
+      ).to(contentRoot, { y: '-14vh', opacity: 0, duration: 0.35, ease: 'none' }, 0.65);
+    }
   }
 
   if (visual) {
     const imgs = visual.querySelectorAll('.proof-img');
     imgs.forEach((img, i) => {
-      const startY = 58 + i * 10;
-      const endY = -62 - i * 6;
+      const startY = mobile ? 18 + i * 5 : 58 + i * 10;
+      const endY = mobile ? -22 - i * 4 : -62 - i * 6;
       const centered = img.classList.contains('proof-img--center');
 
       gsap.fromTo(
@@ -94,7 +119,8 @@ function setupParallax(section, contentRoot, visual) {
             const p = self.progress;
             // peak fade in middle
             const mid = 1 - Math.min(1, Math.abs(p - 0.5) / 0.22);
-            const target = 1 - mid * 0.75; // ~0.25 in focus
+            const fade = isMobileLayout() ? 0.55 : 0.75;
+            const target = 1 - mid * fade;
             gsap.to(visual, { opacity: target, duration: 0.08, overwrite: true });
           },
         },

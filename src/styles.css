@@ -445,7 +445,16 @@ section {
 }
 
 .proof-section .proof-signature {
-  display: contents;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vh, 28px);
+}
+
+@media (min-width: 901px) {
+  .proof-section .proof-signature {
+    display: contents;
+    gap: 0;
+  }
 }
 
 .proof-section .proof-logos {
@@ -975,22 +984,23 @@ section {
   }
 
   .proof-section .sticky-stage {
-    /* Let proof-content own the padding so headline + paragraph stay aligned */
+    min-height: 100dvh;
     padding: 0;
   }
 
-  .proof-content {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(28px, 5vh, 48px);
-    padding: 96px 20px 40px;
-    height: auto;
+  .proof-visual {
+    z-index: 8;
   }
 
-  .proof-section .proof-signature {
+  .proof-content {
+    position: relative;
+    z-index: 18;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 0;
+    min-height: calc(100dvh - 72px);
+    padding: 88px 20px 28px;
+    height: auto;
   }
 
   .proof-section .proof-logos,
@@ -1003,6 +1013,9 @@ section {
   .proof-section .claim {
     grid-column: auto;
     grid-row: auto;
+    flex: 0 0 auto;
+    z-index: 22;
+    margin: 0 0 16px;
     font-size: clamp(40px, 11vw, 72px);
     max-width: 100%;
     line-height: 1.08;
@@ -1012,14 +1025,50 @@ section {
     padding-left: min(var(--claim-indent, 0px), 12vw);
   }
 
+  .proof-section .proof-signature {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 20px;
+    min-height: 0;
+  }
+
+  .proof-section .proof-logos {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+
+  /* Odstavec dole; mezera nahoře = pás pro obrázky pod headlinem */
   .proof-section .proof-signature-body {
-    margin-top: 0;
+    flex: 0 0 auto;
+    margin-top: auto;
+    padding-top: clamp(34vh, 38vw, 42vh);
+    z-index: 22;
+    position: relative;
   }
 
   .proof-img {
     width: min(44vw, 210px) !important;
     height: auto !important;
-    max-height: 32vh;
+    max-height: 28vh;
+  }
+
+  .proof-visual--pilulka .proof-img--a {
+    left: 2vw !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  .proof-visual--pilulka .proof-img--b {
+    left: 28vw !important;
+    right: auto !important;
+  }
+
+  .proof-visual--pilulka .proof-img--c {
+    right: 2vw !important;
+    left: auto !important;
   }
 
   .proof-visual--kitkat .proof-img--hero {
