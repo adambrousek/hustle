@@ -22,6 +22,7 @@ import {
   startChromeBlend,
   syncPageBackground,
 } from '../utils/browserChrome';
+import { isIosAppShell } from '../utils/iosAppShell';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,6 +150,17 @@ export function useScrollEffects(refs) {
     return dy / dt;
   };
 
+  /** iOS keeps short/instant crossfades; desktop uses slower color transitions. */
+  const getCrossfadePlan = (velocity) => {
+    if (isIosAppShell()) {
+      if (velocity > 0.55) return { instant: true, duration: 0 };
+      return { instant: false, duration: velocity > 0.95 ? 0.42 : 0.62 };
+    }
+    if (velocity > 3) return { instant: true, duration: 0 };
+    if (velocity > 1.6) return { instant: false, duration: 1.05 };
+    return { instant: false, duration: 1.45 };
+  };
+
   useEffect(() => {
     const bgA = bgARef.current;
     const bgB = bgBRef.current;
@@ -169,6 +181,7 @@ export function useScrollEffects(refs) {
 
     const crossfadeBg = (newBg, chromeTop, chromeBottom = chromeTop) => {
       const velocity = getScrollVelocity();
+      const { instant, duration } = getCrossfadePlan(velocity);
       const bgChanged = currentBg.current !== newBg;
       currentBg.current = newBg;
 
@@ -177,13 +190,10 @@ export function useScrollEffects(refs) {
         return;
       }
 
-      // Fast scroll: skip crossfade — avoids bottom chrome / gradient seam.
-      if (velocity > 0.55) {
+      if (instant) {
         setBgInstant(newBg, chromeTop, chromeBottom);
         return;
       }
-
-      const duration = velocity > 0.95 ? 0.42 : 0.62;
       const next = activeIsA.current ? bgB : bgA;
       const curr = activeIsA.current ? bgA : bgB;
 
