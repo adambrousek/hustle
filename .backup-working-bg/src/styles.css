@@ -212,16 +212,17 @@ ul {
   position: relative;
 }
 
-/* iPhone: black Safari chrome + app card (square top — step 1) */
+/* iPhone: black Safari chrome + rounded app card */
 html.ios-app-shell {
   background-color: #000 !important;
 }
 
 html.ios-app-shell .app-shell {
   --shell-top: max(10px, env(safe-area-inset-top, 10px));
+  --shell-radius: 22px;
   margin-top: var(--shell-top);
   min-height: calc(100dvh - var(--shell-top));
-  border-radius: 0;
+  border-radius: var(--shell-radius) var(--shell-radius) 0 0;
   overflow: hidden;
   isolation: isolate;
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.55);
@@ -232,7 +233,7 @@ html.ios-app-shell .background-highlight,
 html.ios-app-shell .noise-overlay {
   top: var(--shell-top);
   bottom: 0;
-  border-radius: 0;
+  border-radius: var(--shell-radius) var(--shell-radius) 0 0;
   overflow: hidden;
 }
 
