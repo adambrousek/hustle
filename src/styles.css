@@ -999,13 +999,13 @@ section {
   }
 
   .proof-visual {
-    z-index: 14;
+    z-index: 5;
     pointer-events: none;
   }
 
   .proof-content {
     position: relative;
-    z-index: 10;
+    z-index: 18;
     display: block;
     grid-template-columns: none;
     grid-template-rows: none;
@@ -1015,7 +1015,8 @@ section {
   }
 
   .proof-section .claim {
-    z-index: 1;
+    position: relative;
+    z-index: 2;
     margin: 0 0 clamp(10px, 2vh, 16px);
     font-size: clamp(40px, 11vw, 72px);
     max-width: 100%;
@@ -1035,7 +1036,7 @@ section {
     max-width: 100%;
     margin-top: clamp(15vh, 18vh, 21vh);
     padding: 0;
-    z-index: 1;
+    z-index: 2;
   }
 
   .layout-cs .proof-signature,

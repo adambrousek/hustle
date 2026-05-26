@@ -29,13 +29,12 @@ gsap.registerPlugin(ScrollTrigger);
 const MOBILE_MQ = '(max-width: 900px)';
 
 /**
- * startY/endY (vh) + scrub — nízko → průlet přes odstavec → v p~0.5 už nad headlinem.
- * Při plné case study (střed sekce) jsou všechny snímky nad textem.
+ * startY/endY (vh) + scrub — pod textem; scroll končí když slide sedí nahoře (top top).
  */
 const MOBILE_IMG_MOTION = [
-  { startY: 128, endY: -118, scrub: 0.2 },
-  { startY: 118, endY: -102, scrub: 0.38 },
-  { startY: 108, endY: -88, scrub: 0.56 },
+  { startY: 78, endY: -92, scrub: 0.24 },
+  { startY: 72, endY: -78, scrub: 0.4 },
+  { startY: 66, endY: -64, scrub: 0.56 },
 ];
 
 function isMobileLayout() {
@@ -85,8 +84,8 @@ function setupParallax(section, contentRoot, visual) {
     imgs.forEach((img, i) => {
       const centered = img.classList.contains('proof-img--center');
       const lane = MOBILE_IMG_MOTION[i % MOBILE_IMG_MOTION.length];
-      const startY = mobile ? lane.startY + i * 4 : 58 + i * 10;
-      const endY = mobile ? lane.endY - i * 5 : -62 - i * 6;
+      const startY = mobile ? lane.startY + i * 3 : 58 + i * 10;
+      const endY = mobile ? lane.endY - i * 4 : -62 - i * 6;
       const scrub = mobile ? lane.scrub : 0.4;
 
       gsap.fromTo(
@@ -106,7 +105,7 @@ function setupParallax(section, contentRoot, visual) {
           scrollTrigger: {
             trigger: section,
             start: 'top bottom',
-            end: 'bottom top',
+            end: mobile ? 'top top' : 'bottom top',
             scrub,
           },
         },
@@ -124,14 +123,14 @@ function setupParallax(section, contentRoot, visual) {
         scrollTrigger: {
           trigger: section,
           start: 'top bottom',
-          end: 'bottom top',
+          end: isMobileLayout() ? 'top top' : 'bottom top',
           scrub: 0.6,
           onUpdate: (self) => {
             // 0..1
             const p = self.progress;
             // peak fade in middle
             const mid = 1 - Math.min(1, Math.abs(p - 0.5) / 0.22);
-            const fade = isMobileLayout() ? 0.2 : 0.75;
+            const fade = isMobileLayout() ? 0.35 : 0.75;
             const target = 1 - mid * fade;
             gsap.to(visual, { opacity: target, duration: 0.08, overwrite: true });
           },
