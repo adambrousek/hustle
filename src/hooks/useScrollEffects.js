@@ -180,7 +180,7 @@ export function useScrollEffects(refs) {
 
     const setBgInstant = (newBg, chromeTop, chromeBottom = chromeTop) => {
       currentBg.current = newBg;
-      syncPageBackground(newBg, chromeTop, chromeBottom);
+      commitChrome(chromeTop, chromeBottom);
       gsap.killTweensOf([bgA, bgB]);
       activeIsA.current = true;
       gsap.set(bgA, { background: newBg, opacity: 1 });
@@ -194,14 +194,13 @@ export function useScrollEffects(refs) {
       const ios = isIosAppShell();
       currentBg.current = newBg;
 
-      // Desktop Safari: theme-color / html bg must update immediately on section enter.
-      // iOS keeps chrome locked to bg crossfade opacity.
+      // Chrome always updates on section enter (Safari theme-color + header strip).
       if (!ios) {
-        syncPageBackground(newBg, chromeTop, chromeBottom);
+        commitChrome(chromeTop, chromeBottom);
       }
 
       if (!bgChanged) {
-        if (ios) syncPageBackground(newBg, chromeTop, chromeBottom);
+        if (ios) commitChrome(chromeTop, chromeBottom);
         return;
       }
 

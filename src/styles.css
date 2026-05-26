@@ -139,6 +139,11 @@ ul {
   text-transform: uppercase;
 }
 
+html:not(.ios-app-shell) .header {
+  background-color: var(--chrome-edge-top, #f01818);
+  transition: background-color 0.2s ease;
+}
+
 .header-logo {
   display: block;
   line-height: 0;
@@ -445,6 +450,11 @@ section {
 }
 
 .proof-section .proof-signature {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  bottom: auto;
   display: flex;
   flex-direction: column;
   gap: clamp(20px, 3vh, 28px);
@@ -995,31 +1005,17 @@ section {
   .proof-content {
     position: relative;
     z-index: 18;
-    display: grid;
-    grid-template-rows: auto minmax(36vh, 44vh) auto auto;
-    align-content: start;
-    gap: 0;
+    display: block;
+    grid-template-columns: none;
+    grid-template-rows: none;
     min-height: calc(100dvh - 72px);
-    padding: 88px 20px 28px;
+    padding: 88px 20px 32px;
     height: auto;
   }
 
-  .proof-section .proof-signature {
-    display: contents;
-    gap: 0;
-  }
-
-  .proof-section .proof-logos,
-  .proof-section .proof-signature-body {
-    grid-column: 1;
-    max-width: 100%;
-  }
-
   .proof-section .claim {
-    grid-row: 1;
-    grid-column: 1;
     z-index: 22;
-    margin: 0 0 clamp(28px, 6vh, 44px);
+    margin: 0 0 clamp(20px, 4vh, 32px);
     font-size: clamp(40px, 11vw, 72px);
     max-width: 100%;
     line-height: 1.08;
@@ -1029,20 +1025,32 @@ section {
     padding-left: min(var(--claim-indent, 0px), 12vw);
   }
 
-  /* řádek 2 = prázdný pás pro obrázky pod headlinem */
-  .proof-section .proof-logos {
-    grid-row: 3;
-    margin: 0;
-    z-index: 22;
+  /* Mezera pod headlinem = pás pro obrázky; logo + text dole v pořadí */
+  .proof-section .proof-signature {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(18px, 3vh, 26px);
+    max-width: 100%;
+    margin-top: clamp(30vh, 36vh, 42vh);
+    padding: 0;
+    z-index: 22;
+  }
+
+  .layout-cs .proof-signature,
+  .layout-pilulka .proof-signature {
+    max-width: 100%;
+  }
+
+  .proof-section .proof-logos,
+  .proof-section .proof-signature-body {
+    max-width: 100%;
+    width: 100%;
   }
 
   .proof-section .proof-signature-body {
-    grid-row: 4;
     margin: 0;
-    padding-top: clamp(20px, 3.5vh, 32px);
-    z-index: 22;
-    position: relative;
+    padding: 0;
   }
 
   .proof-img {

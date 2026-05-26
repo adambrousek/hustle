@@ -67,6 +67,5 @@ export function commitChrome(chromeTop, chromeBottom = chromeTop) {
 /** Instant sync (refresh / snap). */
 export function syncPageBackground(_gradientBg, chromeTop, chromeBottom = chromeTop) {
   killChromeTween();
-  if (chromeTop === currentChromeTop && chromeBottom === currentChromeBottom) return;
   applyChromeColors(chromeTop, chromeBottom);
 }
