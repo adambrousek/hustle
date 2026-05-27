@@ -32,6 +32,39 @@ html.portfolio-mode body {
   background: transparent;
 }
 
+/* Sticky gradient is part of menu (always on portfolio) */
+.portfolio-page--netflix .header {
+  z-index: 100;
+  overflow: visible;
+}
+
+.portfolio-page--netflix .header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-1 * env(safe-area-inset-top, 0px));
+  height: calc(100% + env(safe-area-inset-top, 0px) + clamp(72px, 16vh, 120px));
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.52) 28%,
+    rgba(0, 0, 0, 0.24) 58%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  transform: translateZ(0);
+}
+
+html.ios-app-shell .portfolio-page--netflix .header::before {
+  top: calc(-1 * max(10px, env(safe-area-inset-top, 10px)) - env(safe-area-inset-top, 0px));
+  height: calc(
+    100% + max(10px, env(safe-area-inset-top, 10px)) + env(safe-area-inset-top, 0px) +
+      clamp(80px, 17vh, 128px)
+  );
+}
+
 .portfolio-page--netflix .header-menuToggle {
   color: #ffffff;
   border-bottom-color: #ffffff;
@@ -65,48 +98,13 @@ html.portfolio-mode body {
 }
 
 @media (max-width: 900px) {
-  /* Gradient vychází z vrchu menu (header), ne jako samostatný černý pruh */
-  .portfolio-page--netflix .header {
-    z-index: 100;
-    overflow: visible;
-    background: transparent;
-  }
-
-  .portfolio-page--netflix .header::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: calc(-1 * env(safe-area-inset-top, 0px));
-    height: calc(100% + env(safe-area-inset-top, 0px) + clamp(72px, 16vh, 120px));
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.78) 0%,
-      rgba(0, 0, 0, 0.52) 28%,
-      rgba(0, 0, 0, 0.24) 58%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    transform: translateZ(0);
-  }
-
-  html.ios-app-shell .portfolio-page--netflix .header::before {
-    top: calc(-1 * max(10px, env(safe-area-inset-top, 10px)) - env(safe-area-inset-top, 0px));
-    height: calc(
-      100% + max(10px, env(safe-area-inset-top, 10px)) + env(safe-area-inset-top, 0px) +
-        clamp(80px, 17vh, 128px)
-    );
-  }
-
+  /* Header gradient is already global; keep this block for mobile overrides only. */
   .portfolio-page--netflix .portfolio-billboard__shade {
     background:
       linear-gradient(
         180deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) 10%,
-        rgba(0, 0, 0, 0.55) 28%,
-        rgba(0, 0, 0, 0) 52%
+        rgba(0, 0, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0) 38%
       ),
       linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 42%, transparent 68%),
       linear-gradient(to top, #000000 0%, transparent 38%);
@@ -192,7 +190,7 @@ html.portfolio-mode body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 38%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0) 38%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.28) 42%, transparent 68%),
     linear-gradient(to top, #000000 0%, transparent 38%);
   pointer-events: none;
