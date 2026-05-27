@@ -100,6 +100,19 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
 }
 
 @media (max-width: 900px) {
+  /* Mobile: gentler header fade (dark only at very top edge) */
+  .portfolio-page--netflix .header::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 6px,
+      rgba(0, 0, 0, 0.65) 18%,
+      rgba(0, 0, 0, 0.34) 44%,
+      rgba(0, 0, 0, 0.18) 64%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
   /* Header gradient is already global; keep this block for mobile overrides only. */
   .portfolio-page--netflix .portfolio-billboard__shade {
     background:
