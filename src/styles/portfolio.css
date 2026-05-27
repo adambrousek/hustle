@@ -49,9 +49,10 @@ html.portfolio-mode body {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.78) 0%,
-    rgba(0, 0, 0, 0.52) 28%,
-    rgba(0, 0, 0, 0.24) 58%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 44px,
+    rgba(0, 0, 0, 0.62) 32%,
+    rgba(0, 0, 0, 0.28) 62%,
     rgba(0, 0, 0, 0) 100%
   );
   transform: translateZ(0);
