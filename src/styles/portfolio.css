@@ -20,6 +20,24 @@
   pointer-events: none;
 }
 
+.portfolio-page--netflix::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: clamp(90px, 16vh, 180px);
+  z-index: 90;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 24, 24, 1) 0%,
+    rgba(240, 24, 24, 1) 42px,
+    rgba(240, 24, 24, 0.92) 60%,
+    rgba(240, 24, 24, 0) 100%
+  );
+}
+
 .portfolio-page--netflix .header {
   position: fixed;
   color: var(--portfolio-text);
@@ -59,15 +77,9 @@
 }
 
 @media (max-width: 900px) {
-  /* Mobile: always fade to pure Hustle red at the very top (no translucent artifacts). */
+  /* Mobile: header stays transparent; red top-mask handles the fade. */
   .portfolio-page--netflix .header {
-    background-color: var(--hustle-red);
-    background-image: linear-gradient(
-      to bottom,
-      rgba(240, 24, 24, 1) 0%,
-      rgba(240, 24, 24, 0.96) 55%,
-      rgba(240, 24, 24, 0) 100%
-    );
+    background: transparent;
   }
 }
 

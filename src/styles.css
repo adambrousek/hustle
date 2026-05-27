@@ -207,13 +207,7 @@ ul {
     padding: 18px clamp(24px, 4vw, 56px) 22px;
     gap: 14px;
     flex-direction: column;
-    background: linear-gradient(
-      to bottom,
-      rgba(240, 24, 24, 0.98) 0%,
-      rgba(240, 24, 24, 0.92) 60%,
-      rgba(240, 24, 24, 0.0) 100%
-    );
-    backdrop-filter: blur(10px);
+    background: transparent;
   }
 
   .header--menuOpen .header-nav {

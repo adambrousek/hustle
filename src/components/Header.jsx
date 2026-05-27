@@ -36,7 +36,7 @@ export default function Header() {
         aria-controls="header-nav"
         onClick={() => setOpen((v) => !v)}
       >
-        MENU{open ? ' ▴' : ' ▾'}
+        MENU
       </button>
 
       <nav className="header-nav" id="header-nav" aria-label="Hlavní navigace">
