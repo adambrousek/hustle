@@ -20,28 +20,15 @@
   pointer-events: none;
 }
 
-.portfolio-page--netflix::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: clamp(90px, 16vh, 180px);
-  z-index: 90;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(240, 24, 24, 1) 0%,
-    rgba(240, 24, 24, 1) 42px,
-    rgba(240, 24, 24, 0.92) 60%,
-    rgba(240, 24, 24, 0) 100%
-  );
+/* Fixní černý vršek (mobil) — obsah pod menu nevyjíždí */
+.portfolio-top-cap {
+  display: none;
 }
 
 .portfolio-page--netflix .header {
   position: fixed;
   color: var(--portfolio-text);
-  background: linear-gradient(to bottom, rgba(26, 0, 4, 0.45), transparent);
+  background: transparent;
 }
 
 .portfolio-page--netflix .header-menuToggle {
@@ -77,9 +64,43 @@
 }
 
 @media (max-width: 900px) {
-  /* Mobile: header stays transparent; red top-mask handles the fade. */
+  .portfolio-top-cap {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 95;
+    height: calc(env(safe-area-inset-top, 0px) + clamp(72px, 15vw, 96px));
+    background: #000000;
+    pointer-events: none;
+    transform: translateZ(0);
+  }
+
+  html.ios-app-shell .portfolio-page--netflix .portfolio-top-cap {
+    height: calc(
+      env(safe-area-inset-top, 0px) + max(10px, env(safe-area-inset-top, 10px)) +
+        clamp(76px, 16vw, 100px)
+    );
+  }
+
   .portfolio-page--netflix .header {
+    z-index: 100;
     background: transparent;
+  }
+
+  .portfolio-page--netflix .portfolio-billboard__shade {
+    background:
+      linear-gradient(
+        180deg,
+        #000000 0%,
+        #000000 6%,
+        rgba(0, 0, 0, 0.88) 18%,
+        rgba(0, 0, 0, 0.45) 36%,
+        rgba(0, 0, 0, 0) 52%
+      ),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.32) 42%, transparent 68%),
+      linear-gradient(to top, var(--hustle-red) 0%, transparent 38%);
   }
 }
 
@@ -162,7 +183,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(26, 0, 4, 0.88) 0%, rgba(26, 0, 4, 0.35) 42%, transparent 68%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0) 28%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.32) 42%, transparent 68%),
     linear-gradient(to top, var(--hustle-red) 0%, transparent 38%);
   pointer-events: none;
   z-index: 2;

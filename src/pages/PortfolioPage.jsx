@@ -33,6 +33,7 @@ export default function PortfolioPage() {
   return (
     <div className="app-shell portfolio-page portfolio-page--netflix">
       <div className="portfolio-page__bg" aria-hidden="true" />
+      <div className="portfolio-top-cap" aria-hidden="true" />
       <BuildStamp />
       <Header />
 
