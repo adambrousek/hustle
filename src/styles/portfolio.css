@@ -20,6 +20,12 @@
   pointer-events: none;
 }
 
+/* iOS overscroll/bounce: prevent red body from peeking through on portfolio only */
+html.portfolio-mode,
+html.portfolio-mode body {
+  background: #000000 !important;
+}
+
 .portfolio-page--netflix .header {
   position: fixed;
   color: var(--portfolio-text);
@@ -97,9 +103,10 @@
     background:
       linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.35) 0%,
-        rgba(0, 0, 0, 0.12) 22%,
-        rgba(0, 0, 0, 0) 42%
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 10%,
+        rgba(0, 0, 0, 0.55) 28%,
+        rgba(0, 0, 0, 0) 52%
       ),
       linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 42%, transparent 68%),
       linear-gradient(to top, #000000 0%, transparent 38%);
@@ -185,7 +192,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 32%),
+    linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 38%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.28) 42%, transparent 68%),
     linear-gradient(to top, #000000 0%, transparent 38%);
   pointer-events: none;

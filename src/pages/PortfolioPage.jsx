@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import PortfolioBillboard from '../components/portfolio/PortfolioBillboard';
 import VideoModal from '../components/portfolio/VideoModal';
@@ -29,6 +29,11 @@ export default function PortfolioPage() {
   const [modalItem, setModalItem] = useState(null);
 
   const heroStudy = FEATURED_CASE_STUDIES[0];
+
+  useEffect(() => {
+    document.documentElement.classList.add('portfolio-mode');
+    return () => document.documentElement.classList.remove('portfolio-mode');
+  }, []);
 
   return (
     <div className="app-shell portfolio-page portfolio-page--netflix">

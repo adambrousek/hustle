@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import { getCaseStudyBySlug } from '../data/portfolioData';
@@ -6,6 +7,11 @@ import '../styles/portfolio.css';
 export default function CaseStudyPage() {
   const { slug } = useParams();
   const study = getCaseStudyBySlug(slug);
+
+  useEffect(() => {
+    document.documentElement.classList.add('portfolio-mode');
+    return () => document.documentElement.classList.remove('portfolio-mode');
+  }, []);
 
   if (!study) {
     return (
