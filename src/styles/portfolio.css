@@ -26,6 +26,15 @@
   background: linear-gradient(to bottom, rgba(26, 0, 4, 0.45), transparent);
 }
 
+.portfolio-page--netflix .header-menuToggle {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.portfolio-page--netflix .header-menuToggle:hover {
+  color: #ffffff;
+}
+
 .portfolio-page--netflix .header,
 .portfolio-page--netflix .header-nav a {
   color: #ffffff;
@@ -47,6 +56,19 @@
 
 .portfolio-page--netflix .hustle-link:hover {
   color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  /* Mobile: always fade to pure Hustle red at the very top (no translucent artifacts). */
+  .portfolio-page--netflix .header {
+    background-color: var(--hustle-red);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(240, 24, 24, 1) 0%,
+      rgba(240, 24, 24, 0.96) 55%,
+      rgba(240, 24, 24, 0) 100%
+    );
+  }
 }
 
 .portfolio-main--netflix {
