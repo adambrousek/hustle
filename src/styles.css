@@ -617,6 +617,11 @@ section {
   will-change: transform;
 }
 
+video.proof-img {
+  display: block;
+  object-fit: cover;
+}
+
 /* Česká spořitelna */
 .proof-visual--cs .proof-img--hero {
   width: clamp(195px, 21vw, 300px);
@@ -657,8 +662,8 @@ section {
 }
 
 .proof-visual--pilulka .proof-img--c {
-  width: clamp(150px, 15vw, 225px);
-  height: clamp(262px, 26vw, 390px);
+  width: clamp(200px, 20vw, 300px);
+  height: clamp(350px, 35vw, 520px);
   right: clamp(16px, 6vw, 80px);
   top: 50%;
 }
@@ -1089,6 +1094,8 @@ section {
   }
 
   .proof-visual--pilulka .proof-img--c {
+    width: min(59vw, 280px) !important;
+    max-height: 37vh;
     right: 2vw !important;
     left: auto !important;
   }

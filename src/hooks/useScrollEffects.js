@@ -37,8 +37,21 @@ const MOBILE_IMG_MOTION = [
   { startY: 74, endY: -50, scrub: 0.56 },
 ];
 
+const DESKTOP_IMG_MOTION = [
+  { startY: 48, endY: -78, scrub: 0.26 },
+  { startY: 56, endY: -62, scrub: 0.42 },
+  { startY: 64, endY: -46, scrub: 0.58 },
+];
+
 function isMobileLayout() {
   return typeof window !== 'undefined' && window.matchMedia(MOBILE_MQ).matches;
+}
+
+function getParallaxXPercent(el) {
+  if (el.classList.contains('proof-img--center')) return -50;
+  if (el.classList.contains('proof-img--hero')) return -50;
+  if (el.classList.contains('proof-img--c') && el.closest('.proof-visual--cs')) return -12;
+  return 0;
 }
 
 function setupParallax(section, contentRoot, visual) {
@@ -80,25 +93,25 @@ function setupParallax(section, contentRoot, visual) {
   }
 
   if (visual) {
-    const imgs = visual.querySelectorAll('.proof-img');
-    imgs.forEach((img, i) => {
-      const centered = img.classList.contains('proof-img--center');
-      const lane = MOBILE_IMG_MOTION[i % MOBILE_IMG_MOTION.length];
-      const startY = mobile ? lane.startY + i * 3 : 58 + i * 10;
-      const endY = mobile ? lane.endY - i * 4 : -62 - i * 6;
-      const scrub = mobile ? lane.scrub : 0.4;
+    const mediaEls = visual.querySelectorAll('.proof-img');
+    mediaEls.forEach((el, i) => {
+      const lanes = mobile ? MOBILE_IMG_MOTION : DESKTOP_IMG_MOTION;
+      const lane = lanes[i % lanes.length];
+      const startY = lane.startY + i * (mobile ? 3 : 4);
+      const endY = lane.endY - i * (mobile ? 4 : 5);
+      const xPercent = getParallaxXPercent(el);
 
       gsap.fromTo(
-        img,
+        el,
         {
           y: `${startY}vh`,
-          xPercent: centered ? -50 : 0,
+          xPercent,
           yPercent: -50,
           force3D: true,
         },
         {
           y: `${endY}vh`,
-          xPercent: centered ? -50 : 0,
+          xPercent,
           yPercent: -50,
           force3D: true,
           ease: 'none',
@@ -106,7 +119,7 @@ function setupParallax(section, contentRoot, visual) {
             trigger: section,
             start: 'top bottom',
             end: mobile ? 'top top' : 'bottom top',
-            scrub,
+            scrub: lane.scrub,
           },
         },
       );

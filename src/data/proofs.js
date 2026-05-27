@@ -76,9 +76,9 @@ export const PROOFS = [
       'Finanční témata jsme převedli do obsahu, který je srozumitelný, lidský a relevantní i pro mladší publikum.',
     layout: 'layout-cs',
     images: [
-      { src: `${IMG}/page-02-img-3.jpeg`, className: 'proof-img--hero' },
+      { type: 'video', src: '/videos/cs-1.mp4', className: 'proof-img--hero' },
       { src: `${IMG}/page-02-img-1.jpeg`, className: 'proof-img--b' },
-      { src: `${IMG}/page-02-img-5.jpeg`, className: 'proof-img--c' },
+      { type: 'video', src: '/videos/cs-2.mp4', className: 'proof-img--c' },
     ],
   },
   {
@@ -93,9 +93,9 @@ export const PROOFS = [
       'Přes social jí pomáháme držet nový směr, otevírat hledaná témata a tvořit obsah, který sleduje komunita i opinion leadeři v segmentu.',
     layout: 'layout-pilulka',
     images: [
-      { src: `${IMG}/page-03-img-1.jpeg`, className: 'proof-img--a' },
+      { type: 'video', src: '/videos/pilulka-1.mp4', className: 'proof-img--a' },
       { src: `${IMG}/page-03-img-2.jpeg`, className: 'proof-img--b' },
-      { src: `${IMG}/page-03-img-3.jpeg`, className: 'proof-img--c' },
+      { type: 'video', src: '/videos/pilulka-2.mp4', className: 'proof-img--c' },
     ],
   },
   {
