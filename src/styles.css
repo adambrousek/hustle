@@ -182,9 +182,23 @@ ul {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Mobile menu (MENU ▾) */
-.header-menuToggle {
+/* Mobile menu — .hustle-link also sets display, so use combined selector */
+.header-menuToggle.hustle-link {
   display: none;
+}
+
+@media (min-width: 901px) {
+  .header-nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    background: transparent;
+  }
+
+  .header--menuOpen .header-nav {
+    display: flex;
+  }
 }
 
 @media (max-width: 900px) {
@@ -192,7 +206,7 @@ ul {
     align-items: flex-start;
   }
 
-  .header-menuToggle {
+  .header-menuToggle.hustle-link {
     display: inline-block;
     margin-left: auto;
     padding-bottom: 4px; /* match hustle-link baseline */
