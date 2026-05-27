@@ -11,7 +11,6 @@ export default function CaseStudyPage() {
     return (
       <div className="app-shell portfolio-page portfolio-page--netflix">
         <div className="portfolio-page__bg" aria-hidden="true" />
-        <div className="portfolio-top-cap" aria-hidden="true" />
         <Header />
         <main className="portfolio-main case-detail">
           <p className="text-body">Case study nenalezena.</p>
@@ -29,7 +28,6 @@ export default function CaseStudyPage() {
       style={{ '--case-accent': study.accent }}
     >
       <div className="portfolio-page__bg" aria-hidden="true" />
-      <div className="portfolio-top-cap" aria-hidden="true" />
       <Header />
 
       <main className="portfolio-main case-detail">
