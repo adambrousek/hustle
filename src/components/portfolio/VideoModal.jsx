@@ -24,6 +24,7 @@ export default function VideoModal({ item, onClose }) {
   if (!item) return null;
 
   const embedSrc = vimeoModalSrc(item.vimeoId);
+  const localSrc = item.previewSrc;
 
   return (
     <div
@@ -37,11 +38,11 @@ export default function VideoModal({ item, onClose }) {
         <button
           ref={closeRef}
           type="button"
-          className="video-modal__close"
+          className="video-modal__close hustle-link"
           onClick={onClose}
           aria-label="Zavřít"
         >
-          ZAVŘÍT ✕
+          ZAVŘÍT
         </button>
 
         <div className="video-modal__player-wrap">
@@ -53,10 +54,18 @@ export default function VideoModal({ item, onClose }) {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             />
+          ) : localSrc ? (
+            <video
+              className="video-modal__video"
+              src={localSrc}
+              controls
+              autoPlay
+              playsInline
+            />
           ) : (
             <div className="video-modal__placeholder">
               <img src={item.thumbnailUrl} alt="" />
-              <p className="text-body">Vimeo ID doplníme brzy.</p>
+              <p className="text-body">Video brzy doplníme.</p>
             </div>
           )}
         </div>
@@ -71,10 +80,10 @@ export default function VideoModal({ item, onClose }) {
           {item.caseStudySlug && (
             <Link
               to={`/portfolio/case/${item.caseStudySlug}`}
-              className="portfolio-cta portfolio-cta--inline"
+              className="hustle-link"
               onClick={onClose}
             >
-              ZOBRAZIT CASE STUDY ↗
+              CASE STUDY
             </Link>
           )}
         </div>

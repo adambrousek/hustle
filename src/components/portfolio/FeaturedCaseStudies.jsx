@@ -7,38 +7,40 @@ export default function FeaturedCaseStudies({ studies }) {
   const scrollBy = (dir) => {
     const el = trackRef.current;
     if (!el) return;
-    const amount = Math.min(el.clientWidth * 0.9, 900);
-    el.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    el.scrollBy({ left: dir * el.clientWidth * 0.88, behavior: 'smooth' });
   };
 
+  if (!studies.length) return null;
+
   return (
-    <section className="featured-cases" id="featured-cases">
-      <h2 className="portfolio-section-title">
-        <span>HLAVNÍ</span>
-        <span style={{ marginLeft: '0.12em' }}>CASE STUDIES</span>
-      </h2>
-      <p className="portfolio-section-intro text-body">
-        Projekty, na kterých je vidět, jak přemýšlíme. Nejen co jsme vytvořili, ale proč
-        to vzniklo, jakou roli měl obsah pro značku a co se díky tomu změnilo.
-      </p>
+    <section className="featured-cases featured-cases--full" id="featured-cases">
+      <div className="featured-cases__head">
+        <h2 className="featured-cases__title">HLAVNÍ CASE STUDIES</h2>
+        <p className="featured-cases__intro text-body">
+          Projekty, na kterých je vidět, jak přemýšlíme. Nejen co jsme vytvořili, ale proč
+          to vzniklo, jakou roli měl obsah pro značku a co se díky tomu změnilo.
+        </p>
+      </div>
 
       <div className="featured-cases__row">
         <button
           type="button"
-          className="video-shelf__arrow video-shelf__arrow--prev"
+          className="nf-arrow nf-arrow--prev"
           onClick={() => scrollBy(-1)}
           aria-label="Posunout vlevo"
         >
           ‹
         </button>
-        <div className="featured-cases__track" ref={trackRef}>
-          {studies.map((study) => (
-            <CaseStudyCard key={study.id} study={study} />
-          ))}
+        <div className="featured-cases__scroll" ref={trackRef}>
+          <div className="featured-cases__track">
+            {studies.map((study) => (
+              <CaseStudyCard key={study.id} study={study} size="featured" />
+            ))}
+          </div>
         </div>
         <button
           type="button"
-          className="video-shelf__arrow video-shelf__arrow--next"
+          className="nf-arrow nf-arrow--next"
           onClick={() => scrollBy(1)}
           aria-label="Posunout vpravo"
         >

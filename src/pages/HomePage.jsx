@@ -19,8 +19,8 @@ function PortfolioTeaser() {
           projekty. Pod nimi knihovnu videí, kampaní, formátů a starších výstupů, které
           ukazují šířku naší práce.
         </p>
-        <Link to="/portfolio" className="portfolio-cta portfolio-teaser__cta">
-          OTEVŘÍT PORTFOLIO ↗
+        <Link to="/portfolio" className="hustle-link portfolio-teaser__cta">
+          OTEVŘÍT PORTFOLIO
         </Link>
       </div>
     </section>

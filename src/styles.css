@@ -182,6 +182,36 @@ ul {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Shared CTA link (menu / proof-link style) */
+.hustle-link {
+  display: inline-block;
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+  padding: 0 0 4px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    border-bottom-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.hustle-link::after {
+  content: ' ↗';
+}
+
+.hustle-link:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .build-stamp {
   position: fixed;
   right: clamp(12px, 2vw, 20px);

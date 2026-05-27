@@ -39,6 +39,8 @@ export const PORTFOLIO_FILTERS = [
   { id: 'training', label: 'ŠKOLENÍ' },
 ];
 
+const VID = '/videos';
+
 export const FEATURED_CASE_STUDIES = [
   {
     id: 'feat-cs',
@@ -47,6 +49,7 @@ export const FEATURED_CASE_STUDIES = [
     claim: 'Děláme profily, které patří mezi nejlepší v Česku.',
     workType: 'dlouhodobá správa',
     thumbnailUrl: `${IMG}/page-02-img-3.jpeg`,
+    previewSrc: `${VID}/cs-1.mp4`,
     accent: '#1868F0',
   },
   {
@@ -56,6 +59,7 @@ export const FEATURED_CASE_STUDIES = [
     claim: 'Přes social razíme nový směr.',
     workType: 'social repositioning',
     thumbnailUrl: `${IMG}/page-03-img-1.jpeg`,
+    previewSrc: `${VID}/pilulka-1.mp4`,
     accent: '#006858',
   },
   {
@@ -65,6 +69,7 @@ export const FEATURED_CASE_STUDIES = [
     claim: 'Vracíme kanálům energii.',
     workType: 'social restart',
     thumbnailUrl: `${IMG}/page-04-img-0.jpeg`,
+    previewSrc: `${VID}/sportisimo.mp4`,
     accent: '#0058B0',
   },
   {
@@ -115,6 +120,7 @@ export const PORTFOLIO_VIDEOS = [
     category: 'video',
     shelfId: 'outputs',
     thumbnailUrl: `${IMG}/page-02-img-1.jpeg`,
+    previewSrc: `${VID}/cs-2.mp4`,
     vimeoId: '',
     year: 2025,
     featured: true,
@@ -129,6 +135,7 @@ export const PORTFOLIO_VIDEOS = [
     category: 'video',
     shelfId: 'outputs',
     thumbnailUrl: `${IMG}/page-03-img-2.jpeg`,
+    previewSrc: `${VID}/pilulka-2.mp4`,
     vimeoId: '',
     year: 2025,
     caseStudySlug: 'pilulka',

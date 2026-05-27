@@ -9,13 +9,13 @@ export default function CaseStudyPage() {
 
   if (!study) {
     return (
-      <div className="app-shell portfolio-page">
+      <div className="app-shell portfolio-page portfolio-page--netflix">
         <div className="portfolio-page__bg" aria-hidden="true" />
         <Header />
         <main className="portfolio-main case-detail">
           <p className="text-body">Case study nenalezena.</p>
-          <Link to="/portfolio" className="portfolio-cta">
-            ZPĚT NA PORTFOLIO ↗
+          <Link to="/portfolio" className="hustle-link">
+            ZPĚT NA PORTFOLIO
           </Link>
         </main>
       </div>
@@ -24,7 +24,7 @@ export default function CaseStudyPage() {
 
   return (
     <div
-      className="app-shell portfolio-page case-detail"
+      className="app-shell portfolio-page portfolio-page--netflix case-detail"
       style={{ '--case-accent': study.accent }}
     >
       <div className="portfolio-page__bg" aria-hidden="true" />
@@ -76,8 +76,8 @@ export default function CaseStudyPage() {
           </div>
         </section>
 
-        <Link to="/portfolio" className="portfolio-cta case-detail__cta">
-          ZPĚT NA PORTFOLIO ↗
+        <Link to="/portfolio" className="hustle-link case-detail__cta">
+          ZPĚT NA PORTFOLIO
         </Link>
       </main>
     </div>

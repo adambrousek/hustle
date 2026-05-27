@@ -7,32 +7,33 @@ export default function VideoShelf({ title, items, onOpenVideo }) {
   const scrollBy = (dir) => {
     const el = trackRef.current;
     if (!el) return;
-    const amount = Math.min(el.clientWidth * 0.85, 720);
-    el.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    el.scrollBy({ left: dir * el.clientWidth * 0.75, behavior: 'smooth' });
   };
 
   if (!items.length) return null;
 
   return (
-    <section className="video-shelf">
+    <section className="video-shelf video-shelf--full">
       <h3 className="video-shelf__title">{title}</h3>
       <div className="video-shelf__row">
         <button
           type="button"
-          className="video-shelf__arrow video-shelf__arrow--prev"
+          className="nf-arrow nf-arrow--prev"
           onClick={() => scrollBy(-1)}
           aria-label="Posunout vlevo"
         >
           ‹
         </button>
-        <div className="video-shelf__track" ref={trackRef}>
-          {items.map((item) => (
-            <VideoCard key={item.id} item={item} onOpen={onOpenVideo} />
-          ))}
+        <div className="video-shelf__scroll" ref={trackRef}>
+          <div className="video-shelf__track">
+            {items.map((item) => (
+              <VideoCard key={item.id} item={item} onOpen={onOpenVideo} />
+            ))}
+          </div>
         </div>
         <button
           type="button"
-          className="video-shelf__arrow video-shelf__arrow--next"
+          className="nf-arrow nf-arrow--next"
           onClick={() => scrollBy(1)}
           aria-label="Posunout vpravo"
         >
