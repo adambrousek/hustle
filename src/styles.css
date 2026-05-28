@@ -469,6 +469,14 @@ section {
   max-width: min(1100px, 92vw);
 }
 
+@media (min-width: 901px) {
+  .hero-headline {
+    font-size: clamp(64px, 7.2vw, 128px);
+    line-height: 0.96;
+    max-width: min(980px, 90vw);
+  }
+}
+
 .hero-line {
   position: relative;
   display: block;
