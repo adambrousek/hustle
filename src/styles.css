@@ -182,6 +182,24 @@ ul {
   color: rgba(255, 255, 255, 0.9);
 }
 
+@media (min-width: 901px) {
+  .header {
+    padding: clamp(14px, 1.8vw, 24px) clamp(18px, 3vw, 40px);
+  }
+
+  .header-logo-img {
+    height: clamp(18px, 1.8vw, 28px);
+  }
+
+  .header-nav {
+    gap: clamp(14px, 2vw, 30px);
+  }
+
+  .header-nav a {
+    font-size: clamp(13px, 1.2vw, 17px);
+  }
+}
+
 /* Mobile menu — .hustle-link also sets display, so use combined selector */
 .header-menuToggle.hustle-link {
   display: none;
@@ -524,6 +542,14 @@ section {
   overflow: visible;
   line-height: 1.1;
   text-shadow: 0 2px 20px rgba(43, 0, 4, 0.36);
+}
+
+@media (min-width: 901px) {
+  .proof-section .claim {
+    font-size: clamp(52px, 5.5vw, 108px);
+    line-height: 1.04;
+    max-width: min(620px, 100%);
+  }
 }
 
 .claim span,
