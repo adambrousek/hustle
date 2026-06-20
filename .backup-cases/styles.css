@@ -592,179 +592,27 @@ section {
 
 @media (min-width: 901px) {
   .proof-section .proof-signature {
-    display: block;
-    grid-column: 2;
-    grid-row: 1;
-    align-self: center;
+    display: contents;
+    gap: 0;
   }
+}
 
-  .proof-signature-col {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(14px, 2vh, 22px);
-    width: 100%;
-    max-width: 360px;
-    margin-top: clamp(5vh, 7vh, 10vh);
-  }
+.proof-section .proof-logos {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: start;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 0;
+}
 
-  .proof-section .proof-logos {
-    grid-column: auto;
-    grid-row: auto;
-    align-self: auto;
-    margin-bottom: 0;
-  }
-
-  .proof-section .proof-signature-body {
-    grid-column: auto;
-    grid-row: auto;
-    max-width: 360px;
-  }
-
-  .proof-section .sticky-stage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    padding-top: clamp(56px, 8vh, 72px);
-    padding-bottom: clamp(32px, 5vh, 48px);
-  }
-
-  .proof-section .proof-content {
-    max-width: min(1020px, 86vw);
-    margin: 0 auto;
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
-    column-gap: clamp(48px, 6vw, 88px);
-    row-gap: 0;
-    align-items: start;
-  }
-
-  .proof-section .claim {
-    align-self: start;
-    max-width: min(500px, 54%);
-  }
-
-  .proof-section .proof-signature {
-    align-self: start;
-  }
-
-  .layout-cs .claim {
-    max-width: min(520px, 54%);
-  }
-
-  .layout-pilulka .claim {
-    max-width: min(480px, 52%);
-  }
-
-  .layout-kitkat .claim,
-  .layout-sportisimo .claim,
-  .layout-partnership .claim,
-  .layout-dofe .claim {
-    max-width: min(460px, 50%);
-  }
-
-  .proof-section .claim-line {
-    padding-left: min(var(--claim-indent, 0px), 11rem);
-  }
-
-  /* Media — mírně blíž ke středu */
-  .proof-visual--cs .proof-img--hero {
-    left: 54%;
-    top: 24vh;
-    width: clamp(170px, 15vw, 255px);
-    height: clamp(290px, 26vw, 430px);
-  }
-
-  .proof-visual--cs .proof-img--b {
-    left: 14%;
-    bottom: auto;
-    top: 58%;
-    width: clamp(145px, 13vw, 210px);
-    height: clamp(172px, 15vw, 255px);
-  }
-
-  .proof-visual--cs .proof-img--c {
-    left: 58%;
-    bottom: auto;
-    top: 58%;
-    transform: translateX(-50%);
-    width: clamp(120px, 11vw, 175px);
-    height: clamp(200px, 18vw, 295px);
-  }
-
-  .proof-visual--pilulka .proof-img--a {
-    left: 13%;
-    top: 56%;
-    width: clamp(132px, 12vw, 195px);
-    height: clamp(230px, 21vw, 340px);
-  }
-
-  .proof-visual--pilulka .proof-img--b {
-    left: 26%;
-    top: 48%;
-    width: clamp(125px, 11.5vw, 185px);
-    height: clamp(165px, 15vw, 245px);
-  }
-
-  .proof-visual--pilulka .proof-img--c {
-    right: 12%;
-    left: auto;
-    top: 52%;
-    width: clamp(175px, 16vw, 260px);
-    height: clamp(305px, 28vw, 450px);
-  }
-
-  .proof-visual--sportisimo .proof-img--a {
-    left: 12%;
-    top: 58%;
-  }
-
-  .proof-visual--sportisimo .proof-img--b {
-    left: 44%;
-    top: 30vh;
-  }
-
-  .proof-visual--sportisimo .proof-img--c {
-    right: 12%;
-    left: auto;
-    top: 54%;
-  }
-
-  .proof-visual--kitkat .proof-img--hero {
-    right: 10%;
-    left: auto;
-    top: 32vh;
-    width: clamp(200px, 18vw, 320px);
-    max-height: 30vh;
-  }
-
-  .proof-visual--kitkat .proof-img--b {
-    left: 11%;
-    top: 58%;
-  }
-
-  .proof-visual--kitkat .proof-img--c {
-    left: 30%;
-    top: 58%;
-  }
-
-  .proof-visual--partnership .proof-img--center {
-    left: 54%;
-    top: 46%;
-    width: clamp(185px, 17vw, 280px);
-    height: clamp(278px, 25vw, 410px);
-  }
-
-  .proof-visual--dofe .proof-img--a {
-    left: 12%;
-    top: 54%;
-  }
-
-  .proof-visual--dofe .proof-img--b {
-    left: 50%;
-    top: 32vh;
-  }
+.proof-section .proof-signature-body {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
 }
 
 /* CS layout closer to deck: big claim left, proof block right */
@@ -789,15 +637,10 @@ section {
   max-width: min(280px, 100%);
 }
 
-.proof-section .proof-logos {
-  width: 100%;
-}
-
-.proof-signature-col {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 3vh, 26px);
-  width: 100%;
+@media (min-width: 901px) {
+  .proof-section .claim-line {
+    padding-left: min(var(--claim-indent, 0px), 11rem);
+  }
 }
 
 .proof-logos {
@@ -1337,8 +1180,7 @@ video.proof-img {
   }
 
   .proof-section .proof-logos,
-  .proof-section .proof-signature-body,
-  .proof-signature-col {
+  .proof-section .proof-signature-body {
     max-width: 100%;
     width: 100%;
   }

@@ -38,9 +38,9 @@ const MOBILE_IMG_MOTION = [
 ];
 
 const DESKTOP_IMG_MOTION = [
-  { startY: 38, endY: -34, scrub: 0.28 },
-  { startY: 42, endY: -26, scrub: 0.44 },
-  { startY: 46, endY: -18, scrub: 0.58 },
+  { startY: 48, endY: -78, scrub: 0.26 },
+  { startY: 56, endY: -62, scrub: 0.42 },
+  { startY: 64, endY: -46, scrub: 0.58 },
 ];
 
 function isMobileLayout() {
@@ -85,10 +85,10 @@ function setupParallax(section, contentRoot, visual) {
 
       tl.fromTo(
         contentRoot,
-        { y: '12vh', opacity: 0 },
+        { y: '20vh', opacity: 0 },
         { y: '0vh', opacity: 1, duration: 0.35, ease: 'none' },
         0,
-      ).to(contentRoot, { y: '-10vh', opacity: 0, duration: 0.35, ease: 'none' }, 0.65);
+      ).to(contentRoot, { y: '-14vh', opacity: 0, duration: 0.35, ease: 'none' }, 0.65);
     }
   }
 
@@ -97,8 +97,8 @@ function setupParallax(section, contentRoot, visual) {
     mediaEls.forEach((el, i) => {
       const lanes = mobile ? MOBILE_IMG_MOTION : DESKTOP_IMG_MOTION;
       const lane = lanes[i % lanes.length];
-      const startY = lane.startY + i * (mobile ? 3 : 3);
-      const endY = lane.endY - i * (mobile ? 4 : 3);
+      const startY = lane.startY + i * (mobile ? 3 : 4);
+      const endY = lane.endY - i * (mobile ? 4 : 5);
       const xPercent = getParallaxXPercent(el);
 
       gsap.fromTo(
@@ -143,7 +143,7 @@ function setupParallax(section, contentRoot, visual) {
             const p = self.progress;
             // peak fade in middle
             const mid = 1 - Math.min(1, Math.abs(p - 0.5) / 0.22);
-            const fade = isMobileLayout() ? 0.35 : 0.55;
+            const fade = isMobileLayout() ? 0.35 : 0.75;
             const target = 1 - mid * fade;
             gsap.to(visual, { opacity: target, duration: 0.08, overwrite: true });
           },
