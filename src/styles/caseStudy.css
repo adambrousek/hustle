@@ -1,0 +1,166 @@
+/* —— Case study detail —— */
+
+.case-detail-page__bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--case-bg, #1868f0);
+  pointer-events: none;
+}
+
+html.case-study-mode,
+html.case-study-mode body {
+  background: var(--case-bg, #1868f0) !important;
+}
+
+.case-detail-page {
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.case-detail-page .header {
+  position: fixed;
+  z-index: 100;
+  color: #ffffff;
+  background: transparent;
+}
+
+.case-detail-page .header::before {
+  content: none;
+  display: none;
+}
+
+.case-detail-page .header-menuToggle,
+.case-detail-page .header-nav a,
+.case-detail-page .hustle-link {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.case-detail-page .header-nav a:hover {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+.case-detail__logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 20px);
+  margin-bottom: clamp(24px, 4vh, 36px);
+}
+
+.case-detail__logo {
+  display: block;
+  height: clamp(28px, 3.8vw, 48px);
+  width: auto;
+  max-width: min(220px, 42vw);
+  object-fit: contain;
+}
+
+.case-detail__headline {
+  margin: 0;
+  max-width: min(900px, 92vw);
+}
+
+.case-detail__headline-line {
+  display: block;
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  padding-left: var(--case-indent, 0);
+}
+
+.case-detail__type {
+  margin: clamp(16px, 2.5vh, 24px) 0 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.case-detail__hero-media {
+  margin-top: clamp(32px, 5vh, 48px);
+  max-width: min(920px, 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.case-detail__hero-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #111;
+}
+
+.case-detail__intro {
+  margin-bottom: clamp(40px, 6vh, 56px);
+  max-width: min(720px, 100%);
+}
+
+.case-detail__intro .case-detail__text {
+  margin: 0 0 1em;
+}
+
+.case-detail__intro .case-detail__text:last-child {
+  margin-bottom: 0;
+}
+
+.case-detail__block {
+  margin-bottom: clamp(40px, 6vh, 56px);
+  max-width: min(720px, 100%);
+}
+
+.case-detail__block .case-detail__text {
+  margin: 0 0 1em;
+}
+
+.case-detail__block .case-detail__text:last-child {
+  margin-bottom: 0;
+}
+
+.case-detail__gallery {
+  margin: clamp(56px, 8vh, 80px) 0 clamp(48px, 7vh, 72px);
+}
+
+.case-detail__gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+  margin-top: clamp(24px, 4vh, 32px);
+}
+
+.case-detail__gallery-item {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.28);
+}
+
+.case-detail__gallery-item img,
+.case-detail__gallery-item video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.case-detail__gallery-item:first-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .case-detail__gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-detail__gallery-item:first-child {
+    grid-column: auto;
+  }
+}

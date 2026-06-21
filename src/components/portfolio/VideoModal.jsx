@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { vimeoModalSrc } from '../../data/portfolioData';
+import { getVideoModalSrc } from '../../data/portfolioData';
 
 export default function VideoModal({ item, onClose }) {
   const closeRef = useRef(null);
@@ -23,7 +23,7 @@ export default function VideoModal({ item, onClose }) {
 
   if (!item) return null;
 
-  const embedSrc = vimeoModalSrc(item.vimeoId);
+  const embedSrc = getVideoModalSrc(item);
   const localSrc = item.previewSrc;
 
   return (
@@ -51,7 +51,7 @@ export default function VideoModal({ item, onClose }) {
               className="video-modal__iframe"
               src={embedSrc}
               title={item.title}
-              allow="autoplay; fullscreen; picture-in-picture"
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
               allowFullScreen
             />
           ) : localSrc ? (

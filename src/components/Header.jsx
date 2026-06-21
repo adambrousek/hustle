@@ -40,16 +40,13 @@ export default function Header() {
       </button>
 
       <nav className="header-nav" id="header-nav" aria-label="Hlavní navigace">
-        <Link to="/#dukazy" onClick={() => setOpen(false)}>
-          DŮKAZY
-        </Link>
-        <Link to="/#system" onClick={() => setOpen(false)}>
-          SYSTÉM
+        <Link to="/" onClick={() => setOpen(false)}>
+          O NÁS
         </Link>
         <Link to="/portfolio" onClick={() => setOpen(false)}>
           PORTFOLIO
         </Link>
-        <Link to="/#kontakt" onClick={() => setOpen(false)}>
+        <Link to="/kontakt" onClick={() => setOpen(false)}>
           KONTAKT
         </Link>
       </nav>

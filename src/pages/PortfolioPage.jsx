@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import PortfolioBillboard from '../components/portfolio/PortfolioBillboard';
+import CaseStudiesShelf from '../components/portfolio/CaseStudiesShelf';
+import PortfolioRealityShowHero from '../components/portfolio/PortfolioRealityShowHero';
 import VideoModal from '../components/portfolio/VideoModal';
 import VideoShelf from '../components/portfolio/VideoShelf';
 import {
-  FEATURED_CASE_STUDIES,
+  PORTFOLIO_CASE_STUDIES,
   PORTFOLIO_VIDEOS,
   VIDEO_SHELVES,
   getVideosByShelf,
@@ -28,8 +29,6 @@ function BuildStamp() {
 export default function PortfolioPage() {
   const [modalItem, setModalItem] = useState(null);
 
-  const heroStudy = FEATURED_CASE_STUDIES[0];
-
   useEffect(() => {
     document.documentElement.classList.add('portfolio-mode');
     return () => document.documentElement.classList.remove('portfolio-mode');
@@ -42,9 +41,10 @@ export default function PortfolioPage() {
       <Header />
 
       <main className="portfolio-main portfolio-main--netflix">
-        <PortfolioBillboard study={heroStudy} />
+        <PortfolioRealityShowHero />
 
         <section className="portfolio-library portfolio-library--full" id="portfolio-library">
+          <CaseStudiesShelf studies={PORTFOLIO_CASE_STUDIES} />
           {VIDEO_SHELVES.map((shelf) => (
             <VideoShelf
               key={shelf.id}

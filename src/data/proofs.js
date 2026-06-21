@@ -21,6 +21,10 @@ export const DEEP_RED_BG = '#7A0000';
 
 export const DARK_CTA_BG = '#660008';
 
+export const BLACK_BG = '#000000';
+export const BLACK_THEME = '#000000';
+export const BLACK_CHROME_BOTTOM = '#000000';
+
 /** Barvy a gradienty z PDF (case study slidy) */
 export const BG_SECTIONS = [
   {
@@ -60,6 +64,10 @@ export const BG_SECTIONS = [
     bg: '#9C2088',
   },
 ];
+
+export function getProofBg(slug) {
+  return BG_SECTIONS.find((section) => section.id === slug) ?? null;
+}
 
 export const PROOFS = [
   {

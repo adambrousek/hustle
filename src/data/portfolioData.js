@@ -1,4 +1,42 @@
+import { BG_SECTIONS, PROOFS } from './proofs';
+
 const IMG = '/extracted';
+
+function proofBrand(proof) {
+  if (proof.logos?.length > 1) {
+    return proof.logos.map((logo) => logo.alt).join(' × ');
+  }
+  return proof.logos?.[0]?.alt ?? proof.id;
+}
+
+function proofClaim(proof) {
+  return proof.lines
+    .join(' ')
+    .replace(/,\s*/g, ', ')
+    .toLowerCase()
+    .replace(/^\w/u, (char) => char.toUpperCase())
+    .replace(/,\s*$/, '.');
+}
+
+/** Case studies — same projects as homepage PROOFS. */
+export const PORTFOLIO_CASE_STUDIES = PROOFS.map((proof) => {
+  const section = BG_SECTIONS.find((s) => s.id === proof.id);
+  const preview = proof.images?.find((media) => media.type === 'video');
+  const thumb = proof.images?.find((media) => media.type !== 'video') ?? proof.images?.[0];
+
+  return {
+    id: `case-${proof.id}`,
+    slug: proof.id,
+    brand: proofBrand(proof),
+    claim: proofClaim(proof),
+    lines: proof.lines,
+    logos: proof.logos ?? [],
+    workType: proof.links?.[0]?.label?.replace(/\s*↗\s*$/, '') ?? '',
+    thumbnailUrl: thumb?.src ?? '',
+    previewSrc: preview?.src,
+    accent: section?.color ?? '#ffffff',
+  };
+});
 
 /** @typedef {'all' | 'case-study' | 'video' | 'campaign' | 'profile' | 'training'} PortfolioFilterId */
 
@@ -14,6 +52,7 @@ const IMG = '/extracted';
  * @property {string} thumbnailUrl
  * @property {string} [vimeoId]
  * @property {string} [vimeoUrl]
+ * @property {string} [youtubeId]
  * @property {number} [year]
  * @property {boolean} [featured]
  * @property {string} [caseStudySlug]
@@ -39,145 +78,37 @@ export const PORTFOLIO_FILTERS = [
   { id: 'training', label: 'ŠKOLENÍ' },
 ];
 
-const VID = '/videos';
-
-export const FEATURED_CASE_STUDIES = [
-  {
-    id: 'feat-cs',
-    slug: 'cs',
-    brand: 'Česká spořitelna',
-    claim: 'Děláme profily, které patří mezi nejlepší v Česku.',
-    workType: 'dlouhodobá správa',
-    thumbnailUrl: `${IMG}/page-02-img-3.jpeg`,
-    previewSrc: `${VID}/cs-1.mp4`,
-    accent: '#1868F0',
-  },
-  {
-    id: 'feat-pilulka',
-    slug: 'pilulka',
-    brand: 'Pilulka',
-    claim: 'Přes social razíme nový směr.',
-    workType: 'social repositioning',
-    thumbnailUrl: `${IMG}/page-03-img-1.jpeg`,
-    previewSrc: `${VID}/pilulka-1.mp4`,
-    accent: '#006858',
-  },
-  {
-    id: 'feat-sportisimo',
-    slug: 'sportisimo',
-    brand: 'Sportisimo',
-    claim: 'Vracíme kanálům energii.',
-    workType: 'social restart',
-    thumbnailUrl: `${IMG}/page-04-img-0.jpeg`,
-    previewSrc: `${VID}/sportisimo.mp4`,
-    accent: '#0058B0',
-  },
-  {
-    id: 'feat-kitkat',
-    slug: 'kitkat',
-    brand: 'KitKat a Formula 1',
-    claim: 'Necháváme značky spolu mluvit.',
-    workType: 'kampaň a partnerství',
-    thumbnailUrl: `${IMG}/page-05-img-0.jpeg`,
-    accent: '#E81828',
-  },
-  {
-    id: 'feat-partnership',
-    slug: 'partnership',
-    brand: 'Česká spořitelna × TV Nova',
-    claim: 'Z partnerství děláme důvod sledovat.',
-    workType: 'branded content',
-    thumbnailUrl: `${IMG}/page-06-img-0.jpeg`,
-    accent: '#1868F0',
-  },
-  {
-    id: 'feat-dofe',
-    slug: 'dofe',
-    brand: 'DofE',
-    claim: 'Učíme týmy tvořit obsah, který drží směr.',
-    workType: 'školení a framework',
-    thumbnailUrl: `${IMG}/page-07-img-0.jpeg`,
-    accent: '#9C2088',
-  },
-];
-
 export const VIDEO_SHELVES = [
-  { id: 'outputs', title: 'Video výstupy' },
-  { id: 'campaigns', title: 'Kampaně a partnerství' },
-  { id: 'profiles', title: 'Profily, které spravujeme' },
-  { id: 'training', title: 'Školení a frameworky' },
-  { id: 'archive', title: 'Starší výstupy' },
+  { id: 'campaigns', title: 'Kampaně' },
+  { id: 'videos', title: 'Videa' },
+  { id: 'case-studies', title: 'Časosběry' },
 ];
 
-/** Sample Vimeo IDs — replace with real IDs from your Vimeo library */
+/** Portfolio video rows — YouTube + case study shelf placeholders */
 export const PORTFOLIO_VIDEOS = [
   {
-    id: 'vid-cs-reels',
-    title: 'Reels série',
-    brand: 'Česká spořitelna',
-    type: 'Reels série',
-    description: 'Finanční témata převedená do lidského obsahu',
-    category: 'video',
-    shelfId: 'outputs',
-    thumbnailUrl: `${IMG}/page-02-img-1.jpeg`,
-    previewSrc: `${VID}/cs-2.mp4`,
-    vimeoId: '',
-    year: 2025,
-    featured: true,
-    caseStudySlug: 'cs',
-  },
-  {
-    id: 'vid-pilulka-tt',
-    title: 'TikTok video',
-    brand: 'Pilulka',
-    type: 'TikTok video',
-    description: 'Longevity téma vysvětlené jednoduše a bez medicínského patosu',
-    category: 'video',
-    shelfId: 'outputs',
-    thumbnailUrl: `${IMG}/page-03-img-2.jpeg`,
-    previewSrc: `${VID}/pilulka-2.mp4`,
-    vimeoId: '',
-    year: 2025,
-    caseStudySlug: 'pilulka',
-  },
-  {
-    id: 'vid-sportisimo-reels',
-    title: 'Reels formát',
-    brand: 'Sportisimo',
-    type: 'Reels formát',
-    description: 'Sportovní emoce a důvody sledovat značku i mimo nákupní moment',
-    category: 'video',
-    shelfId: 'outputs',
-    thumbnailUrl: `${IMG}/page-04-img-3.jpeg`,
-    vimeoId: '',
-    year: 2024,
-    caseStudySlug: 'sportisimo',
-  },
-  {
-    id: 'vid-kitkat-f1',
+    id: 'vid-campaign-youtube',
     title: 'Kampaň',
-    brand: 'KitKat × F1',
+    brand: 'Hustle',
     type: 'Kampaň',
-    description: 'Lokální social moment propojující značky ve feedu',
+    description: '',
     category: 'campaign',
     shelfId: 'campaigns',
-    thumbnailUrl: `${IMG}/page-05-img-3.jpeg`,
-    vimeoId: '',
+    thumbnailUrl: 'https://img.youtube.com/vi/u3kMuLBYX80/hqdefault.jpg',
+    youtubeId: 'u3kMuLBYX80',
     year: 2025,
-    caseStudySlug: 'kitkat',
   },
   {
-    id: 'vid-partnership',
-    title: 'Branded content',
-    brand: 'Česká spořitelna × TV Nova',
-    type: 'Partnerství',
-    description: 'Ambice Spořitelny dodávat lidem sebevědomí k podnikání',
-    category: 'campaign',
-    shelfId: 'campaigns',
-    thumbnailUrl: `${IMG}/page-06-img-0.jpeg`,
-    vimeoId: '',
-    year: 2024,
-    caseStudySlug: 'partnership',
+    id: 'vid-main-youtube',
+    title: 'Video',
+    brand: 'Hustle',
+    type: 'Video',
+    description: '',
+    category: 'video',
+    shelfId: 'videos',
+    thumbnailUrl: 'https://img.youtube.com/vi/YnHsbYsS7Pw/hqdefault.jpg',
+    youtubeId: 'YnHsbYsS7Pw',
+    year: 2025,
   },
   {
     id: 'vid-cs-profile',
@@ -186,7 +117,7 @@ export const PORTFOLIO_VIDEOS = [
     type: 'Správa profilu',
     description: 'Dlouhodobá strategie a obsah pro nejvýraznější bankovní profil v Česku',
     category: 'profile',
-    shelfId: 'profiles',
+    shelfId: 'case-studies',
     thumbnailUrl: `${IMG}/page-02-img-5.jpeg`,
     vimeoId: '',
     year: 2025,
@@ -199,7 +130,7 @@ export const PORTFOLIO_VIDEOS = [
     type: 'Repositioning',
     description: 'Nový směr značky přes social a komunitní témata',
     category: 'profile',
-    shelfId: 'profiles',
+    shelfId: 'case-studies',
     thumbnailUrl: `${IMG}/page-03-img-3.jpeg`,
     vimeoId: '',
     year: 2025,
@@ -212,38 +143,33 @@ export const PORTFOLIO_VIDEOS = [
     type: 'Workshop výstup',
     description: 'Obsah, který můžou tvořit lidé nejblíž programu',
     category: 'training',
-    shelfId: 'training',
+    shelfId: 'case-studies',
     thumbnailUrl: `${IMG}/page-07-img-3.jpeg`,
     vimeoId: '',
     year: 2024,
     caseStudySlug: 'dofe',
   },
-  {
-    id: 'vid-archive-1',
-    title: 'Starší formát',
-    brand: 'Sportisimo',
-    type: 'Formát',
-    description: 'Energie kanálu a komunitní inspirace ve feedu',
-    category: 'video',
-    shelfId: 'archive',
-    thumbnailUrl: `${IMG}/page-04-img-4.jpeg`,
-    vimeoId: '',
-    year: 2023,
-  },
-  {
-    id: 'vid-archive-2',
-    title: 'Adaptace kampaně',
-    brand: 'KitKat',
-    type: 'Adaptace',
-    description: 'Lokální výstupy pro české publikum',
-    category: 'campaign',
-    shelfId: 'archive',
-    thumbnailUrl: `${IMG}/page-05-img-4.jpeg`,
-    vimeoId: '',
-    year: 2023,
-    caseStudySlug: 'kitkat',
-  },
 ];
+
+export const PORTFOLIO_REALITY_SHOW = {
+  logo: '/logos/always-on.png',
+  video: '/videos/reality-show-trailer.mp4',
+  poster: '/images/reality-show.png',
+  copy:
+    'První agentura s vlastní reality show. Náš Instagram není výloha. Je to formát. Nápady. Meetingy. Natáčení. Chaos. Výstupy. To, co radíme značkám, testujeme na sobě.',
+  cta: 'SLEDOVAT NA INSTAGRAMU',
+  instagramUrl: 'https://www.instagram.com/hustle.cz/',
+};
+
+export function youtubeHoverSrc(youtubeId) {
+  if (!youtubeId) return null;
+  return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&controls=0&playsinline=1&rel=0&modestbranding=1&playlist=${youtubeId}`;
+}
+
+export function youtubeModalSrc(youtubeId) {
+  if (!youtubeId) return null;
+  return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`;
+}
 
 export function vimeoHoverSrc(vimeoId) {
   if (!vimeoId) return null;
@@ -253,6 +179,13 @@ export function vimeoHoverSrc(vimeoId) {
 export function vimeoModalSrc(vimeoId) {
   if (!vimeoId) return null;
   return `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+}
+
+export function getVideoModalSrc(item) {
+  if (!item) return null;
+  if (item.youtubeId) return youtubeModalSrc(item.youtubeId);
+  if (item.vimeoId) return vimeoModalSrc(item.vimeoId);
+  return null;
 }
 
 export function filterPortfolioVideos(videos, filterId) {
@@ -268,5 +201,5 @@ export function getVideosByShelf(videos, shelfId) {
 }
 
 export function getCaseStudyBySlug(slug) {
-  return FEATURED_CASE_STUDIES.find((c) => c.slug === slug) ?? null;
+  return PORTFOLIO_CASE_STUDIES.find((c) => c.slug === slug) ?? null;
 }

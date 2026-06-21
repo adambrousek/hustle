@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { vimeoHoverSrc } from '../data/portfolioData';
+import { vimeoHoverSrc, youtubeHoverSrc } from '../data/portfolioData';
 
 const MOBILE_MQ = '(max-width: 900px)';
 
 export default function MediaHoverPreview({
   vimeoId = '',
+  youtubeId = '',
   previewSrc = '',
   thumbnailUrl,
   alt = '',
@@ -18,7 +19,11 @@ export default function MediaHoverPreview({
   const videoRef = useRef(null);
   const leaveTimer = useRef(null);
 
-  const hoverSrc = vimeoId ? vimeoHoverSrc(vimeoId) : null;
+  const hoverSrc = youtubeId
+    ? youtubeHoverSrc(youtubeId)
+    : vimeoId
+      ? vimeoHoverSrc(vimeoId)
+      : null;
   const canPlay = Boolean(previewSrc || hoverSrc);
 
   useEffect(() => {
@@ -93,7 +98,7 @@ export default function MediaHoverPreview({
           className="media-hover-preview__iframe"
           src={hoverSrc}
           title={alt}
-          allow="autoplay; fullscreen; picture-in-picture"
+          allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
         />
       )}
 

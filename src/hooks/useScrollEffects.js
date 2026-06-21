@@ -1,17 +1,9 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MANIFEST_BG } from '../data/manifest';
 import {
   BG_SECTIONS,
-  DARK_CTA_BG,
-  DARK_CTA_CHROME_BOTTOM,
-  DARK_CTA_THEME,
-  DEFAULT_RED_BG,
-  DEFAULT_RED_CHROME_BOTTOM,
-  DEFAULT_RED_THEME,
-  DEEP_RED_BG,
-  DEEP_RED_CHROME_BOTTOM,
-  DEEP_RED_THEME,
   HERO_BG,
   HERO_CHROME_BOTTOM,
   HERO_THEME,
@@ -47,11 +39,39 @@ function isMobileLayout() {
   return typeof window !== 'undefined' && window.matchMedia(MOBILE_MQ).matches;
 }
 
+function getParallaxYPercent(el) {
+  if (el.classList.contains('manifest-always-on-visual__img')) return 0;
+  return -50;
+}
+
 function getParallaxXPercent(el) {
+  if (el.classList.contains('manifest-contact-visual__img')) return -50;
   if (el.classList.contains('proof-img--center')) return -50;
   if (el.classList.contains('proof-img--hero')) return -50;
   if (el.classList.contains('proof-img--c') && el.closest('.proof-visual--cs')) return -12;
   return 0;
+}
+
+function getImgMotion(el, i, mobile) {
+  if (el.classList.contains('manifest-contact-visual__img')) {
+    return mobile
+      ? { startY: 12, endY: -44, scrub: 0.32 }
+      : { startY: 4, endY: -38, scrub: 0.28 };
+  }
+
+  if (el.classList.contains('manifest-always-on-visual__img')) {
+    return mobile
+      ? { startY: 14, endY: -22, scrub: 0.34 }
+      : { startY: 8, endY: -16, scrub: 0.3 };
+  }
+
+  const lanes = mobile ? MOBILE_IMG_MOTION : DESKTOP_IMG_MOTION;
+  const lane = lanes[i % lanes.length];
+  return {
+    startY: lane.startY + i * (mobile ? 3 : 3),
+    endY: lane.endY - i * (mobile ? 4 : 3),
+    scrub: lane.scrub,
+  };
 }
 
 function setupParallax(section, contentRoot, visual) {
@@ -95,61 +115,65 @@ function setupParallax(section, contentRoot, visual) {
   if (visual) {
     const mediaEls = visual.querySelectorAll('.proof-img');
     mediaEls.forEach((el, i) => {
-      const lanes = mobile ? MOBILE_IMG_MOTION : DESKTOP_IMG_MOTION;
-      const lane = lanes[i % lanes.length];
-      const startY = lane.startY + i * (mobile ? 3 : 3);
-      const endY = lane.endY - i * (mobile ? 4 : 3);
+      const { startY, endY, scrub } = getImgMotion(el, i, mobile);
       const xPercent = getParallaxXPercent(el);
+      const yPercent = getParallaxYPercent(el);
 
       gsap.fromTo(
         el,
         {
           y: `${startY}vh`,
           xPercent,
-          yPercent: -50,
+          yPercent,
           force3D: true,
         },
         {
           y: `${endY}vh`,
           xPercent,
-          yPercent: -50,
+          yPercent,
           force3D: true,
           ease: 'none',
           scrollTrigger: {
             trigger: section,
             start: 'top bottom',
             end: mobile ? 'top top' : 'bottom top',
-            scrub: lane.scrub,
+            scrub,
           },
         },
       );
     });
 
+    const isManifestFloatVisual =
+      visual.classList.contains('manifest-contact-visual') ||
+      visual.classList.contains('manifest-always-on-visual');
+
     // Readability: in-focus (middle) -> fade visuals a bit,
     // edges (start/end) -> allow stronger overlap.
-    gsap.fromTo(
-      visual,
-      { opacity: 1 },
-      {
-        opacity: 1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top bottom',
-          end: isMobileLayout() ? 'top top' : 'bottom top',
-          scrub: 0.6,
-          onUpdate: (self) => {
-            // 0..1
-            const p = self.progress;
-            // peak fade in middle
-            const mid = 1 - Math.min(1, Math.abs(p - 0.5) / 0.22);
-            const fade = isMobileLayout() ? 0.35 : 0.55;
-            const target = 1 - mid * fade;
-            gsap.to(visual, { opacity: target, duration: 0.08, overwrite: true });
+    if (!isManifestFloatVisual) {
+      gsap.fromTo(
+        visual,
+        { opacity: 1 },
+        {
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: isMobileLayout() ? 'top top' : 'bottom top',
+            scrub: 0.6,
+            onUpdate: (self) => {
+              // 0..1
+              const p = self.progress;
+              // peak fade in middle
+              const mid = 1 - Math.min(1, Math.abs(p - 0.5) / 0.22);
+              const fade = isMobileLayout() ? 0.35 : 0.55;
+              const target = 1 - mid * fade;
+              gsap.to(visual, { opacity: target, duration: 0.08, overwrite: true });
+            },
           },
         },
-      },
-    );
+      );
+    }
   }
 }
 
@@ -159,11 +183,7 @@ export function useScrollEffects(refs) {
     bgBRef,
     heroRef,
     proofSectionRefs,
-    positioningRef,
-    placementRef,
-    problemRef,
-    systemRef,
-    ctaRef,
+    manifestSectionRefs,
     heroClaimRef,
     heroSupportRef,
   } = refs;
@@ -393,84 +413,38 @@ export function useScrollEffects(refs) {
         if (contentRoot) setupParallax(section, contentRoot, visual);
       });
 
-      if (positioningRef?.current) {
-        const t = ScrollTrigger.create({
-          trigger: positioningRef.current,
-          start: 'top 55%',
-          end: 'bottom 45%',
-          onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME, DEEP_RED_CHROME_BOTTOM);
-          },
-        });
-        t.vars.__bg = DEEP_RED_BG;
-        t.vars.__themeColor = DEEP_RED_THEME;
-        t.vars.__chromeBottom = DEEP_RED_CHROME_BOTTOM;
-        bgTriggers.push(t);
-      }
+      (manifestSectionRefs || []).forEach((sectionRef, index) => {
+        const section = sectionRef?.current;
+        const bgConfig = MANIFEST_BG[index];
+        if (!section || !bgConfig) return;
 
-      if (placementRef?.current) {
+        const isLast = index === MANIFEST_BG.length - 1;
+
         const t = ScrollTrigger.create({
-          trigger: placementRef.current,
+          trigger: section,
           start: 'top 55%',
-          end: 'bottom 45%',
+          end: isLast ? 'bottom bottom' : 'bottom 45%',
           onToggle: (self) => {
             if (self.isActive) {
-              crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME, DEFAULT_RED_CHROME_BOTTOM);
+              crossfadeBg(bgConfig.bg, bgConfig.color, bgConfig.chromeBottom ?? bgConfig.color);
             }
           },
         });
-        t.vars.__bg = DEFAULT_RED_BG;
-        t.vars.__themeColor = DEFAULT_RED_THEME;
-        t.vars.__chromeBottom = DEFAULT_RED_CHROME_BOTTOM;
+        t.vars.__bg = bgConfig.bg;
+        t.vars.__themeColor = bgConfig.color;
+        t.vars.__chromeBottom = bgConfig.chromeBottom ?? bgConfig.color;
         bgTriggers.push(t);
-      }
 
-      if (problemRef?.current) {
-        const t = ScrollTrigger.create({
-          trigger: problemRef.current,
-          start: 'top 55%',
-          end: 'bottom 45%',
-          onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DEEP_RED_BG, DEEP_RED_THEME, DEEP_RED_CHROME_BOTTOM);
-          },
-        });
-        t.vars.__bg = DEEP_RED_BG;
-        t.vars.__themeColor = DEEP_RED_THEME;
-        t.vars.__chromeBottom = DEEP_RED_CHROME_BOTTOM;
-        bgTriggers.push(t);
-      }
+        if (index === 1) {
+          const visual = section.querySelector('.manifest-always-on-visual');
+          if (visual) setupParallax(section, null, visual);
+        }
 
-      if (systemRef?.current) {
-        const t = ScrollTrigger.create({
-          trigger: systemRef.current,
-          start: 'top 55%',
-          end: 'bottom 45%',
-          onToggle: (self) => {
-            if (self.isActive) {
-              crossfadeBg(DEFAULT_RED_BG, DEFAULT_RED_THEME, DEFAULT_RED_CHROME_BOTTOM);
-            }
-          },
-        });
-        t.vars.__bg = DEFAULT_RED_BG;
-        t.vars.__themeColor = DEFAULT_RED_THEME;
-        t.vars.__chromeBottom = DEFAULT_RED_CHROME_BOTTOM;
-        bgTriggers.push(t);
-      }
-
-      if (ctaRef?.current) {
-        const t = ScrollTrigger.create({
-          trigger: ctaRef.current,
-          start: 'top 55%',
-          end: 'bottom bottom',
-          onToggle: (self) => {
-            if (self.isActive) crossfadeBg(DARK_CTA_BG, DARK_CTA_THEME, DARK_CTA_CHROME_BOTTOM);
-          },
-        });
-        t.vars.__bg = DARK_CTA_BG;
-        t.vars.__themeColor = DARK_CTA_THEME;
-        t.vars.__chromeBottom = DARK_CTA_CHROME_BOTTOM;
-        bgTriggers.push(t);
-      }
+        if (isLast) {
+          const visual = section.querySelector('.manifest-contact-visual');
+          if (visual) setupParallax(section, null, visual);
+        }
+      });
 
       onBgSnap = () => snapActiveBg(bgTriggers);
       ScrollTrigger.addEventListener('refresh', onBgSnap);

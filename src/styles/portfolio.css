@@ -114,7 +114,8 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
   }
 
   /* Header gradient is already global; keep this block for mobile overrides only. */
-  .portfolio-page--netflix .portfolio-billboard__shade {
+  .portfolio-page--netflix .portfolio-billboard__shade,
+  .portfolio-page--netflix .portfolio-reality-show__shade {
     background:
       linear-gradient(
         180deg,
@@ -122,7 +123,7 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
         rgba(0, 0, 0, 0) 38%
       ),
       linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 42%, transparent 68%),
-      linear-gradient(to top, #000000 0%, transparent 38%);
+      linear-gradient(to top, #000000 0%, transparent 18%);
   }
 }
 
@@ -141,6 +142,7 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
 .portfolio-page--netflix .portfolio-library__title,
 .portfolio-page--netflix .portfolio-billboard__claim,
 .portfolio-page--netflix .case-detail__claim,
+.portfolio-page--netflix .case-detail__headline-line,
 .portfolio-page--netflix .case-detail__heading,
 .portfolio-page--netflix .video-modal__title {
   font-family: 'HW Topol', Arial, sans-serif;
@@ -181,7 +183,76 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
   opacity: 1;
 }
 
-/* Billboard */
+/* Reality show hero */
+.portfolio-reality-show {
+  width: 100%;
+}
+
+.portfolio-reality-show__stage {
+  position: relative;
+  width: 100%;
+  height: clamp(72vh, 82vw, 88vh);
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.portfolio-reality-show__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.portfolio-reality-show__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.08) 14%, rgba(0, 0, 0, 0) 32%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.34) 46%, transparent 72%),
+    linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.72) 8%, transparent 32%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.portfolio-reality-show__content {
+  position: absolute;
+  left: clamp(20px, 5vw, 64px);
+  bottom: clamp(48px, 12vh, 120px);
+  z-index: 3;
+  max-width: min(680px, 92vw);
+  color: var(--portfolio-text);
+}
+
+.portfolio-reality-show__logo {
+  display: block;
+  width: clamp(220px, 42vw, 560px);
+  height: auto;
+  margin: 0 0 clamp(18px, 2.5vh, 28px);
+  background: transparent;
+}
+
+.portfolio-reality-show__copy {
+  margin: 0;
+  font-size: var(--body-size);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.portfolio-reality-show__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  margin-top: clamp(22px, 3vh, 32px);
+}
+
+.portfolio-reality-show__cta {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+/* Billboard (legacy) */
 .portfolio-billboard {
   width: 100%;
 }
@@ -416,7 +487,7 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
 }
 
 .case-study-card-slot--featured {
-  flex: 0 0 min(92vw, 1100px);
+  flex: 0 0 min(28vw, 240px);
   scroll-snap-align: start;
   padding: var(--shelf-shadow-y) var(--shelf-shadow-x) var(--shelf-shadow-bottom);
   box-sizing: content-box;
@@ -468,8 +539,81 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
 }
 
 .case-study-card--featured .case-study-card__media {
-  aspect-ratio: 16 / 9;
-  min-height: clamp(280px, 42vh, 480px);
+  aspect-ratio: 2 / 3;
+  width: 100%;
+}
+
+.case-study-card__preview .media-hover-preview__labels {
+  display: none;
+}
+
+.case-study-card__logos {
+  position: absolute;
+  top: clamp(14px, 2.5vw, 22px);
+  left: clamp(14px, 2.5vw, 22px);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(8px, 1.2vh, 14px);
+  max-width: calc(100% - 28px);
+  pointer-events: none;
+}
+
+.case-study-card__logo {
+  display: block;
+  height: clamp(28px, 3.8vw, 44px);
+  width: auto;
+  max-width: min(168px, 78%);
+  object-fit: contain;
+}
+
+.case-study-card__logo--mono {
+  filter: brightness(0) invert(1);
+}
+
+.case-study-card__logo--color {
+  height: clamp(34px, 4.6vw, 52px);
+  max-width: min(190px, 88%);
+}
+
+.case-study-card__logo--nova {
+  height: clamp(22px, 3vw, 34px);
+}
+
+.case-study-card__logo--dofe {
+  height: clamp(40px, 5.2vw, 58px);
+  max-width: min(120px, 62%);
+}
+
+.case-study-card__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  padding: clamp(72px, 32%, 96px) clamp(14px, 4vw, 20px) clamp(14px, 3.5vw, 20px);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.42) 52%, transparent);
+  pointer-events: none;
+}
+
+.case-study-card__line {
+  display: block;
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-size: clamp(18px, 3.6vw, 28px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.case-study-card__line + .case-study-card__line {
+  margin-top: 0.1em;
+}
+
+.case-study-card__play {
+  display: none;
 }
 
 .video-card__media {
@@ -699,7 +843,6 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
 }
 
 /* Case study detail on red */
-.portfolio-page .case-detail__back,
 .portfolio-page .case-detail__claim,
 .portfolio-page .case-detail__brand,
 .portfolio-page .case-detail__heading {
@@ -778,7 +921,7 @@ html.ios-app-shell .portfolio-page--netflix .header::before {
   }
 
   .case-study-card-slot--featured {
-    flex: 0 0 88vw;
+    flex: 0 0 44vw;
   }
 
   .video-card-slot {

@@ -1,0 +1,418 @@
+/* —— Manifest sections (post-case homepage) —— */
+
+.manifest {
+  position: relative;
+  z-index: 2;
+  padding: clamp(72px, 10vh, 120px) clamp(16px, 3vw, 40px);
+}
+
+.manifest__inner {
+  max-width: min(1080px, 92vw);
+  margin: 0 auto;
+}
+
+.manifest-line {
+  display: block;
+  font-size: var(--claim-size);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.manifest-line--accent {
+  color: var(--hustle-pink);
+}
+
+/* 01 — System intro + service grid */
+
+.manifest--system .manifest-line,
+.manifest--system .manifest-system__text,
+.manifest--system .manifest-system__points li,
+.manifest--system .manifest-grid__label,
+.manifest--system .manifest-grid__detail {
+  color: #ffffff;
+}
+
+.manifest--system .manifest-system__points li::before {
+  color: #ffffff;
+}
+
+.manifest--system {
+  min-height: auto;
+  padding-top: clamp(72px, 10vh, 120px);
+  padding-bottom: clamp(88px, 12vh, 140px);
+}
+
+.manifest-system__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 440px);
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+  width: 100%;
+}
+
+.manifest-system__headline {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  min-width: 0;
+  align-self: center;
+}
+
+.manifest-system__body {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 0;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.manifest-system__text {
+  margin: 0 0 clamp(14px, 2vh, 20px);
+  color: #ffffff;
+  line-height: 1.55;
+  font-size: clamp(15px, 1.25vw, 19px);
+}
+
+.manifest-system__points {
+  list-style: none;
+  margin: 0 0 clamp(20px, 3vh, 28px);
+  padding: 0;
+}
+
+.manifest-system__points li {
+  position: relative;
+  padding-left: 1.1em;
+  margin-bottom: 0.35em;
+}
+
+.manifest-system__points li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--hustle-pink);
+}
+
+.manifest-system__inner .manifest-grid__cells {
+  grid-column: 1 / -1;
+  margin-top: clamp(56px, 9vh, 88px);
+}
+
+.manifest-grid__cells {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 220, 212, 0.12);
+}
+
+.manifest-grid__cell {
+  padding: clamp(22px, 3.5vh, 36px) clamp(16px, 2.5vw, 28px);
+  border-bottom: 1px solid rgba(255, 220, 212, 0.12);
+  border-right: 1px solid rgba(255, 220, 212, 0.12);
+}
+
+.manifest-grid__cell:nth-child(2n) {
+  border-right: none;
+}
+
+.manifest-grid__label {
+  display: block;
+  font-size: clamp(28px, 3.8vw, 52px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.manifest-grid__detail {
+  display: block;
+  margin-top: clamp(8px, 1.2vh, 12px);
+  color: #ffffff;
+  line-height: 1.45;
+}
+
+/* 03 — Always On */
+
+.manifest--always-on .manifest-line,
+.manifest--always-on .manifest-always-on__text,
+.manifest--always-on .hustle-link {
+  color: #ffffff;
+}
+
+.manifest--always-on .hustle-link {
+  border-bottom-color: #ffffff;
+}
+
+.manifest--always-on .hustle-link:hover {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+.manifest--always-on {
+  min-height: 110vh;
+  padding: 0;
+}
+
+.manifest--always-on .sticky-stage {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+  isolation: auto;
+}
+
+.manifest-always-on__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: clamp(88px, 12vh, 140px) clamp(16px, 3vw, 40px);
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.manifest-always-on__layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+  grid-template-rows: auto auto;
+  column-gap: clamp(40px, 6vw, 88px);
+  row-gap: clamp(20px, 3vh, 28px);
+  align-items: start;
+  width: 100%;
+}
+
+.manifest-always-on__headline {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  position: relative;
+  margin: 0;
+  max-width: min(560px, 100%);
+  z-index: 4;
+}
+
+/* Drží text dole na místě — prázdný spacer v gridu */
+.manifest-always-on__media {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: clamp(200px, 24vw, 300px);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.manifest-always-on-visual.proof-visual {
+  position: absolute;
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  z-index: 1;
+  width: clamp(300px, 28vw, 420px);
+  aspect-ratio: 4 / 5;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.manifest-always-on-visual__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.manifest-always-on__side {
+  grid-column: 2;
+  grid-row: 2;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.manifest-always-on__logo {
+  display: block;
+  width: clamp(180px, 28vw, 320px);
+  height: auto;
+  margin: 0 0 clamp(20px, 3vh, 28px);
+}
+
+.manifest-always-on__text {
+  margin: 0 0 clamp(24px, 3vh, 32px);
+  font-size: var(--body-size);
+  line-height: 1.55;
+  color: #ffffff;
+}
+
+.manifest-always-on__cta {
+  display: inline-block;
+}
+
+/* 04 — Contact */
+
+.manifest--contact {
+  min-height: 120vh;
+  padding: 0;
+}
+
+.manifest--contact .sticky-stage {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+  isolation: auto;
+}
+
+.manifest-contact__stage {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(72px, 10vh, 120px) clamp(16px, 3vw, 40px);
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.manifest-contact-visual {
+  z-index: 5;
+}
+
+.manifest-contact-visual__img {
+  width: clamp(260px, 32vw, 460px);
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  left: 58%;
+  right: auto;
+  top: 30vh;
+}
+
+.manifest-contact__content {
+  position: relative;
+  z-index: 16;
+  width: 100%;
+}
+
+.manifest-contact__headline {
+  margin: 0 0 clamp(40px, 6vh, 64px);
+}
+
+.manifest-contact__copy {
+  margin: 0 0 clamp(40px, 6vh, 56px);
+  margin-left: clamp(0px, 8vw, 120px);
+  max-width: 520px;
+}
+
+.manifest-contact__line {
+  margin: 0 0 0.35em;
+  font-size: clamp(16px, 1.4vw, 22px);
+  line-height: 1.5;
+  color: rgba(255, 220, 212, 0.82);
+}
+
+.manifest-contact__email {
+  display: block;
+  margin-left: clamp(0px, 8vw, 120px);
+  font-size: clamp(42px, 6vw, 110px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+  color: var(--hustle-soft-white);
+  transition: color 0.3s ease;
+}
+
+.manifest-contact__email:hover {
+  color: var(--hustle-pink);
+}
+
+/* —— Manifest mobile —— */
+
+@media (max-width: 900px) {
+  .manifest-line {
+    padding-left: clamp(12px, 4vw, 24px) !important;
+  }
+
+  .manifest-line:nth-child(2) {
+    padding-left: clamp(20px, 7vw, 40px) !important;
+  }
+
+  .manifest-line:nth-child(3) {
+    padding-left: clamp(28px, 10vw, 52px) !important;
+  }
+
+  .manifest-line:nth-child(4) {
+    padding-left: clamp(36px, 12vw, 64px) !important;
+  }
+
+  .manifest-system__inner {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 5vh, 48px);
+  }
+
+  .manifest-system__headline,
+  .manifest-system__body {
+    grid-column: 1;
+  }
+
+  .manifest-system__inner .manifest-grid__cells {
+    margin-top: clamp(40px, 7vh, 64px);
+  }
+
+  .manifest-grid__cells {
+    grid-template-columns: 1fr;
+  }
+
+  .manifest-grid__cell {
+    border-right: none;
+  }
+
+  .manifest-always-on__layout {
+    grid-template-columns: 1fr;
+    row-gap: clamp(28px, 5vh, 40px);
+  }
+
+  .manifest-always-on__headline {
+    grid-column: 1;
+    grid-row: auto;
+    align-self: auto;
+    max-width: 100%;
+  }
+
+  .manifest-always-on__media {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: clamp(180px, 52vw, 260px);
+  }
+
+  .manifest-always-on__side {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .manifest-always-on-visual {
+    width: min(72vw, 320px);
+  }
+
+  .manifest-contact__copy,
+  .manifest-contact__email {
+    margin-left: clamp(12px, 4vw, 24px);
+  }
+
+  .manifest-contact-visual__img {
+    width: min(68vw, 300px);
+    left: 54%;
+    right: auto;
+    top: 34vh;
+  }
+
+  .manifest-contact__email {
+    font-size: clamp(28px, 8vw, 48px);
+    word-break: break-all;
+  }
+}

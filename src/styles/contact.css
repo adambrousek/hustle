@@ -1,0 +1,223 @@
+.contact-page {
+  --contact-text: #ffffff;
+  color: var(--contact-text);
+  min-height: 100vh;
+}
+
+.contact-page__bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #000000;
+  pointer-events: none;
+}
+
+html.contact-mode,
+html.contact-mode body {
+  background: #000000 !important;
+}
+
+.contact-page .header {
+  position: fixed;
+  z-index: 100;
+  color: var(--contact-text);
+  background: transparent;
+}
+
+.contact-page .header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-1 * env(safe-area-inset-top, 0px));
+  height: calc(100% + env(safe-area-inset-top, 0px) + clamp(72px, 16vh, 120px));
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 10px,
+    rgba(0, 0, 0, 0.78) 22%,
+    rgba(0, 0, 0, 0.44) 52%,
+    rgba(0, 0, 0, 0.22) 72%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.contact-page .header-menuToggle,
+.contact-page .header-nav a,
+.contact-page .hustle-link {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.contact-page .header-nav a:hover {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.55);
+}
+
+.contact-main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: clamp(120px, 18vh, 180px) clamp(20px, 5vw, 64px) clamp(80px, 10vh, 120px);
+}
+
+.contact-main__stage {
+  position: relative;
+  overflow: visible;
+}
+
+.contact-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.contact-visual__link {
+  position: absolute;
+  left: 58%;
+  top: 22vh;
+  width: clamp(260px, 32vw, 460px);
+  aspect-ratio: 16 / 9;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  pointer-events: auto;
+  text-decoration: none;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.contact-visual__link:hover {
+  transform: scale(1.02);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+}
+
+.contact-visual__map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+  filter: saturate(0.82) contrast(1.08);
+}
+
+.contact-main__inner {
+  position: relative;
+  z-index: 2;
+  max-width: min(920px, 92vw);
+  margin: 0 auto;
+}
+
+.contact-main__headline {
+  margin: 0;
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.contact-main__intro {
+  margin: clamp(24px, 4vh, 40px) 0 0;
+  max-width: 640px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.contact-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vh, 56px);
+  margin-top: clamp(56px, 8vh, 88px);
+  max-width: min(920px, 92vw);
+}
+
+.contact-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 5vw, 56px);
+}
+
+.contact-block__label {
+  margin: 0 0 clamp(16px, 2vh, 24px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.contact-block__link,
+.contact-block__line {
+  display: block;
+  margin: 0 0 0.5em;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+}
+
+.contact-block__link--phone {
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.3;
+}
+
+.contact-block__link--email {
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+  color: var(--hustle-soft-white, #ffdcd4);
+  transition: color 0.3s ease;
+}
+
+.contact-block__link--email:hover {
+  color: var(--hustle-pink, #ff6b8a);
+}
+
+.contact-block__line--company {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .contact-details {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-visual {
+    position: relative;
+    inset: auto;
+    margin-top: clamp(40px, 6vh, 56px);
+  }
+
+  .contact-visual__link {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(88vw, 360px);
+    margin: 0;
+  }
+
+  .contact-page .header::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 6px,
+      rgba(0, 0, 0, 0.65) 18%,
+      rgba(0, 0, 0, 0.34) 44%,
+      rgba(0, 0, 0, 0.18) 64%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}

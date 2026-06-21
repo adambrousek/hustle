@@ -14,6 +14,7 @@ export default function VideoCard({ item, onOpen }) {
             <MediaHoverPreview
               previewSrc={item.previewSrc}
               vimeoId={item.vimeoId}
+              youtubeId={item.youtubeId}
               thumbnailUrl={item.thumbnailUrl}
               alt={`${item.brand}: ${item.title}`}
               className="video-card__preview"
