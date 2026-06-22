@@ -300,6 +300,17 @@ export function useScrollEffects(refs) {
     };
 
     const pickBgTrigger = (triggers) => {
+      const heroTrigger = triggers.find((t) => t.vars?.__isHero);
+      const heroEl = heroTrigger?.trigger;
+
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        // Scrolled back to hero: pin red while the hero occupies the top of the viewport.
+        if (rect.top >= -6 && rect.top <= window.innerHeight * 0.28) {
+          return heroTrigger;
+        }
+      }
+
       const actives = triggers.filter((t) => t?.isActive);
       if (actives.length === 0) return null;
       if (actives.length === 1) return actives[0];
@@ -323,12 +334,22 @@ export function useScrollEffects(refs) {
 
     const snapActiveBg = (triggers) => {
       const active = pickBgTrigger(triggers);
-      if (!active?.vars?.__bg) return;
+      if (!active?.vars?.__bg) {
+        if (window.scrollY <= 2 && heroRef?.current) {
+          setBgInstant(HERO_BG, HERO_THEME, HERO_CHROME_BOTTOM);
+        }
+        return;
+      }
       setBgInstant(
         active.vars.__bg,
         active.vars.__themeColor || HERO_THEME,
         active.vars.__chromeBottom || HERO_CHROME_BOTTOM,
       );
+    };
+
+    const activateBg = (triggers, bg, themeColor, chromeBottom) => {
+      crossfadeBg(bg, themeColor, chromeBottom);
+      requestAnimationFrame(() => snapActiveBg(triggers));
     };
 
     let onBgSnap = null;
@@ -337,17 +358,20 @@ export function useScrollEffects(refs) {
       const bgTriggers = [];
 
       if (heroRef?.current) {
+        const applyHeroBg = () =>
+          activateBg(bgTriggers, HERO_BG, HERO_THEME, HERO_CHROME_BOTTOM);
+
         const t = ScrollTrigger.create({
           trigger: heroRef.current,
           start: 'top top',
           end: 'bottom top',
-          onToggle: (self) => {
-            if (self.isActive) crossfadeBg(HERO_BG, HERO_THEME, HERO_CHROME_BOTTOM);
-          },
+          onEnter: applyHeroBg,
+          onEnterBack: applyHeroBg,
         });
         t.vars.__bg = HERO_BG;
         t.vars.__themeColor = HERO_THEME;
         t.vars.__chromeBottom = HERO_CHROME_BOTTOM;
+        t.vars.__isHero = true;
         bgTriggers.push(t);
       }
 
@@ -399,6 +423,8 @@ export function useScrollEffects(refs) {
           onToggle: (self) => {
             if (self.isActive) {
               crossfadeBg(bgConfig.bg, bgConfig.color, bgConfig.chromeBottom ?? bgConfig.color);
+            } else {
+              requestAnimationFrame(() => snapActiveBg(bgTriggers));
             }
           },
         });
@@ -427,6 +453,8 @@ export function useScrollEffects(refs) {
           onToggle: (self) => {
             if (self.isActive) {
               crossfadeBg(bgConfig.bg, bgConfig.color, bgConfig.chromeBottom ?? bgConfig.color);
+            } else {
+              requestAnimationFrame(() => snapActiveBg(bgTriggers));
             }
           },
         });
