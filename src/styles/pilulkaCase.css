@@ -133,8 +133,31 @@ html.pilulka-case-mode body {
 .pilulka-chapter__intro-body {
   position: relative;
   z-index: 2;
-  max-width: min(36em, 100%);
+  max-width: none;
+  width: 100%;
   will-change: transform, opacity;
+}
+
+.pilulka-chapter__intro-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+  max-width: 1480px;
+}
+
+.pilulka-chapter__intro-row .pilulka-chapter__prose {
+  max-width: min(36em, 100%);
+}
+
+.pilulka-chapter__scene-proofs--aside {
+  margin: 0;
+  padding-top: clamp(2px, 0.5vh, 6px);
+}
+
+.pilulka-chapter__scene-proofs--aside.pilulka-chapter__scene-proofs--awards {
+  gap: clamp(24px, 3.5vh, 40px);
+  margin-top: 0;
 }
 
 .pilulka-chapter--intro .pilulka-chapter__headline {
@@ -144,6 +167,15 @@ html.pilulka-case-mode body {
   margin-bottom: 0;
   font-size: clamp(52px, 11vw, 168px);
   line-height: 0.92;
+}
+
+.pilulka-chapter__headline--uniform .claim-line {
+  padding-left: 0 !important;
+}
+
+.pilulka-chapter__headline--uniform {
+  max-width: min(14em, 100%);
+  line-height: 1.02;
 }
 
 .pilulka-chapter--proof {
@@ -279,6 +311,65 @@ html.pilulka-case-mode body {
 
 .pilulka-chapter__shift-line--after {
   color: #ffffff;
+}
+
+/* —— In-scene typographic proofs —— */
+
+.pilulka-chapter__scene-proofs {
+  margin: clamp(20px, 3vh, 32px) 0 0;
+}
+
+.pilulka-chapter__scene-proofs--stat {
+  margin-top: clamp(8px, 1.5vh, 16px);
+  margin-bottom: clamp(24px, 4vh, 36px);
+}
+
+.pilulka-chapter__scene-proof {
+  margin: 0;
+}
+
+.pilulka-chapter__scene-proof-line {
+  display: block;
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.pilulka-chapter__scene-proof-line--lead {
+  font-size: clamp(36px, 6vw, 88px);
+}
+
+.pilulka-chapter__scene-proofs--stat .pilulka-chapter__scene-proof-line--lead {
+  font-size: clamp(52px, 10vw, 132px);
+  line-height: 0.9;
+}
+
+.pilulka-chapter__scene-proofs--stat .pilulka-chapter__scene-proof-line:not(.pilulka-chapter__scene-proof-line--lead) {
+  font-size: clamp(18px, 2.2vw, 32px);
+}
+
+.pilulka-chapter__scene-proofs--awards {
+  display: grid;
+  gap: clamp(28px, 4vh, 44px);
+  margin-top: clamp(36px, 6vh, 56px);
+}
+
+.pilulka-chapter__scene-proofs--awards .pilulka-chapter__scene-proof-line--lead {
+  font-size: clamp(20px, 2.6vw, 36px);
+  line-height: 1.02;
+}
+
+.pilulka-chapter__scene-proofs--awards .pilulka-chapter__scene-proof-line:not(.pilulka-chapter__scene-proof-line--lead) {
+  margin-top: clamp(8px, 1.2vh, 12px);
+  font-family: inherit;
+  font-size: clamp(15px, 1.1vw, 18px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* —— Stacked parallax media —— */
@@ -464,6 +555,15 @@ html.pilulka-case-mode body {
     max-width: 100%;
   }
 
+  .pilulka-chapter__intro-row {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 6vh, 48px);
+  }
+
+  .pilulka-chapter__scene-proofs--aside.pilulka-chapter__scene-proofs--awards {
+    gap: clamp(28px, 5vh, 40px);
+  }
+
   /* Chapter media stacks — contained cluster below text */
   .pilulka-chapter__stack.proof-visual {
     position: relative;
@@ -533,6 +633,14 @@ html.pilulka-case-mode body {
 
   .pilulka-key-learnings__col-body {
     max-width: 100%;
+  }
+
+  .pilulka-chapter__scene-proofs--stat .pilulka-chapter__scene-proof-line--lead {
+    font-size: clamp(40px, 11vw, 64px);
+  }
+
+  .pilulka-chapter__scene-proofs--awards .pilulka-chapter__scene-proof-line--lead {
+    font-size: clamp(18px, 5.5vw, 28px);
   }
 }
 

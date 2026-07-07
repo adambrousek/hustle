@@ -34,9 +34,12 @@ function MediaAsset({ item, className = '' }) {
   );
 }
 
-function ChapterHeadline({ lines, lineIndents, as: Tag = 'h2' }) {
+function ChapterHeadline({ lines, lineIndents, as: Tag = 'h2', uniform = false }) {
   return (
-    <Tag className="claim pilulka-chapter__headline" data-lines={lines.length}>
+    <Tag
+      className={`claim pilulka-chapter__headline${uniform ? ' pilulka-chapter__headline--uniform' : ''}`}
+      data-lines={lines.length}
+    >
       {lines.map((line, i) => (
         <span
           key={line}
@@ -57,6 +60,33 @@ function ChapterProse({ paragraphs }) {
         <p key={text.slice(0, 48)} className="text-body">
           {text}
         </p>
+      ))}
+    </div>
+  );
+}
+
+function SceneProofs({ proofs, variant, placement = 'headline' }) {
+  if (!proofs?.length) return null;
+
+  return (
+    <div
+      className={`pilulka-chapter__scene-proofs pilulka-chapter__scene-proofs--${placement}${
+        variant ? ` pilulka-chapter__scene-proofs--${variant}` : ''
+      }`}
+    >
+      {proofs.map((proof) => (
+        <div key={proof.lines.join('-')} className="pilulka-chapter__scene-proof">
+          {proof.lines.map((line, i) => (
+            <span
+              key={line}
+              className={`pilulka-chapter__scene-proof-line${
+                i === 0 ? ' pilulka-chapter__scene-proof-line--lead' : ''
+              }`}
+            >
+              {line}
+            </span>
+          ))}
+        </div>
       ))}
     </div>
   );
@@ -107,12 +137,15 @@ function KeyLearnings({ data }) {
   );
 }
 
-function ChapterMedia({ items }) {
+function ChapterMedia({ items, visualVariant = 'pilulka' }) {
   if (!items?.length) return null;
 
   return (
     <div className="pilulka-chapter__media-wrap">
-      <div className="proof-visual proof-visual--pilulka pilulka-chapter__stack" aria-hidden="true">
+      <div
+        className={`proof-visual proof-visual--${visualVariant} pilulka-chapter__stack`}
+        aria-hidden="true"
+      >
         {items.map((item, index) => (
           <MediaAsset
             key={item.src}
@@ -125,7 +158,9 @@ function ChapterMedia({ items }) {
   );
 }
 
-function ChapterText({ chapter, index, logo }) {
+function ChapterText({ chapter, index, logo, visualVariant }) {
+  const proofPlacement = chapter.sceneProofsPlacement ?? 'headline';
+
   return (
     <div className="pilulka-chapter__text">
       {index === 0 && logo && (
@@ -141,17 +176,28 @@ function ChapterText({ chapter, index, logo }) {
         as={index === 0 ? 'h1' : 'h2'}
         lines={chapter.headline.lines}
         lineIndents={chapter.headline.lineIndents}
+        uniform={chapter.headline.uniform}
       />
+      {proofPlacement === 'headline' && chapter.sceneProofs && (
+        <SceneProofs proofs={chapter.sceneProofs} variant={chapter.sceneProofsVariant} />
+      )}
       <ChapterProse paragraphs={chapter.paragraphs} />
       {chapter.shift && (
         <ShiftLines before={chapter.shift.before} after={chapter.shift.after} />
+      )}
+      {proofPlacement === 'body' && chapter.sceneProofs && (
+        <SceneProofs
+          proofs={chapter.sceneProofs}
+          variant={chapter.sceneProofsVariant}
+          placement="body"
+        />
       )}
     </div>
   );
 }
 
-export default function PilulkaCaseStudy() {
-  const { logo, chapters, keyLearnings } = PILULKA_CASE;
+export default function PilulkaCaseStudy({ caseData = PILULKA_CASE }) {
+  const { logo, chapters, keyLearnings, visualVariant = 'pilulka' } = caseData;
   const beatRefs = useRef([]);
   const beatIndexRef = useRef(0);
   const ctaRef = useRef(null);
@@ -159,7 +205,7 @@ export default function PilulkaCaseStudy() {
   beatIndexRef.current = 0;
 
   useCaseScrollEffects({ beatRefs });
-  usePilulkaCtaBackground(ctaRef);
+  usePilulkaCtaBackground(ctaRef, caseData);
 
   const bindChapter = (el) => {
     if (!el) return;
@@ -193,31 +239,55 @@ export default function PilulkaCaseStudy() {
           decoding="async"
         />
         <div className="pilulka-chapter__intro-hero">
-          <ChapterMedia items={intro.media} />
+          <ChapterMedia items={intro.media} visualVariant={visualVariant} />
           <ChapterHeadline
             as="h1"
             lines={intro.headline.lines}
             lineIndents={intro.headline.lineIndents}
+            uniform={intro.headline.uniform}
           />
         </div>
         <div className="pilulka-chapter__intro-body">
-          <ChapterProse paragraphs={intro.paragraphs} />
+          <div
+            className={`pilulka-chapter__intro-row${
+              intro.sceneProofs ? ' pilulka-chapter__intro-row--with-proofs' : ''
+            }`}
+          >
+            <ChapterProse paragraphs={intro.paragraphs} />
+            {intro.sceneProofs && (
+              <SceneProofs
+                proofs={intro.sceneProofs}
+                variant={intro.sceneProofsVariant}
+                placement={intro.sceneProofsPlacement ?? 'aside'}
+              />
+            )}
+          </div>
         </div>
       </section>
 
-      {restChapters.map((chapter, index) => (
-        <section
-          key={chapter.id}
-          ref={bindChapter}
-          className={`pilulka-chapter${chapter.id === 'proof' ? ' pilulka-chapter--proof' : ''}${(index + 1) % 2 === 1 ? ' pilulka-chapter--flip' : ''}`}
-          data-chapter={chapter.id}
-        >
-          <div className="pilulka-chapter__row">
-            <ChapterText chapter={chapter} index={index + 1} logo={logo} />
-            <ChapterMedia items={chapter.media} />
-          </div>
-        </section>
-      ))}
+      {restChapters.map((chapter, index) => {
+        const isFlipped =
+          chapter.flip ?? (index + 1) % 2 === 1;
+
+        return (
+          <section
+            key={chapter.id}
+            ref={bindChapter}
+            className={`pilulka-chapter${chapter.id === 'proof' ? ' pilulka-chapter--proof' : ''}${isFlipped ? ' pilulka-chapter--flip' : ''}`}
+            data-chapter={chapter.id}
+          >
+            <div className="pilulka-chapter__row">
+              <ChapterText
+                chapter={chapter}
+                index={index + 1}
+                logo={logo}
+                visualVariant={visualVariant}
+              />
+              <ChapterMedia items={chapter.media} visualVariant={visualVariant} />
+            </div>
+          </section>
+        );
+      })}
       <KeyLearnings data={keyLearnings} />
       <PilulkaCaseCta ref={ctaRef} />
     </article>

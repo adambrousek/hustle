@@ -3,6 +3,7 @@ const PREVIEW = '/images/portfolio/pilulka-preview.png';
 
 export const PILULKA_CASE = {
   slug: 'pilulka',
+  visualVariant: 'pilulka',
   bg: '#006858',
   themeColor: '#006858',
   chromeBottom: '#003830',

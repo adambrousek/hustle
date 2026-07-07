@@ -14,13 +14,13 @@ function isMobileLayout() {
   return typeof window !== 'undefined' && window.matchMedia(MOBILE_MQ).matches;
 }
 
-export function usePilulkaCtaBackground(ctaRef) {
+export function usePilulkaCtaBackground(ctaRef, caseData = PILULKA_CASE) {
   useLayoutEffect(() => {
     const section = ctaRef?.current;
     if (!section) return;
 
-    const fromBg = PILULKA_CASE.bg;
-    const fromChrome = PILULKA_CASE.chromeBottom;
+    const fromBg = caseData.bg;
+    const fromChrome = caseData.chromeBottom;
     const shell = document.querySelector('.pilulka-case-page');
     const mobile = isMobileLayout();
 
@@ -70,7 +70,7 @@ export function usePilulkaCtaBackground(ctaRef) {
       document.documentElement.classList.remove('pilulka-cta-active');
       document.documentElement.style.setProperty('--case-bg', fromBg);
       shell?.style.setProperty('--case-bg', fromBg);
-      commitChrome(PILULKA_CASE.themeColor, fromChrome);
+      commitChrome(caseData.themeColor, fromChrome);
     };
-  }, [ctaRef]);
+  }, [ctaRef, caseData]);
 }
