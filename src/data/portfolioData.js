@@ -1,6 +1,12 @@
 import { BG_SECTIONS, PROOFS } from './proofs';
 
 const IMG = '/extracted';
+const PILULKA_PORTFOLIO_THUMB = '/images/portfolio/pilulka-preview.png';
+const PILULKA_PORTFOLIO_VIDEO = '/videos/pilulka-portfolio-hover.mp4';
+const CS_PORTFOLIO_THUMB = '/images/portfolio/cs-preview.png';
+const CS_PORTFOLIO_VIDEO = '/videos/cs-portfolio-hover.mp4';
+const KITKAT_PORTFOLIO_THUMB = '/images/portfolio/kitkat-preview.png';
+const KITKAT_PORTFOLIO_VIDEO = '/videos/kitkat-portfolio-hover.mp4';
 
 function proofBrand(proof) {
   if (proof.logos?.length > 1) {
@@ -24,7 +30,7 @@ export const PORTFOLIO_CASE_STUDIES = PROOFS.map((proof) => {
   const preview = proof.images?.find((media) => media.type === 'video');
   const thumb = proof.images?.find((media) => media.type !== 'video') ?? proof.images?.[0];
 
-  return {
+  const study = {
     id: `case-${proof.id}`,
     slug: proof.id,
     brand: proofBrand(proof),
@@ -36,6 +42,23 @@ export const PORTFOLIO_CASE_STUDIES = PROOFS.map((proof) => {
     previewSrc: preview?.src,
     accent: section?.color ?? '#ffffff',
   };
+
+  if (proof.id === 'pilulka') {
+    study.thumbnailUrl = PILULKA_PORTFOLIO_THUMB;
+    study.previewSrc = PILULKA_PORTFOLIO_VIDEO;
+  }
+
+  if (proof.id === 'cs') {
+    study.thumbnailUrl = CS_PORTFOLIO_THUMB;
+    study.previewSrc = CS_PORTFOLIO_VIDEO;
+  }
+
+  if (proof.id === 'kitkat') {
+    study.thumbnailUrl = KITKAT_PORTFOLIO_THUMB;
+    study.previewSrc = KITKAT_PORTFOLIO_VIDEO;
+  }
+
+  return study;
 });
 
 /** @typedef {'all' | 'case-study' | 'video' | 'campaign' | 'profile' | 'training'} PortfolioFilterId */
@@ -118,7 +141,8 @@ export const PORTFOLIO_VIDEOS = [
     description: 'Dlouhodobá strategie a obsah pro nejvýraznější bankovní profil v Česku',
     category: 'profile',
     shelfId: 'case-studies',
-    thumbnailUrl: `${IMG}/page-02-img-5.jpeg`,
+    thumbnailUrl: CS_PORTFOLIO_THUMB,
+    previewSrc: CS_PORTFOLIO_VIDEO,
     vimeoId: '',
     year: 2025,
     caseStudySlug: 'cs',
@@ -131,7 +155,8 @@ export const PORTFOLIO_VIDEOS = [
     description: 'Nový směr značky přes social a komunitní témata',
     category: 'profile',
     shelfId: 'case-studies',
-    thumbnailUrl: `${IMG}/page-03-img-3.jpeg`,
+    thumbnailUrl: PILULKA_PORTFOLIO_THUMB,
+    previewSrc: PILULKA_PORTFOLIO_VIDEO,
     vimeoId: '',
     year: 2025,
     caseStudySlug: 'pilulka',
