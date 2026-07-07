@@ -356,93 +356,85 @@ html.pilulka-case-mode body {
   transform: translateX(-50%);
 }
 
-/* —— Mobile —— */
+/* —— Mobile: editorial stack, no overlay —— */
 
 @media (max-width: 900px) {
   .pilulka-chapter {
     min-height: auto;
+    padding-bottom: clamp(48px, 8vh, 72px);
   }
 
   .pilulka-chapter__row {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(32px, 6vh, 48px);
     min-height: auto;
-    gap: clamp(28px, 5vh, 40px);
   }
 
-  .pilulka-chapter--flip .pilulka-chapter__text,
-  .pilulka-chapter--flip .pilulka-chapter__media-wrap {
+  .pilulka-chapter__text,
+  .pilulka-chapter--flip .pilulka-chapter__text {
+    order: 1;
     grid-column: auto;
     grid-row: auto;
   }
 
-  .pilulka-chapter--intro .pilulka-chapter__headline {
-    font-size: clamp(40px, 11vw, 64px);
-  }
-
-  .pilulka-chapter__intro-hero .pilulka-chapter__media-wrap {
-    width: min(59vw, 280px);
-    transform: translateY(0);
-    overflow: visible;
-  }
-
-  .pilulka-chapter__intro-hero .pilulka-chapter__stack.proof-visual {
-    position: relative;
-    inset: auto;
-    height: auto;
-    aspect-ratio: 4 / 7;
-    overflow: visible;
-  }
-
-  .pilulka-chapter__intro-hero .pilulka-chapter__stack .proof-img:only-child {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-height: none !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    transform: none !important;
-    object-fit: cover;
+  .pilulka-chapter__media-wrap,
+  .pilulka-chapter--flip .pilulka-chapter__media-wrap {
+    order: 2;
+    grid-column: auto;
+    grid-row: auto;
+    align-self: center;
+    width: min(100%, 300px);
+    min-height: auto;
+    margin: 0 auto;
+    overflow: hidden;
   }
 
   .pilulka-chapter__headline {
     font-size: clamp(32px, 9vw, 52px);
   }
 
+  .pilulka-chapter--intro .pilulka-chapter__headline {
+    font-size: clamp(40px, 11vw, 64px);
+  }
+
   .claim-line {
     padding-left: min(var(--claim-indent, 0px), 10vw) !important;
   }
 
-  .pilulka-chapter__media-wrap {
-    min-height: clamp(320px, 88vw, 480px);
+  /* Intro: headline → media → body */
+  .pilulka-chapter__intro-hero {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 5vh, 36px);
+    margin-bottom: clamp(24px, 4vh, 32px);
   }
 
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--a,
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--b,
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--c,
-  .pilulka-chapter__stack .proof-img:only-child {
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    width: min(44vw, 210px) !important;
-    height: auto !important;
-    max-height: 28vh;
-    transform: none !important;
-    opacity: 1 !important;
+  .pilulka-chapter--intro .pilulka-chapter__headline {
+    order: 1;
+    position: relative;
+    z-index: 1;
   }
 
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--b {
-    left: 28vw !important;
+  .pilulka-chapter__intro-hero .pilulka-chapter__media-wrap {
+    position: relative;
+    order: 2;
+    top: auto;
+    right: auto;
+    left: auto;
+    transform: none;
+    width: min(72vw, 260px);
+    margin: 0 auto;
+    overflow: hidden;
   }
 
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--c {
-    width: min(59vw, 280px) !important;
-    max-height: 37vh;
-    right: 2vw !important;
-    left: auto !important;
+  .pilulka-chapter__intro-hero .pilulka-chapter__stack.proof-visual {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 7;
+    overflow: hidden;
   }
 
   .pilulka-chapter__intro-hero .pilulka-chapter__stack .proof-img--intro-lead {
@@ -451,34 +443,83 @@ html.pilulka-case-mode body {
     width: 100% !important;
     height: 100% !important;
     max-height: none !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
     transform: none !important;
     object-fit: cover;
-    z-index: 1;
   }
 
   .pilulka-chapter__intro-hero .pilulka-chapter__stack .proof-img--intro-accent {
     position: absolute !important;
-    left: clamp(-8px, -2vw, 0px) !important;
-    bottom: clamp(10px, 4vw, 20px) !important;
-    width: min(68vw, 260px) !important;
+    left: 0 !important;
+    bottom: 8% !important;
+    width: 52% !important;
     height: auto !important;
     max-height: none !important;
     aspect-ratio: 4 / 7;
-    right: auto !important;
-    top: auto !important;
-    transform: translateX(-75%) !important;
+    transform: none !important;
     object-fit: cover;
     z-index: 2;
   }
 
+  .pilulka-chapter__intro-body {
+    max-width: 100%;
+  }
+
+  /* Chapter media stacks — contained cluster below text */
   .pilulka-chapter__stack.proof-visual {
     position: relative;
     inset: auto;
-    height: clamp(320px, 88vw, 480px);
+    width: 100%;
+    height: clamp(260px, 72vw, 360px);
+    overflow: hidden;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--a,
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--b,
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--c,
+  .pilulka-chapter__stack .proof-img:only-child {
+    position: absolute !important;
+    width: min(42vw, 168px) !important;
+    height: auto !important;
+    max-height: 58% !important;
+    aspect-ratio: 4 / 7;
+    object-fit: cover;
+    transform: none !important;
+    opacity: 1 !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--a {
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--b {
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 2;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--c {
+    right: 0 !important;
+    left: auto !important;
+    top: 50% !important;
+    width: min(48vw, 190px) !important;
+    max-height: 68% !important;
+    transform: translateY(-50%) !important;
+    z-index: 3;
+  }
+
+  .pilulka-chapter--flip .pilulka-chapter__stack .proof-img--a {
+    left: auto !important;
+    right: 0 !important;
+  }
+
+  .pilulka-chapter--flip .pilulka-chapter__stack .proof-img--c {
+    right: auto !important;
+    left: 0 !important;
   }
 
   .pilulka-key-learnings__grid {

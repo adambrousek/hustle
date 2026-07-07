@@ -8,6 +8,12 @@ import { PILULKA_CASE } from '../data/pilulkaCase';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const MOBILE_MQ = '(max-width: 900px)';
+
+function isMobileLayout() {
+  return typeof window !== 'undefined' && window.matchMedia(MOBILE_MQ).matches;
+}
+
 export function usePilulkaCtaBackground(ctaRef) {
   useLayoutEffect(() => {
     const section = ctaRef?.current;
@@ -15,6 +21,8 @@ export function usePilulkaCtaBackground(ctaRef) {
 
     const fromBg = PILULKA_CASE.bg;
     const fromChrome = PILULKA_CASE.chromeBottom;
+    const shell = document.querySelector('.pilulka-case-page');
+    const mobile = isMobileLayout();
 
     const applyBg = (progress) => {
       const t = Math.max(0, Math.min(1, progress));
@@ -23,6 +31,7 @@ export function usePilulkaCtaBackground(ctaRef) {
       const theme = gsap.utils.interpolate(fromBg, HERO_THEME, t);
 
       document.documentElement.style.setProperty('--case-bg', bg);
+      shell?.style.setProperty('--case-bg', bg);
       document.documentElement.classList.toggle('pilulka-cta-active', t > 0.92);
       commitChrome(theme, chromeBottom);
     };
@@ -30,16 +39,18 @@ export function usePilulkaCtaBackground(ctaRef) {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: section,
-        start: 'top bottom',
-        end: 'top 38%',
-        scrub: 0.5,
+        start: mobile ? 'top 92%' : 'top bottom',
+        end: mobile ? 'top 54%' : 'top 38%',
+        scrub: mobile ? 0.35 : 0.5,
+        invalidateOnRefresh: true,
         onUpdate: (self) => applyBg(self.progress),
       });
 
       ScrollTrigger.create({
         trigger: section,
-        start: 'top 38%',
+        start: mobile ? 'top 54%' : 'top 38%',
         end: 'bottom bottom',
+        invalidateOnRefresh: true,
         onEnter: () => applyBg(1),
         onEnterBack: () => applyBg(1),
         onLeaveBack: () => applyBg(0),
@@ -58,6 +69,7 @@ export function usePilulkaCtaBackground(ctaRef) {
       ctx.revert();
       document.documentElement.classList.remove('pilulka-cta-active');
       document.documentElement.style.setProperty('--case-bg', fromBg);
+      shell?.style.setProperty('--case-bg', fromBg);
       commitChrome(PILULKA_CASE.themeColor, fromChrome);
     };
   }, [ctaRef]);

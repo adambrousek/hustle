@@ -85,6 +85,15 @@ export function setupParallax(section, contentRoot, visual) {
   if (!visual) return;
 
   const mediaEls = visual.querySelectorAll('.proof-img, .case-film-stat');
+
+  if (mobile && section.closest('.pilulka-case')) {
+    gsap.set(visual, { opacity: 1 });
+    mediaEls.forEach((el) => {
+      gsap.set(el, { xPercent: 0, yPercent: 0, y: 0, opacity: 1 });
+    });
+    return;
+  }
+
   mediaEls.forEach((el, i) => {
     const { startY, endY, scrub } = getImgMotion(el, i, mobile);
     const xPercent = getParallaxXPercent(el);

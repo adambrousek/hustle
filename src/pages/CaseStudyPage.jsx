@@ -43,10 +43,12 @@ export default function CaseStudyPage() {
     };
   }, [pageBg, pageTheme, pageChromeBottom, isPilulka]);
 
-  const shellStyle = {
-    '--case-accent': study?.accent ?? preview?.accent ?? pageTheme,
-    '--case-bg': pageBg,
-  };
+  const shellStyle = isPilulka
+    ? { '--case-accent': preview?.accent ?? pageTheme }
+    : {
+        '--case-accent': study?.accent ?? preview?.accent ?? pageTheme,
+        '--case-bg': pageBg,
+      };
 
   if (!study && !isPilulka) {
     return (
