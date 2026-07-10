@@ -46,6 +46,9 @@ export default function Header() {
         <Link to="/portfolio" onClick={() => setOpen(false)}>
           PORTFOLIO
         </Link>
+        <Link to="/homepage" onClick={() => setOpen(false)}>
+          HOMEPAGE
+        </Link>
         <Link to="/kontakt" onClick={() => setOpen(false)}>
           KONTAKT
         </Link>

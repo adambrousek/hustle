@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { cmsApiPlugin } from './vite.cmsPlugin.js';
 
 function getBuildCommitTime() {
   try {
@@ -26,7 +27,7 @@ function getBuildTime() {
 }
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), cmsApiPlugin()],
   define: {
     __BUILD_TIME__: JSON.stringify(getBuildTime()),
     __BUILD_COMMIT_TIME__: JSON.stringify(getBuildCommitTime()),

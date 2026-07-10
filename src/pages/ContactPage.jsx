@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import Header from '../components/Header';
+import CaseSubhead from '../design-system/caseStudy/primitives/CaseSubhead';
+import ContactBody from '../design-system/caseStudy/primitives/ContactBody';
 import { CONTACT } from '../data/contact';
 import '../styles/contact.css';
 
@@ -37,40 +39,33 @@ export default function ContactPage() {
 
             <div className="contact-stack">
               <section className="contact-block">
-                <h2 className="contact-block__label">Kontakty</h2>
-                <a className="contact-block__link contact-block__link--phone" href={CONTACT.phoneHref}>
-                  {CONTACT.phone}
-                </a>
-                <a
-                  className="contact-block__link contact-block__link--email"
-                  href={`mailto:${CONTACT.email}`}
-                >
-                  {CONTACT.email}
-                </a>
+                <CaseSubhead lines={CONTACT.contactsTitle} as="h2" />
+                <ContactBody>
+                  <a className="contact-block__link text-body" href={CONTACT.phoneHref}>
+                    {CONTACT.phone}
+                  </a>
+                  <a className="contact-block__link text-body" href={`mailto:${CONTACT.email}`}>
+                    {CONTACT.email}
+                  </a>
+                </ContactBody>
               </section>
 
               <div className="contact-details">
                 <section className="contact-block">
-                  <h2 className="contact-block__label">{CONTACT.office.label}</h2>
-                  {CONTACT.office.lines.map((line) => (
-                    <p key={line} className="contact-block__line text-body">
-                      {line}
-                    </p>
-                  ))}
+                  <CaseSubhead lines={CONTACT.office.title} as="h2" />
+                  <ContactBody lines={CONTACT.office.lines} />
                 </section>
 
                 <section className="contact-block">
-                  <h2 className="contact-block__label">{CONTACT.billing.label}</h2>
-                  <p className="contact-block__line contact-block__line--company text-body">
-                    {CONTACT.billing.company}
-                  </p>
-                  {CONTACT.billing.lines.map((line) => (
-                    <p key={line} className="contact-block__line text-body">
-                      {line}
-                    </p>
-                  ))}
-                  <p className="contact-block__line text-body">IČ: {CONTACT.billing.ic}</p>
-                  <p className="contact-block__line text-body">DIČ: {CONTACT.billing.dic}</p>
+                  <CaseSubhead lines={CONTACT.billing.title} as="h2" />
+                  <ContactBody
+                    lines={[
+                      CONTACT.billing.company,
+                      ...CONTACT.billing.lines,
+                      `IČ: ${CONTACT.billing.ic}`,
+                      `DIČ: ${CONTACT.billing.dic}`,
+                    ]}
+                  />
                 </section>
               </div>
             </div>

@@ -5,3 +5,6 @@ dist
 .DS_Store
 .vercel
 .env*
+.backup-*/
+public/videos/_originals/
+public/videos/*-web.mp4

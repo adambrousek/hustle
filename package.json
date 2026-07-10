@@ -4,11 +4,19 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "predev": "node scripts/free-dev-ports.js",
+    "dev": "vite --port 5173 --strictPort",
+    "dev:api": "node server/index.js",
+    "dev:all": "concurrently \"npm run dev:api\" \"npm run dev\"",
+    "seed": "node server/seed.js",
+    "compress:video": "node scripts/compress-video.mjs",
+    "compress:videos": "node scripts/compress-video.mjs public/videos/*.mp4 --replace",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
     "gsap": "^3.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -16,6 +24,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
     "vite": "^6.0.11"
   }
 }

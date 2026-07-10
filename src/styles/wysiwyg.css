@@ -1,0 +1,392 @@
+.wysiwyg-editor {
+  margin: -32px -40px -64px;
+  min-height: calc(100vh - 0px);
+  background: #0a0a0a;
+}
+
+.wysiwyg-editor__bar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  background: rgba(10, 10, 10, 0.92);
+  border-bottom: 1px solid #2a2a2a;
+  backdrop-filter: blur(8px);
+}
+
+.wysiwyg-editor__bar-left,
+.wysiwyg-editor__bar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wysiwyg-editor__title-input {
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #141414;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.wysiwyg-editor__slug {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.wysiwyg-editor__error {
+  padding: 8px 20px;
+  margin: 0;
+}
+
+.wysiwyg-canvas {
+  background: #0a0a0a;
+}
+
+.wysiwyg-canvas__page {
+  max-width: none;
+}
+
+.wysiwyg-section {
+  position: relative;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  transition: outline-color 0.15s;
+}
+
+.wysiwyg-section:hover {
+  outline-color: rgba(255, 255, 255, 0.15);
+}
+
+.wysiwyg-section.is-selected {
+  outline-color: rgba(255, 255, 255, 0.55);
+}
+
+.wysiwyg-section.is-readonly {
+  cursor: default;
+}
+
+.wysiwyg-section__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.65);
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+}
+
+.wysiwyg-toolbar {
+  position: sticky;
+  top: 56px;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  margin: 0 0 8px;
+  background: rgba(0, 0, 0, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.wysiwyg-toolbar__label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.wysiwyg-toolbar__bg {
+  display: flex;
+  gap: 6px;
+}
+
+.wysiwyg-toolbar__swatch {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.wysiwyg-toolbar__swatch.is-active {
+  border-color: #fff;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+.wysiwyg-toolbar__select {
+  padding: 6px 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #1a1a1a;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.wysiwyg-toolbar__check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.wysiwyg-toolbar__switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wysiwyg-toolbar__switcher-btn {
+  margin: 0;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.wysiwyg-toolbar__switcher-btn:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.wysiwyg-toolbar__switcher-btn.is-active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.wysiwyg-toolbar__actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.wysiwyg-toolbar__btn {
+  padding: 6px 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.wysiwyg-toolbar__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.wysiwyg-toolbar__btn--danger {
+  border-color: #5a2020;
+  color: #ff8a8a;
+}
+
+.wysiwyg-editable {
+  outline: none;
+  border-radius: 2px;
+  transition: box-shadow 0.15s;
+}
+
+.wysiwyg-editable:hover,
+.wysiwyg-editable:focus {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.wysiwyg-editable:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.wysiwyg-add-line {
+  margin-top: 8px;
+  padding: 4px 10px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.wysiwyg-media-editor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.wysiwyg-media-editor__btn {
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-body);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+html.wysiwyg-mode,
+html.wysiwyg-mode body {
+  background: var(--case-bg, #006858) !important;
+}
+
+/* Izolace fontů — editor dědí admin Proximu, canvas musí mít design systém */
+.wysiwyg-canvas {
+  font-family: 'HW Topol', Arial, sans-serif;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.wysiwyg-canvas .claim,
+.wysiwyg-canvas .pilulka-chapter__headline,
+.wysiwyg-canvas .pilulka-key-learnings__title,
+.wysiwyg-canvas .pilulka-key-learnings__col-title,
+.wysiwyg-canvas .pilulka-key-learnings__col-title-line {
+  font-family: 'HW Topol', Arial, sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.wysiwyg-canvas .claim .wysiwyg-editable,
+.wysiwyg-canvas .claim-line.wysiwyg-editable,
+.wysiwyg-canvas .pilulka-key-learnings__col-title-line.wysiwyg-editable {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  text-transform: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+.wysiwyg-canvas .text-body,
+.wysiwyg-canvas .pilulka-chapter__prose p,
+.wysiwyg-canvas .pilulka-key-learnings__col-body {
+  font-family: var(--font-body) !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 400 !important;
+}
+
+.wysiwyg-canvas .text-body.wysiwyg-editable,
+.wysiwyg-canvas .pilulka-chapter__prose .wysiwyg-editable,
+.wysiwyg-canvas .pilulka-key-learnings__col-body.wysiwyg-editable {
+  font-family: var(--font-body) !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.wysiwyg-logo {
+  margin-bottom: clamp(20px, 3vh, 28px);
+}
+
+.wysiwyg-logo__preview {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.wysiwyg-logo__preview:hover .wysiwyg-logo__hint {
+  opacity: 1;
+}
+
+.wysiwyg-logo__hint {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.wysiwyg-logo__add {
+  padding: 8px 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-body);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.wysiwyg-logo__picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.wysiwyg-logo__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 40px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.wysiwyg-logo__option.is-active {
+  border-color: #fff;
+}
+
+.wysiwyg-logo__option img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.wysiwyg-editor .pilulka-case,
+.wysiwyg-editor .pilulka-case * {
+  user-select: text;
+}
+
+@media (max-width: 900px) {
+  .wysiwyg-editor {
+    margin: -24px -20px -48px;
+  }
+
+  .wysiwyg-editor__bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

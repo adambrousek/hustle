@@ -1,0 +1,916 @@
+[
+  {
+    "id": "a1000000-0000-4000-8000-000000000001",
+    "name": "Intro (Pilulka)",
+    "type": "intro",
+    "content": {
+      "logo": {
+        "src": "/logos/pilulka.svg",
+        "alt": "Demo logo"
+      },
+      "headline": {
+        "lines": [
+          "LOREM IPSUM",
+          "DOLOR SIT",
+          "AMET"
+        ],
+        "lineIndents": [
+          "0",
+          "8vw",
+          "3vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4",
+          "className": "proof-img--intro-lead"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-1.mp4",
+          "className": "proof-img--intro-accent"
+        }
+      ],
+      "visualVariant": "pilulka"
+    },
+    "settings": {
+      "bg": "#006858",
+      "themeColor": "#006858",
+      "chromeBottom": "#003830",
+      "stackLayout": "offset",
+      "variantId": "intro"
+    },
+    "createdAt": "2026-07-10T15:14:38.241Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000002",
+    "name": "Intro + Aside Proofs",
+    "type": "intro",
+    "content": {
+      "logo": {
+        "src": "/logos/pilulka.svg",
+        "alt": "Demo logo"
+      },
+      "headline": {
+        "lines": [
+          "LOREM IPSUM",
+          "DOLOR SIT",
+          "AMET"
+        ],
+        "lineIndents": [
+          "0",
+          "8vw",
+          "3vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4",
+          "className": "proof-img--intro-lead"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-1.mp4",
+          "className": "proof-img--intro-accent"
+        }
+      ],
+      "visualVariant": "pilulka",
+      "sceneProofs": [
+        {
+          "lines": [
+            "LOREM IPSUM",
+            "Dolor sit amet"
+          ]
+        },
+        {
+          "lines": [
+            "CONSECTETUR",
+            "Adipiscing elit"
+          ]
+        },
+        {
+          "lines": [
+            "SED DO",
+            "Eiusmod tempor"
+          ]
+        }
+      ],
+      "sceneProofsVariant": "awards",
+      "sceneProofsPlacement": "aside"
+    },
+    "settings": {
+      "bg": "#006858",
+      "themeColor": "#006858",
+      "chromeBottom": "#003830",
+      "stackLayout": "wide",
+      "variantId": "intro-aside-proofs"
+    },
+    "createdAt": "2026-07-10T15:14:38.242Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000003",
+    "name": "Zigzag Chapter",
+    "type": "zigzag",
+    "content": {
+      "id": "zigzag",
+      "headline": {
+        "lines": [
+          "LOREM IPSUM",
+          "DOLOR SIT",
+          "AMET CONSECTETUR"
+        ],
+        "lineIndents": [
+          "0",
+          "6vw",
+          "12vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "flip": false,
+      "visualVariant": "pilulka"
+    },
+    "settings": {
+      "bg": "#1868F0",
+      "themeColor": "#1868F0",
+      "chromeBottom": "#0E48B8",
+      "stackLayout": "stagger",
+      "flip": false,
+      "variantId": "zigzag-chapter"
+    },
+    "createdAt": "2026-07-10T15:14:38.242Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000004",
+    "name": "Zigzag (Flip)",
+    "type": "zigzag",
+    "content": {
+      "id": "zigzag-flip",
+      "headline": {
+        "lines": [
+          "FLIP VARIANT",
+          "MEDIA VLEVO",
+          "TEXT VPRAVO"
+        ],
+        "lineIndents": [
+          "0",
+          "5vw",
+          "10vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "flip": true,
+      "visualVariant": "pilulka"
+    },
+    "settings": {
+      "bg": "#0058B0",
+      "themeColor": "#0058B0",
+      "chromeBottom": "#002858",
+      "stackLayout": "cascade",
+      "flip": true,
+      "variantId": "zigzag-chapter-flip"
+    },
+    "createdAt": "2026-07-10T15:14:38.243Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000005",
+    "name": "Zigzag + Shift",
+    "type": "zigzag",
+    "content": {
+      "id": "zigzag-shift",
+      "headline": {
+        "lines": [
+          "SHIFT BLOCK",
+          "PŘED A PO",
+          "TRANSFORMACI"
+        ],
+        "lineIndents": [
+          "0",
+          "4vw",
+          "9vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "flip": true,
+      "visualVariant": "pilulka",
+      "shift": {
+        "before": "LOREM → IPSUM → DOLOR → SIT",
+        "after": "AMET → CONSECTETUR → ADIPISCING → ELIT"
+      }
+    },
+    "settings": {
+      "bg": "#006858",
+      "themeColor": "#006858",
+      "chromeBottom": "#003830",
+      "stackLayout": "fan",
+      "flip": true,
+      "variantId": "zigzag-chapter-shift"
+    },
+    "createdAt": "2026-07-10T15:14:38.243Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000006",
+    "name": "Zigzag + Stat Proof",
+    "type": "zigzag",
+    "content": {
+      "id": "zigzag-body-proofs",
+      "headline": {
+        "uniform": true,
+        "lines": [
+          "DŮKAZ, ŽE",
+          "LOREM IPSUM",
+          "DOLOR SIT",
+          "AMET."
+        ],
+        "lineIndents": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "flip": true,
+      "visualVariant": "pilulka",
+      "sceneProofs": [
+        {
+          "lines": [
+            "351K+"
+          ]
+        }
+      ],
+      "sceneProofsVariant": "stat",
+      "sceneProofsPlacement": "body"
+    },
+    "settings": {
+      "bg": "#1868F0",
+      "themeColor": "#1868F0",
+      "chromeBottom": "#0E48B8",
+      "stackLayout": "tight",
+      "flip": true,
+      "variantId": "zigzag-body-proofs-stat"
+    },
+    "createdAt": "2026-07-10T15:14:38.243Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000007",
+    "name": "Key Learnings (4)",
+    "type": "key-learnings",
+    "content": {
+      "title": {
+        "lines": [
+          "KEY LEARNINGS",
+          "ČTYŘI SLOUPCE"
+        ],
+        "lineIndents": [
+          "0",
+          "8vw"
+        ]
+      },
+      "items": [
+        {
+          "title": [
+            "LOREM",
+            "IPSUM"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "DOLOR",
+            "SIT"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "AMET",
+            "ELIT"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "SED DO",
+            "EIUSMOD"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
+      ]
+    },
+    "settings": {
+      "bg": "#006858",
+      "themeColor": "#006858",
+      "chromeBottom": "#003830",
+      "variantId": "key-learnings"
+    },
+    "createdAt": "2026-07-10T15:14:38.244Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000008",
+    "name": "Key Learnings (6)",
+    "type": "key-learnings-six",
+    "content": {
+      "title": {
+        "lines": [
+          "KEY LEARNINGS",
+          "ŠEST SLOUPCŮ"
+        ],
+        "lineIndents": [
+          "0",
+          "8vw"
+        ]
+      },
+      "grid": 6,
+      "items": [
+        {
+          "title": [
+            "LOREM",
+            "IPSUM"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "DOLOR",
+            "SIT"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "AMET",
+            "ELIT"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "SED DO",
+            "EIUSMOD"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "TEMPOR",
+            "INCIDIDUNT"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "title": [
+            "UT LABORE",
+            "ET DOLORE"
+          ],
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
+      ]
+    },
+    "settings": {
+      "bg": "#1868F0",
+      "themeColor": "#1868F0",
+      "chromeBottom": "#0E48B8",
+      "variantId": "key-learnings-six"
+    },
+    "createdAt": "2026-07-10T15:14:38.244Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000009",
+    "name": "Intro Hero Split",
+    "type": "intro",
+    "content": {
+      "layout": "hero-split",
+      "headline": {
+        "lines": [
+          "SOCIAL",
+          "MEDIA",
+          "AGENTURA"
+        ],
+        "lineIndents": [
+          "0",
+          "7vw",
+          "2.5vw"
+        ]
+      },
+      "subhead": {
+        "lines": [
+          "PRO ZNAČKY,",
+          "KTERÉ NECHTĚJÍ",
+          "ZNÍT JAKO ZNAČKY."
+        ],
+        "lineIndents": [
+          "0",
+          "0",
+          "0"
+        ],
+        "uniform": true
+      },
+      "paragraphs": [
+        "Každá značka má nápady, které chtějí na sítě. Ne všechny tam patří. Proto začínáme Content Blueprintem.",
+        "Společně najdeme, co má značka říkat, co může pustit k vodě a proč ji má někdo chtít sledovat."
+      ],
+      "cta": {
+        "label": "ZAJÍMÁ MĚ CONTENT BLUEPRINT",
+        "href": "/kontakt"
+      },
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4",
+          "className": "proof-img--intro-lead"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-1.mp4",
+          "className": "proof-img--intro-accent"
+        }
+      ],
+      "visualVariant": "red"
+    },
+    "settings": {
+      "bg": "#F01818",
+      "themeColor": "#F01818",
+      "chromeBottom": "#CD0010",
+      "variantId": "intro-hero-split",
+      "layout": "hero-split",
+      "stackLayout": "offset",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-00000000000a",
+    "name": "Zigzag + Body Proofs (Awards)",
+    "type": "zigzag",
+    "content": {
+      "id": "zigzag-body-awards",
+      "headline": {
+        "lines": [
+          "LOREM IPSUM",
+          "DOLOR SIT",
+          "AMET"
+        ],
+        "lineIndents": [
+          "0",
+          "6vw",
+          "12vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "flip": false,
+      "visualVariant": "pilulka",
+      "sceneProofs": [
+        {
+          "lines": [
+            "LOREM IPSUM",
+            "Dolor sit amet"
+          ]
+        },
+        {
+          "lines": [
+            "CONSECTETUR",
+            "Adipiscing elit"
+          ]
+        }
+      ],
+      "sceneProofsVariant": "awards",
+      "sceneProofsPlacement": "body"
+    },
+    "settings": {
+      "bg": "#006858",
+      "themeColor": "#006858",
+      "chromeBottom": "#003830",
+      "variantId": "zigzag-body-proofs-awards",
+      "stackLayout": "stagger",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-00000000000b",
+    "name": "Proof Chapter",
+    "type": "zigzag",
+    "content": {
+      "id": "proof",
+      "headline": {
+        "lines": [
+          "PROOF CHAPTER",
+          "DŮKAZOVÁ",
+          "KAPITOLA"
+        ],
+        "lineIndents": [
+          "0",
+          "6vw",
+          "14vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "flip": false,
+      "visualVariant": "pilulka",
+      "variant": "proof"
+    },
+    "settings": {
+      "bg": "#006858",
+      "themeColor": "#006858",
+      "chromeBottom": "#003830",
+      "variantId": "proof-chapter",
+      "stackLayout": "stagger",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-00000000000c",
+    "name": "Zigzag Split Prose",
+    "type": "zigzag",
+    "content": {
+      "layout": "split-prose",
+      "id": "split-prose",
+      "headline": {
+        "lines": [
+          "DĚLÁME SOCIAL,",
+          "KTERÝ NENÍ",
+          "JEN DALŠÍ PLACEMENT",
+          "V KAMPANI."
+        ],
+        "lineIndents": [
+          "0",
+          "6vw",
+          "2vw",
+          "12vw"
+        ]
+      },
+      "paragraphs": [
+        "Značka může mít strategii, positioning i kampaň.",
+        "Ale na sítích se rozhoduje jinde."
+      ],
+      "points": [
+        "V prvních třech vteřinách videa.",
+        "V komentáři pod postem.",
+        "V tom, jestli obsah působí jako značka, nebo jako něco, co lidi opravdu chtějí sledovat."
+      ],
+      "closing": [
+        "Proto řešíme social jako celek.",
+        "Od role značky přes obsah až po každodenní správu."
+      ]
+    },
+    "settings": {
+      "bg": "#F01818",
+      "themeColor": "#F01818",
+      "chromeBottom": "#CD0010",
+      "variantId": "zigzag-split-prose",
+      "layout": "split-prose",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-00000000000d",
+    "name": "Zigzag Overlay",
+    "type": "zigzag",
+    "content": {
+      "layout": "overlay",
+      "id": "overlay",
+      "headline": {
+        "lines": [
+          "PRVNÍ AGENTURA",
+          "S VLASTNÍ",
+          "REALITY SHOW."
+        ],
+        "lineIndents": [
+          "0",
+          "6vw",
+          "2vw"
+        ]
+      },
+      "paragraphs": [
+        "Náš Instagram není výloha. Je to formát. Nápady. Meetingy. Natáčení. Chaos. Výstupy.",
+        "To, co radíme značkám, testujeme na sobě."
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/reality-show-trailer.mp4",
+          "className": "proof-img--a"
+        }
+      ],
+      "logo": {
+        "src": "/logos/hustle.svg",
+        "alt": "Always On"
+      },
+      "cta": {
+        "label": "SLEDOVAT NA INSTAGRAMU",
+        "href": "https://www.instagram.com/hustle.cz/"
+      },
+      "visualVariant": "black"
+    },
+    "settings": {
+      "bg": "#000000",
+      "themeColor": "#000000",
+      "chromeBottom": "#000000",
+      "variantId": "zigzag-overlay",
+      "stackLayout": "stagger",
+      "layout": "overlay",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-00000000000e",
+    "name": "Zigzag Case Link",
+    "type": "zigzag",
+    "content": {
+      "layout": "case-link",
+      "id": "case-link",
+      "headline": {
+        "lines": [
+          "Z PARTNERSTVÍ",
+          "DĚLÁME",
+          "DŮVOD",
+          "SLEDOVAT"
+        ],
+        "lineIndents": [
+          "0",
+          "4vw",
+          "8vw",
+          "2vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "cta": {
+        "label": "VÍCE",
+        "href": "/case-study"
+      },
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "visualVariant": "cs"
+    },
+    "settings": {
+      "bg": "#1868F0",
+      "themeColor": "#1868F0",
+      "chromeBottom": "#0E48B8",
+      "variantId": "zigzag-case-link",
+      "stackLayout": "stagger",
+      "layout": "case-link",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000011",
+    "name": "Zigzag Case Link + Logo",
+    "type": "zigzag",
+    "content": {
+      "layout": "case-link-logo",
+      "id": "case-link-logo",
+      "logo": {
+        "src": "/logos/ceska-sporitelna.svg",
+        "alt": "Česká spořitelna"
+      },
+      "headline": {
+        "lines": [
+          "Z PARTNERSTVÍ",
+          "DĚLÁME",
+          "DŮVOD",
+          "SLEDOVAT"
+        ],
+        "lineIndents": [
+          "0",
+          "4vw",
+          "8vw",
+          "2vw"
+        ]
+      },
+      "paragraphs": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      ],
+      "cta": {
+        "label": "VÍCE",
+        "href": "/case-study"
+      },
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos/pilulka-portfolio-hover.mp4"
+        },
+        {
+          "type": "video",
+          "src": "/videos/pilulka-2.mp4"
+        },
+        {
+          "src": "/images/portfolio/pilulka-preview.png"
+        }
+      ],
+      "visualVariant": "cs"
+    },
+    "settings": {
+      "bg": "#1868F0",
+      "themeColor": "#1868F0",
+      "chromeBottom": "#0E48B8",
+      "variantId": "zigzag-case-link-logo",
+      "stackLayout": "stagger",
+      "layout": "case-link-logo",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-00000000000f",
+    "name": "CTA",
+    "type": "cta",
+    "content": {},
+    "settings": {
+      "bg": "#000000",
+      "themeColor": "#000000",
+      "chromeBottom": "#000000",
+      "variantId": "cta",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  },
+  {
+    "id": "a1000000-0000-4000-8000-000000000010",
+    "name": "CTA Contact Page",
+    "type": "cta",
+    "content": {
+      "layout": "contact-page",
+      "headline": "Ozvěte se nám",
+      "intro": "Staňte se naším dalším spokojeným klientem. Stačí se nám ozvat a společně probereme, jak vám nejefektivněji pomoci.",
+      "phone": "+420 703 666 550",
+      "phoneHref": "tel:+420703666550",
+      "email": "hello@hustle.cz",
+      "office": {
+        "label": "Kancelář",
+        "lines": [
+          "Breitfeldova 704/9",
+          "Praha 8 – Karlín",
+          "186 00"
+        ]
+      },
+      "billing": {
+        "label": "Fakturační údaje",
+        "company": "Motion Company s.r.o.",
+        "lines": [
+          "Mladoboleslavská 158",
+          "190 17 - Praha 9"
+        ],
+        "ic": "06221041",
+        "dic": "CZ06221041"
+      },
+      "map": {
+        "embedUrl": "https://maps.google.com/maps?q=Breitfeldova+704%2F9,+186+00+Praha+8-Karl%C3%ADn&hl=cs&z=15&output=embed",
+        "linkUrl": "https://www.google.com/maps/search/?api=1&query=Breitfeldova+704%2F9,+186+00+Praha+8"
+      }
+    },
+    "settings": {
+      "bg": "#000000",
+      "themeColor": "#000000",
+      "chromeBottom": "#000000",
+      "variantId": "cta-contact-page",
+      "layout": "contact-page",
+      "flip": false
+    },
+    "createdAt": "2026-07-10T17:49:49.996Z",
+    "updatedAt": "2026-07-10T17:49:49.996Z"
+  }
+]

@@ -1,0 +1,499 @@
+{
+  "crawledAt": "2026-07-01T22:35:55.742Z",
+  "base": "https://www.hustle.cz",
+  "totalPages": 19,
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "HUSTLE - Video-first agentura pro náročné značky",
+      "h1": "Video-first agentura pro náročné značky",
+      "description": "",
+      "suggestedRedirect": "/",
+      "outboundInternal": [
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/case-study/udelali-jsme-ze-sporky-lovebrand",
+        "/case-study/pomahame-dofe-rust-mimo-elitni-skoly",
+        "/case-study/naucili-jsme-gen-z-sporit-na-duchod",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/blog",
+      "status": 200,
+      "title": "Blog | HUSTLE.cz",
+      "h1": "Blog",
+      "description": "",
+      "suggestedRedirect": "/novinky",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/kariera",
+        "/kontakt",
+        "/post/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+        "/post/reklama-na-tiktoku-v-roce-2024",
+        "/post/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+        "/post/slang-gen-z",
+        "/post/na-1-maj-jsme-ozivili-karla-hynka-machu",
+        "/post/7-nejcastejsich-triku-reklamnich-agentur",
+        "/post/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/case-study/naucili-jsme-gen-z-sporit-na-duchod",
+      "status": 200,
+      "title": "Penzijko, které si rozumí s mladou generací",
+      "h1": "Naučili jsme Gen Z spořit na důchod",
+      "description": "",
+      "suggestedRedirect": "/portfolio",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/case-study/pomahame-dofe-rust-mimo-elitni-skoly",
+      "status": 200,
+      "title": "Přibližujeme DofE široké veřejnosti",
+      "h1": "Pomáháme DofE růst mimo elitní školy",
+      "description": "",
+      "suggestedRedirect": "/portfolio/case/dofe",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/case-study/udelali-jsme-ze-sporky-lovebrand",
+      "status": 200,
+      "title": "HUSTLE - Sociální sítě České spořitelny",
+      "h1": "Udělali jsme ze Spořky lovebrand",
+      "description": "",
+      "suggestedRedirect": "/portfolio/case/cs",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/kariera",
+      "status": 200,
+      "title": "Kariéra",
+      "h1": "Volné pozice",
+      "description": "",
+      "suggestedRedirect": "/kariera",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/kontakt",
+      "status": 200,
+      "title": "Kontakt | HUSTLE.cz",
+      "h1": "Ozvěte se nám",
+      "description": "",
+      "suggestedRedirect": "/kontakt",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/podminky-zpracovani-udaju",
+      "status": 200,
+      "title": "Podmínky zpracování osobních údajů | HUSTLE.cz",
+      "h1": "Podmínky zpracování osobních údajů",
+      "description": "",
+      "bodyPreview": "Podmínky zpracování osobních údajů („Podmínky“) poskytují informace o shromažďování, zaznamenání, používání a jiného zpracování osobních údajů společností Motion Company s.r.o. se sídlem Mladoboleslavská 158, 190 17 Praha 9, IČ: 06221041, spisová značka C 278033 vedená u Městského soudu v Praze, jakožto správcem osobních údajů. Účely zpracování Podmínky se vztahují na zpracování osobních údajů pro účely: Monitorování návštěvníka webu za účelem optimalizace struktury webových stránek a auditu provozu serveru v rozsahu IP adresa. Shromažďování údajů o potenciálních klientech, jejich oslovení za účelem marketingové či obchodního sdělení. Právní základy zpracování Společnost Motion Company s.r.o. zpracovává Vaše osobní údaje v souladu s nařízením Evropského parlamentu a Rady (EU) 2016/679 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů).Poskytnutí osobních údajů je pro účely uvedené pod písm. a) a b) nezbytným předpokladem, a to v souvislosti s plněním služeb, příp. plněním právních povinností.Souhlas se zpracováním osobních údajů lze kdykoli odvolat. Cookies Používáme soubory cookies, abychom mohli lépe porozumět tomu, jak náš web používáte, zlepšit váš uživatelský zážitek, umožnit externím reklamním společnostem pomoci nám zobrazovat na internetu reklamy přizpůsobené vašim zájmům. Doba zpracování Údaje týkající se monitorování návštěvníka webu za účelem optimalizace struktury webových stránek a auditu provozu serveru v rozsahu IP adresa jsou uchovávány po dobu nezbytně nutnou.Údaje o potenciálních klientech shromažďované za účelem marketingové či obchodního sdělení jsou uchovávány po dobu nezbytně nutnou. Předávání a zpřístupňování osobních údajů Osobní údaje mohou být zpřístupněny pouze oprávněným zaměstnancům společnoti Motion Company s.r.o., a/nebo níže uvedeným zpracovatelům, a to pouze v míře nezbytné pro účely zpracování: Google LLC, 1600 A",
+      "suggestedRedirect": "/podminky",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt"
+      ]
+    },
+    {
+      "path": "/post/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "status": 200,
+      "title": "5 nejúspěšnějších účtů na českém TikToku | HUSTLE.cz",
+      "h1": "5 nejúspěšnějších účtů na českém TikToku",
+      "description": "",
+      "bodyPreview": "TikTok – „Ta hloupá sociální síť pro mladé“, nebo také nejefektivnější způsob, jak zaujmout generaci Z. Ačkoliv je tato síť v Česku pouze několik let, v současné době ji aktivně využívá přes 2,5 milionu uživatelů. A toto číslo stále roste. I proto, že se na této platformě vyskytuje velká část mladé generace, je na místě se jako firma ptát, „Neměli bychom být na TikToku být i my?“ Ano! Nejenže je to podle statistik jedna z nejefektivnějších a také téměř jediných a platforem, jak zaujmout generaci Z, značkám umožňuje ukazovat to, co jiné platformy prostě nepojmou. Obecně můžeme TikTok popsat jako platformu s krátkými videi, kam se uživatelé chodí zejména pobavit, odpočinout si nebo se dozvědět něco nového. A jakým českým účtům se to daří uplně nejvíc? 1. @welovefun (496.6 tis. followers) Největším účtem značka WeLoveFun, která byla založena roku 2020. Strategie účtu je z velké části založena principu sdružování influencerů, kteří skrze jejich tváře připraví značkám kampaň na míru. A funguje to víc než dobře. Jaké je jejich tajemství úspěchu? O tom se s námi podělil zakladatel a CEO WeLoveFun, Petr Horálek: „ Úplné tajemství úspěchu by z mého pohledu mělo zůstat tajemstvím. Kdybych ale přeci měl mluvit o našem úspěchu, tak se nám dlouhodobě daří kvůli konzistentnosti, skvělému přehledu na platformě a výběru tváří se kterými tvoříme. Není to u nás o jednotlivci, ale o týmu lidí, kteří na contentu pracují. Vydali jsme více než 1 200 videí, které fanoušky baví a rezonují s nimi. Úspěch je v tom rozpoznat co lidé chtějí a v dobrém kabátu jim to dát. Nemalá část z cílové skupiny 40+ nedokáže náš obsah s influencery pochopit, a to je správně. Ten obsah totiž není pro ně, ale pro mladší generace, kterým je obsah přizpůsobený tak, aby vše fungovalo. Na platformě je zapotřebí být stále v pozoru, protože se tu trendy a novinky rychle otáčí. Ten, kdo je na špičkách a rychle reaguje na dění je vítěz. Osobně bych doporučil tvůrcům neustále testovat nové nápady a nebát se chyb. Jen ",
+      "suggestedRedirect": "/novinky/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/post/7-nejcastejsich-triku-reklamnich-agentur",
+      "status": 200,
+      "title": "7 nejčastějších triků reklamních agentur | HUSTLE.cz",
+      "h1": "7 nejčastějších triků reklamních agentur",
+      "description": "",
+      "bodyPreview": "1. Nadsazené hodnoty KPI’s Častý způsob, který se používá k dosažení opticky lepších výsledků, je podhodnocování nebo naopak nadhodnocování KPIs. Key Performance Indicators jsou ukazatele výkonu, které slouží k nastavování cílů a následnému měření úspěšnosti. Agentury hodnoty upravují tak, jak se jim to hodí. Tím pak lépe dosáhnou skvělých výsledků. Naopak nadhodnocení „kápéíček“ může klienta přesvědčit, že reklamní kampaně nejsou úspěšné, a tudíž je třeba větší investice do reklamy. Pozor na to! U nás kápéíčka nastavujeme zásadně po domluvě s klientem na základě historických výsledků a výkonu srovnatelných kampaní. Optimalizujeme je v čase tak, abychom si neustále zvyšovali laťku, přes kterou se chceme přehoupnout. 2. Řešení na půl cesty Agentury často sází na již vícekrát použité, zastaralé nebo nepotřebné marketingové technologie, které ale neřeší opravdový problém a potřebu klienta. To může vést k zbytečnému utrácení peněz za nástroje či cíle, které nepřináší žádný reálný užitek. Klientům vždy doporučujeme přístup, nástroje či cílení, které reflektuje potřebu jejich byznysu. Raději třikrát vysvětlíme, proč nemá smysl nabírat fanoušky, než abychom viděli, jak se pálí peníze za nesmyslně nastavenou strategii. 3. Víte, za co platíte? Účtování příliš vysokých částek? Vždy je potřeba vědět, co je v ceně služby zahrnuté. Občas si agentury účtují skryté poplatky, které nejsou součástí jejich standardních balíčků. Tyto poplatky mohou být zahrnuty v jiných položkách faktury, nebo mohou být prezentovány jako doporučené služby, které jsou však pro klienta „zrovna náhodou“ naprosto nezbytné. Neděláme nic nazdařbůh. Nacenění naší práce je vždy jasné dopředu a fakturujeme podle dohodnuté ceny. Na nepředpokládané vícepráce nehrajeme. 4. Odměna podle obratu Agentura chce za svoji práci procento z obratu. To je pro mě výhodné, říkáte si. Ve skutečnosti je to ale přesně naopak. Placení reklamní agentury procentem z obratu může vést k nežádoucím následkům, jako je nedostatečná mot",
+      "suggestedRedirect": "/novinky/7-nejcastejsich-triku-reklamnich-agentur",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/post/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "status": 200,
+      "title": "Jak je to s autorskými právy na TikToku? | HUSTLE.cz",
+      "h1": "Jak je to s autorskými právy na TikToku?",
+      "description": "",
+      "bodyPreview": "Jak fungují autorská práva na TikToku TikTok je plný krátkých videoklipů s hudbou, dialogy a dalšími zvuky. Tyto zvuky jsou často chráněny autorskými právy. TikTok má sice licenční dohody s mnoha hudebními vydavateli a značkami, ale stále je třeba dávat pozor na to, jaký obsah používáte. Co se stane, když porušíte autorská práva? Pokud použijete obsah chráněný autorským právem bez povolení nebo licence, můžete se dostat do problémů. TikTok sleduje obsah na své platformě a může odstranit videa, která porušují autorská práva. Navíc můžete čelit vážným důsledkům, jako je zablokování účtu, pokutám nebo dokonce soudním řízením. Jak se vyhnout porušení autorských práv na TikToku Chcete-li zůstat v bezpečí a tvořit zábavný obsah na TikToku, dodržujte tyto tipy: Používejte pouze hudbu a zvuky, které poskytuje TikTok: TikTok nabízí knihovnu hudby a zvuků, které můžete legálně použít ve svých videích. Využitím těchto zdrojů se vyhnete problémům s autorskými právy. Vytvářejte vlastní obsah: Místo kopírování obsahu jiných uživatelů se snažte vytvářet vlastní zvuky, hudbu nebo videa. Tímto způsobem budete mít plnou kontrolu nad svým obsahem a nebudete riskovat porušení autorských práv. Závěrem Autorská práva na TikToku jsou důležitou součástí ochrany tvůrců a jejich děl. Uživatelé by měli být obezřetní při používání obsahu chráněného autorskými právy a dodržovat pravidla platformy. Tím se vyhnete potížím a zajistíte, že TikTok zůstane kreativní a zábavnou platformou pro všechny. ‍ ‍",
+      "suggestedRedirect": "/novinky/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/post/na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "status": 200,
+      "title": "Na 1. máj jsme oživili Karla Hynka Máchu | HUSTLE.cz",
+      "h1": "Na 1. máj jsme oživili Karla Hynka Máchu",
+      "description": "",
+      "bodyPreview": "‍ Vytvoření potrétu Nejprve jsme museli vytvořit obrázek: Realistické vyobrazení Máchy, jak by vypadal, kdyby žil dnes. První pokusy sestavit prompt pro Midjourney se míjely účinkem a žádný z obrázků se moc historické podobě nepřibližoval. Využili jsme proto ChatGPT, aby nám nadesignovalo prompt tak, že z něj Midjourney přesně pochopí jak Mácha vypadal a jaká je naše představa. Z jedné věty tak vzniklo zadání na celý odstavec: Please create a photo realistic selfie of Karel Hynek Mácha styled as a modern rapper that is true to his historical appearance, taking into account his clothing, hairstyle, golden long necklace and facial features from the 19th century. Ideally, the image should be based on existing portraits and photographs, capturing his essence as a renowned Czech poet. Please generate the image in high resolution and in full color, paying close attention to detail to ensure the most accurate representation possible. Make it as enface portrait - looking straight to the camera Složení básně Tohle byla asi nejsnadnější část. ChatGPT si s generováním textu na základě historických dat poradí hravě. Stačilo tak zadat, že chceme složit báseň o České spořitelně přímo v Máchově stylu. Nástroj dokáže dodržet zvukomalebnost I rytmiku rýmu a napodobit tak básníkův styl na jakékoliv téma. Je důležité myslet na to, že čím více detailů do zadání vložíte, tím lepší bude výsledek. Nechali jsme si napsat několik návrhů a vybrali ten nejlepší. Generování videa Poslední část bylo vložení dosavadních výstupů do aplikace D-ID. Ta si dokáže dotvořit model na základě fotky a rozhýbá statický portrét podle vloženého voiceoveru. Do rozhraní buď nahrajete vlastní zvukovou stopu, nebo pouze text, který dokáže převést do mluvené řeči. Generování přirozeného hlasu v češtině byl nakonec ale největší oříšek. Abychom získali co nejlepší výsledek, nechali jsme si text přečíst ženským hlasem (který měl lepší intonaci) přímo v D-ID. Tento výstup jsme pak přes MetaVoice Studio převedli na mu",
+      "suggestedRedirect": "/novinky/na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/post/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "status": 200,
+      "title": "„Podporujeme přístup AI first při řešení úkolů“ | HUSTLE.cz",
+      "h1": "„Podporujeme přístup AI first při řešení úkolů“",
+      "description": "",
+      "bodyPreview": "Jak ovlivňuje umělá inteligence svět marketingu, řízení sociálních sítí, produkci video obsahu, a jak se mění dynamika spolupráce s velkými klienty? Existuje možnost, že virtuální influenceři zcela nahradí ty skutečné a sociální sítě budou fungovat na plně automatizované bázi? Náš CEO Adam Brousek se podělil o své pohledy a odpovědi na tyto palčivé otázky, které se týkají současnosti i budoucnosti AI v oblasti online marketingu. Celý rozhovor pro Českou asociaci umělé inteligence najdete na webu asociace.ai - neváhejte se ponořit do zajímavého čtení!",
+      "suggestedRedirect": "/novinky/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/post/reklama-na-tiktoku-v-roce-2024",
+      "status": 200,
+      "title": "Reklama na TikToku v roce 2024 | HUSTLE.cz",
+      "h1": "Reklama na TikToku v roce 2024",
+      "description": "",
+      "bodyPreview": "Všichni už vědí, že TikTok není pouze o tanečkách a vtípkách pro mladou generaci. Je to především čím dál výkonnější nástroj pro marketingové kampaně. Reklamy, které vypadají jako běžná uživatelská TikTok videa, mohou efektivně zvýšit viditelnost značky a zlepšit awareness, traffic nebo konverzní poměr. Důležité je mít na paměti zlaté pravidlo: Reklama musí působit tak autenticky, jak jen lze. Když vytvoříte super reklamní příspěvek, zůstává otázka, co dál? Na organiku se už dnes nehraje. Tohle jsou nejpoužívanější formáty reklamy na TikToku: Rezervační reklama Rezervační reklama vyžaduje přímou komunikaci s TikTokem nebo jeho zástupci. Její obsah a průběh se plánuje a schvaluje dopředu. Tento typ reklamy zahrnuje prémiové formáty jako TopView, který se zobrazuje jako první video po otevření aplikace a nabízí masivní dosah, a Top Feed, který se objevuje na čtvrté pozici ve feedu s fixním počtem impresí a CPM. Pokud nemáte k dispozici velký reklamní budget, pravděpodobně vás rezervační reklama mine. Rezervační reklamou také zásadně nezvýšíte počet konverzí nebo prokliků, ale zato dostanete obrovskou porci impresí, protože se vaše video dostane do popředí veškerého obsahu. Aukční reklama Aukční reklama je otevřená komukoliv s reklamním účtem na TikToku. Úplně stejný princip reklamy používá například META na Facebooku a Instagramu. Umožňuje propagaci videí, nastavení rozpočtů a cílení reklam. Nabízí širokou škálu cílů kampaně, jako jsou dosah, prokliky na web, zhlédnutí videa, generování leadů, interakce s komunitou, konverze, nebo instalace aplikací. Také umožňuje A/B testování a nastavení rozpočtu na úrovni kampaně. Stejně jako na Facebooku i na TikToku můžete spouštět tzv. „darkposty“, speciální typ aukční reklamy, kde video není vidět na profilu a je vhodné pro remarketingové účely. Mimochodem, i na TikToku lze – stejně jako na Instagramu – vytvořit spolupráci mezi dvěma účty. Spark Ads umožňuje propagaci již zveřejněných videí, ať už na profilu vaší značky nebo in",
+      "suggestedRedirect": "/novinky/reklama-na-tiktoku-v-roce-2024",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/post/slang-gen-z",
+      "status": 200,
+      "title": "FR, RIZZ aneb rozluštěte slang generace Z | HUSTLE.cz",
+      "h1": "FR, RIZZ aneb rozluštěte slang generace Z",
+      "description": "",
+      "bodyPreview": "Už se vám někdy stalo, že jste četli fráze mladých lidí na sociálních sítí, kterým jste nerozuměli a cítili jste se opravu staří? Pokud ano, po přečtení tohoto článku to bude pravděpodobně ještě horší. Následující slova vám, doufáme, prosekají džungli tajupných slov gen Z, které najdete nejen na TikToku. FR! „W“ a „L“ – Tyto výrazy pocházejí původně z počítačových her. &quot;W&quot; znamená &quot;win&quot;, tedy vítězství, a &quot;L&quot; znamená &quot;loss&quot;, tedy prohra. Lidé je používají k označení úspěchů nebo když je něco dobré (velké W&quot;) nebo neúspěchů/když je něco špatné(velké L&quot;).",
+      "suggestedRedirect": "/novinky/slang-gen-z",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/projects/generovani-leadu-pro-penzijko",
+      "status": 200,
+      "title": "Generování leadů pro Penzijko | HUSTLE.cz",
+      "h1": "Generování leadů pro Penzijko",
+      "description": "",
+      "suggestedRedirect": "/portfolio",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/projects/sporka-na-tiktoku",
+      "status": 200,
+      "title": "Spořka na TikToku | HUSTLE.cz",
+      "h1": "Spořka na TikToku",
+      "description": "",
+      "suggestedRedirect": "/portfolio",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/projekt/nejuspesnejsi-bankovni-tiktok",
+      "status": 200,
+      "title": "HUSTLE - Nejúspěšnější bankovní TikTok",
+      "h1": "Nejúspěšnější bankovní TikTok",
+      "description": "",
+      "suggestedRedirect": "/portfolio",
+      "outboundInternal": [
+        "/",
+        "/studio",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    },
+    {
+      "path": "/studio",
+      "status": 200,
+      "title": "Studio",
+      "h1": "Pronájem foto &amp; video studia",
+      "description": "",
+      "suggestedRedirect": "/studio",
+      "outboundInternal": [
+        "/",
+        "/blog",
+        "/kariera",
+        "/kontakt",
+        "/podminky-zpracovani-udaju"
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/novinky",
+      "permanent": true,
+      "title": "Blog | HUSTLE.cz"
+    },
+    {
+      "source": "/case-study/naucili-jsme-gen-z-sporit-na-duchod",
+      "destination": "/portfolio",
+      "permanent": true,
+      "title": "Penzijko, které si rozumí s mladou generací"
+    },
+    {
+      "source": "/case-study/pomahame-dofe-rust-mimo-elitni-skoly",
+      "destination": "/portfolio/case/dofe",
+      "permanent": true,
+      "title": "Přibližujeme DofE široké veřejnosti"
+    },
+    {
+      "source": "/case-study/udelali-jsme-ze-sporky-lovebrand",
+      "destination": "/portfolio/case/cs",
+      "permanent": true,
+      "title": "HUSTLE - Sociální sítě České spořitelny"
+    },
+    {
+      "source": "/podminky-zpracovani-udaju",
+      "destination": "/podminky",
+      "permanent": true,
+      "title": "Podmínky zpracování osobních údajů | HUSTLE.cz"
+    },
+    {
+      "source": "/post/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "destination": "/novinky/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "permanent": true,
+      "title": "5 nejúspěšnějších účtů na českém TikToku | HUSTLE.cz"
+    },
+    {
+      "source": "/post/7-nejcastejsich-triku-reklamnich-agentur",
+      "destination": "/novinky/7-nejcastejsich-triku-reklamnich-agentur",
+      "permanent": true,
+      "title": "7 nejčastějších triků reklamních agentur | HUSTLE.cz"
+    },
+    {
+      "source": "/post/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "destination": "/novinky/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "permanent": true,
+      "title": "Jak je to s autorskými právy na TikToku? | HUSTLE.cz"
+    },
+    {
+      "source": "/post/na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "destination": "/novinky/na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "permanent": true,
+      "title": "Na 1. máj jsme oživili Karla Hynka Máchu | HUSTLE.cz"
+    },
+    {
+      "source": "/post/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "destination": "/novinky/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "permanent": true,
+      "title": "„Podporujeme přístup AI first při řešení úkolů“ | HUSTLE.cz"
+    },
+    {
+      "source": "/post/reklama-na-tiktoku-v-roce-2024",
+      "destination": "/novinky/reklama-na-tiktoku-v-roce-2024",
+      "permanent": true,
+      "title": "Reklama na TikToku v roce 2024 | HUSTLE.cz"
+    },
+    {
+      "source": "/post/slang-gen-z",
+      "destination": "/novinky/slang-gen-z",
+      "permanent": true,
+      "title": "FR, RIZZ aneb rozluštěte slang generace Z | HUSTLE.cz"
+    },
+    {
+      "source": "/projects/generovani-leadu-pro-penzijko",
+      "destination": "/portfolio",
+      "permanent": true,
+      "title": "Generování leadů pro Penzijko | HUSTLE.cz"
+    },
+    {
+      "source": "/projects/sporka-na-tiktoku",
+      "destination": "/portfolio",
+      "permanent": true,
+      "title": "Spořka na TikToku | HUSTLE.cz"
+    },
+    {
+      "source": "/projekt/nejuspesnejsi-bankovni-tiktok",
+      "destination": "/portfolio",
+      "permanent": true,
+      "title": "HUSTLE - Nejúspěšnější bankovní TikTok"
+    }
+  ],
+  "blogPosts": [
+    {
+      "slug": "5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "path": "/post/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "title": "5 nejúspěšnějších účtů na českém TikToku | HUSTLE.cz",
+      "newPath": "/novinky/5-nejuspesnejsich-uctu-na-ceskem-tiktoku"
+    },
+    {
+      "slug": "7-nejcastejsich-triku-reklamnich-agentur",
+      "path": "/post/7-nejcastejsich-triku-reklamnich-agentur",
+      "title": "7 nejčastějších triků reklamních agentur | HUSTLE.cz",
+      "newPath": "/novinky/7-nejcastejsich-triku-reklamnich-agentur"
+    },
+    {
+      "slug": "jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "path": "/post/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "title": "Jak je to s autorskými právy na TikToku? | HUSTLE.cz",
+      "newPath": "/novinky/jak-je-to-s-autorskymi-pravy-na-tiktoku"
+    },
+    {
+      "slug": "na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "path": "/post/na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "title": "Na 1. máj jsme oživili Karla Hynka Máchu | HUSTLE.cz",
+      "newPath": "/novinky/na-1-maj-jsme-ozivili-karla-hynka-machu"
+    },
+    {
+      "slug": "podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "path": "/post/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "title": "„Podporujeme přístup AI first při řešení úkolů“ | HUSTLE.cz",
+      "newPath": "/novinky/podporujeme-pristup-ai-first-pri-reseni-ukolu"
+    },
+    {
+      "slug": "reklama-na-tiktoku-v-roce-2024",
+      "path": "/post/reklama-na-tiktoku-v-roce-2024",
+      "title": "Reklama na TikToku v roce 2024 | HUSTLE.cz",
+      "newPath": "/novinky/reklama-na-tiktoku-v-roce-2024"
+    },
+    {
+      "slug": "slang-gen-z",
+      "path": "/post/slang-gen-z",
+      "title": "FR, RIZZ aneb rozluštěte slang generace Z | HUSTLE.cz",
+      "newPath": "/novinky/slang-gen-z"
+    }
+  ],
+  "caseStudies": [
+    {
+      "slug": "naucili-jsme-gen-z-sporit-na-duchod",
+      "path": "/case-study/naucili-jsme-gen-z-sporit-na-duchod",
+      "title": "Penzijko, které si rozumí s mladou generací",
+      "suggestedRedirect": "/portfolio"
+    },
+    {
+      "slug": "pomahame-dofe-rust-mimo-elitni-skoly",
+      "path": "/case-study/pomahame-dofe-rust-mimo-elitni-skoly",
+      "title": "Přibližujeme DofE široké veřejnosti",
+      "suggestedRedirect": "/portfolio/case/dofe"
+    },
+    {
+      "slug": "udelali-jsme-ze-sporky-lovebrand",
+      "path": "/case-study/udelali-jsme-ze-sporky-lovebrand",
+      "title": "HUSTLE - Sociální sítě České spořitelny",
+      "suggestedRedirect": "/portfolio/case/cs"
+    }
+  ],
+  "projects": [
+    {
+      "slug": "generovani-leadu-pro-penzijko",
+      "path": "/projects/generovani-leadu-pro-penzijko",
+      "title": "Generování leadů pro Penzijko | HUSTLE.cz",
+      "suggestedRedirect": "/portfolio"
+    },
+    {
+      "slug": "sporka-na-tiktoku",
+      "path": "/projects/sporka-na-tiktoku",
+      "title": "Spořka na TikToku | HUSTLE.cz",
+      "suggestedRedirect": "/portfolio"
+    },
+    {
+      "slug": "nejuspesnejsi-bankovni-tiktok",
+      "path": "/projekt/nejuspesnejsi-bankovni-tiktok",
+      "title": "HUSTLE - Nejúspěšnější bankovní TikTok",
+      "suggestedRedirect": "/portfolio"
+    }
+  ]
+}

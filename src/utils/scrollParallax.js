@@ -23,12 +23,14 @@ function isMobileLayout() {
 
 function getParallaxYPercent(el) {
   if (el.classList.contains('case-film-stat')) return 0;
+  if (el.classList.contains('proof-img--intro-lead')) return 0;
   return -50;
 }
 
 function getParallaxXPercent(el) {
   if (el.classList.contains('proof-img--center')) return -50;
   if (el.classList.contains('proof-img--hero')) return -50;
+  if (el.classList.contains('proof-img--intro-accent')) return -58;
   if (el.classList.contains('proof-img--c') && el.closest('.proof-visual--cs')) return -12;
   return 0;
 }
@@ -36,6 +38,28 @@ function getParallaxXPercent(el) {
 function getImgMotion(el, i, mobile) {
   const lanes = mobile ? MOBILE_IMG_MOTION : DESKTOP_IMG_MOTION;
   const lane = lanes[i % lanes.length];
+
+  if (el.classList.contains('proof-img--intro-lead')) {
+    return mobile
+      ? { startY: 24, endY: -18, scrub: 0.32 }
+      : { startY: 18, endY: -22, scrub: 0.36 };
+  }
+
+  if (el.classList.contains('proof-img--intro-accent')) {
+    return mobile
+      ? { startY: 32, endY: -28, scrub: 0.4 }
+      : { startY: 28, endY: -32, scrub: 0.44 };
+  }
+
+  if (el.closest('.pilulka-chapter__stack') && !el.closest('.pilulka-chapter--intro')) {
+    const spread = i * 4;
+    return {
+      startY: 18 + spread,
+      endY: -18 - spread,
+      scrub: 0.3 + i * 0.1,
+    };
+  }
+
   return {
     startY: lane.startY + i * 3,
     endY: lane.endY - i * (mobile ? 4 : 3),

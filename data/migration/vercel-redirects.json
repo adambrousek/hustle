@@ -1,0 +1,79 @@
+{
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/novinky",
+      "permanent": true
+    },
+    {
+      "source": "/case-study/naucili-jsme-gen-z-sporit-na-duchod",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/case-study/pomahame-dofe-rust-mimo-elitni-skoly",
+      "destination": "/portfolio/case/dofe",
+      "permanent": true
+    },
+    {
+      "source": "/case-study/udelali-jsme-ze-sporky-lovebrand",
+      "destination": "/portfolio/case/cs",
+      "permanent": true
+    },
+    {
+      "source": "/podminky-zpracovani-udaju",
+      "destination": "/podminky",
+      "permanent": true
+    },
+    {
+      "source": "/post/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "destination": "/novinky/5-nejuspesnejsich-uctu-na-ceskem-tiktoku",
+      "permanent": true
+    },
+    {
+      "source": "/post/7-nejcastejsich-triku-reklamnich-agentur",
+      "destination": "/novinky/7-nejcastejsich-triku-reklamnich-agentur",
+      "permanent": true
+    },
+    {
+      "source": "/post/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "destination": "/novinky/jak-je-to-s-autorskymi-pravy-na-tiktoku",
+      "permanent": true
+    },
+    {
+      "source": "/post/na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "destination": "/novinky/na-1-maj-jsme-ozivili-karla-hynka-machu",
+      "permanent": true
+    },
+    {
+      "source": "/post/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "destination": "/novinky/podporujeme-pristup-ai-first-pri-reseni-ukolu",
+      "permanent": true
+    },
+    {
+      "source": "/post/reklama-na-tiktoku-v-roce-2024",
+      "destination": "/novinky/reklama-na-tiktoku-v-roce-2024",
+      "permanent": true
+    },
+    {
+      "source": "/post/slang-gen-z",
+      "destination": "/novinky/slang-gen-z",
+      "permanent": true
+    },
+    {
+      "source": "/projects/generovani-leadu-pro-penzijko",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/projects/sporka-na-tiktoku",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/projekt/nejuspesnejsi-bankovni-tiktok",
+      "destination": "/portfolio",
+      "permanent": true
+    }
+  ]
+}

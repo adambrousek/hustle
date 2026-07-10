@@ -81,7 +81,7 @@ html.contact-mode body {
   left: 58%;
   top: 22vh;
   width: clamp(260px, 32vw, 460px);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 5;
   display: block;
   border-radius: 8px;
   overflow: hidden;
@@ -150,44 +150,59 @@ html.contact-mode body {
   gap: clamp(32px, 5vw, 56px);
 }
 
-.contact-block__label {
-  margin: 0 0 clamp(16px, 2vh, 24px);
-  font-size: 11px;
+.contact-block .pilulka-key-learnings__col-title {
+  margin: 0 0 clamp(16px, 2.5vh, 24px);
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-size: clamp(22px, 2.4vw, 36px);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+}
+
+.contact-block .pilulka-key-learnings__col-title-line {
+  display: block;
+}
+
+.contact-block__body {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.contact-block__body .contact-block__link {
+  display: block;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 400;
+  line-height: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+}
+
+.contact-block__body .contact-block__link:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 .contact-block__link,
 .contact-block__line {
   display: block;
   margin: 0 0 0.5em;
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
 }
 
-.contact-block__link--phone {
-  font-size: clamp(18px, 2vw, 24px);
-  line-height: 1.3;
-}
-
-.contact-block__link--email {
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  text-transform: lowercase;
-  color: var(--hustle-soft-white, #ffdcd4);
-  transition: color 0.3s ease;
-}
-
-.contact-block__link--email:hover {
-  color: var(--hustle-pink, #ff6b8a);
-}
-
-.contact-block__line--company {
-  font-weight: 600;
-  color: #ffffff;
+.contact-block__link:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 @media (max-width: 900px) {

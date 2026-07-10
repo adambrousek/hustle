@@ -5,8 +5,9 @@ export const CONTACT = {
   phone: '+420 703 666 550',
   phoneHref: 'tel:+420703666550',
   email: 'hello@hustle.cz',
+  contactsTitle: ['KONTAKTY'],
   office: {
-    label: 'Kancelář',
+    title: ['KANCELÁŘ'],
     lines: ['Breitfeldova 704/9', 'Praha 8 – Karlín', '186 00'],
   },
   map: {
@@ -16,7 +17,7 @@ export const CONTACT = {
       'https://www.google.com/maps/search/?api=1&query=Breitfeldova+704%2F9,+186+00+Praha+8',
   },
   billing: {
-    label: 'Fakturační údaje',
+    title: ['FAKTURAČNÍ', 'ÚDAJE'],
     company: 'Motion Company s.r.o.',
     lines: ['Mladoboleslavská 158', '190 17 - Praha 9'],
     ic: '06221041',

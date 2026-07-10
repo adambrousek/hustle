@@ -1,0 +1,129 @@
+/* Design system showcase — section catalog page */
+
+.ds-showcase-page {
+  color: #ffffff;
+}
+
+.ds-showcase-main {
+  padding-bottom: 0;
+}
+
+.ds-showcase-header {
+  padding: clamp(120px, 16vh, 160px) clamp(20px, 4vw, 48px) clamp(48px, 8vh, 72px);
+  max-width: 1480px;
+}
+
+.ds-showcase-header__title {
+  margin: 0 0 clamp(20px, 3vh, 28px);
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-size: clamp(40px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.ds-showcase-header__desc {
+  margin: 0;
+  max-width: 36em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Showcase: dostatečná výška pro parallax scroll */
+.ds-showcase-block__preview .pilulka-chapter:not(.pilulka-chapter--intro) {
+  min-height: 110vh;
+}
+
+.ds-showcase-block__preview .pilulka-chapter--intro {
+  min-height: clamp(780px, 95vh, 1120px);
+}
+
+.ds-showcase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ds-showcase-block {
+  position: relative;
+}
+
+.ds-showcase-block__divider {
+  width: 100%;
+  margin: 0;
+  padding: clamp(18px, 3vh, 28px) clamp(20px, 4vw, 48px);
+  background: #000000;
+  box-sizing: border-box;
+}
+
+.ds-showcase-block__divider-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(12px, 2vh, 20px);
+}
+
+.ds-showcase-block__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(12px, 2vh, 20px);
+}
+
+.ds-showcase-stack-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ds-showcase-stack-switcher__btn {
+  margin: 0;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.ds-showcase-stack-switcher__btn:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.ds-showcase-stack-switcher__btn.is-active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.ds-showcase-block__name {
+  margin: 0;
+  font-family: 'HW Topol', Arial, sans-serif;
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.ds-showcase-block__preview {
+  position: relative;
+}
+
+/* CTA v katalogu — zkrátit sticky výšku */
+.ds-showcase-block__preview .pilulka-case-cta {
+  min-height: auto;
+}
+
+.ds-showcase-block__preview .manifest-contact__stage {
+  min-height: clamp(480px, 70vh, 720px);
+}

@@ -1079,9 +1079,8 @@ section {
   will-change: transform;
 }
 
-video.proof-img {
-  display: block;
-  object-fit: cover;
+.case-media-asset.proof-img {
+  object-fit: unset;
 }
 
 /* Česká spořitelna */

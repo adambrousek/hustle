@@ -83,8 +83,8 @@ export const MANIFEST_CONTACT = {
   headline: [
     { text: 'MÁ VAŠE ZNAČKA', indent: '0' },
     { text: 'SÍTĚ?', indent: '8vw' },
-    { text: 'A MOHLI BYCHOM', indent: '4vw', accent: true },
-    { text: 'JE VIDĚT?', indent: '16vw', accent: true },
+    { text: 'A MOHLI BYCHOM', indent: '4vw' },
+    { text: 'JE VIDĚT?', indent: '16vw' },
   ],
   copy: ['Ukažte nám je.', 'Řekneme vám, co v nich vidíme.'],
   email: 'hello@hustle.cz',
