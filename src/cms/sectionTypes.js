@@ -6,6 +6,7 @@ import {
   INTRO_STACK_LAYOUTS,
   ZIGZAG_STACK_LAYOUTS,
 } from '../design-system/caseStudy/mediaStackLayouts';
+import { resolveHeadlineIndents } from '../design-system/caseStudy/headlineIndents';
 
 export const CMS_SECTION_TYPES = {
   intro: {
@@ -18,6 +19,7 @@ export const CMS_SECTION_TYPES = {
     hasMedia: true,
     hasBg: true,
     hasFlip: false,
+    hasHeadlineIndent: true,
   },
   zigzag: {
     id: 'zigzag',
@@ -29,6 +31,7 @@ export const CMS_SECTION_TYPES = {
     hasMedia: true,
     hasBg: true,
     hasFlip: true,
+    hasHeadlineIndent: true,
   },
   'key-learnings': {
     id: 'key-learnings',
@@ -37,6 +40,7 @@ export const CMS_SECTION_TYPES = {
     hasMedia: false,
     hasBg: true,
     hasFlip: false,
+    hasHeadlineIndent: true,
     grid: 4,
   },
   'key-learnings-six': {
@@ -46,6 +50,7 @@ export const CMS_SECTION_TYPES = {
     hasMedia: false,
     hasBg: true,
     hasFlip: false,
+    hasHeadlineIndent: true,
     grid: 6,
   },
   cta: {
@@ -53,8 +58,9 @@ export const CMS_SECTION_TYPES = {
     label: 'CTA',
     component: CaseCtaSection,
     hasMedia: false,
-    hasBg: false,
+    hasBg: true,
     hasFlip: false,
+    hasHeadlineIndent: true,
   },
 };
 
@@ -90,6 +96,7 @@ export function blockToProps(block) {
     return {
       ...base,
       layout: settings.layout ?? content.layout ?? 'default',
+      headline: resolveHeadlineIndents(content.headline, settings),
     };
   }
 
@@ -100,20 +107,27 @@ export function blockToProps(block) {
       flip: settings.flip ?? content.flip ?? false,
       variant: content.variant,
       layout: settings.layout ?? content.layout ?? 'default',
+      headline: resolveHeadlineIndents(content.headline, settings),
     };
   }
 
   if (block.type === 'key-learnings' || block.type === 'key-learnings-six') {
     return {
-      title: content.title,
+      title: resolveHeadlineIndents(content.title, settings),
       items: content.items,
       grid: typeDef.grid ?? content.grid ?? 4,
     };
   }
 
   if (block.type === 'cta') {
+    const headline =
+      typeof content.headline === 'object'
+        ? resolveHeadlineIndents(content.headline, settings)
+        : content.headline;
+
     return {
       ...content,
+      headline,
       layout: settings.layout ?? content.layout ?? 'sticky',
     };
   }

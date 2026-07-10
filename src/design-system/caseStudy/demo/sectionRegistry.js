@@ -35,6 +35,7 @@ export const CASE_STUDY_SECTIONS = [
     props: DEMO_INTRO,
     stackLayouts: INTRO_STACK_LAYOUTS,
     defaultStackLayout: 'offset',
+    supportsHeadlineIndent: true,
   },
   {
     id: 'intro-aside-proofs',
@@ -44,6 +45,7 @@ export const CASE_STUDY_SECTIONS = [
     props: DEMO_INTRO_ASIDE,
     stackLayouts: INTRO_STACK_LAYOUTS,
     defaultStackLayout: 'offset',
+    supportsHeadlineIndent: true,
   },
   {
     id: 'intro-hero-split',
@@ -53,6 +55,7 @@ export const CASE_STUDY_SECTIONS = [
     props: DEMO_INTRO_HERO_SPLIT,
     stackLayouts: INTRO_STACK_LAYOUTS,
     defaultStackLayout: 'offset',
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-chapter',
@@ -63,6 +66,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-chapter-flip',
@@ -73,6 +77,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-chapter-shift',
@@ -83,6 +88,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-body-proofs-stat',
@@ -103,6 +109,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'proof-chapter',
@@ -113,6 +120,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-split-prose',
@@ -121,6 +129,7 @@ export const CASE_STUDY_SECTIONS = [
     Component: CaseZigzagChapterSection,
     props: DEMO_ZIGZAG_SPLIT_PROSE,
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-overlay',
@@ -131,6 +140,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-case-link',
@@ -141,6 +151,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'zigzag-case-link-logo',
@@ -151,6 +162,7 @@ export const CASE_STUDY_SECTIONS = [
     stackLayouts: ZIGZAG_STACK_LAYOUTS,
     defaultStackLayout: 'stagger',
     supportsFlip: true,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'key-learnings',
@@ -158,6 +170,7 @@ export const CASE_STUDY_SECTIONS = [
     description: 'Závěrečná sekce se 4 sloupci.',
     Component: CaseKeyLearningsSection,
     props: DEMO_KEY_LEARNINGS,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'key-learnings-six',
@@ -165,6 +178,7 @@ export const CASE_STUDY_SECTIONS = [
     description: 'Závěrečná sekce — 6 sloupců ve 2 řádcích (3×2).',
     Component: CaseKeyLearningsSection,
     props: DEMO_KEY_LEARNINGS_SIX,
+    supportsHeadlineIndent: true,
   },
   {
     id: 'cta',

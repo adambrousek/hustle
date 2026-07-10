@@ -57,6 +57,8 @@ router.put('/:id', async (req, res, next) => {
     if (existing.kind === 'legacy') {
       const page = await updatePage(req.params.id, {
         title: req.body.title ?? existing.title,
+        menuLabel: req.body.menuLabel ?? existing.menuLabel,
+        menuOrder: req.body.menuOrder ?? existing.menuOrder,
       });
       return res.json(page);
     }

@@ -1,4 +1,9 @@
 import { CMS_BG_PRESETS, CMS_SECTION_TYPES } from '../sectionTypes';
+import {
+  HEADLINE_INDENT_PRESETS,
+  activeHeadlineIndent,
+  supportsHeadlineIndent,
+} from '../../design-system/caseStudy/headlineIndents';
 
 export default function SectionToolbar({
   block,
@@ -76,6 +81,23 @@ export default function SectionToolbar({
           >
             Text vpravo
           </button>
+        </div>
+      )}
+
+      {typeDef.hasHeadlineIndent && supportsHeadlineIndent(block) && (
+        <div className="wysiwyg-toolbar__switcher" role="group" aria-label="Odsazení nadpisu">
+          {HEADLINE_INDENT_PRESETS.map((preset) => (
+            <button
+              key={preset.id}
+              type="button"
+              className={`wysiwyg-toolbar__switcher-btn${
+                activeHeadlineIndent(block) === preset.id ? ' is-active' : ''
+              }`}
+              onClick={() => onSettingsChange({ ...settings, headlineIndent: preset.id })}
+            >
+              {preset.label}
+            </button>
+          ))}
         </div>
       )}
 

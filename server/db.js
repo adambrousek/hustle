@@ -139,6 +139,8 @@ export async function createPage(payload) {
     slug: payload.slug ?? '',
     route: payload.route ?? null,
     title: payload.title,
+    menuLabel: payload.menuLabel ?? '',
+    menuOrder: payload.menuOrder ?? 100,
     status: payload.status ?? 'draft',
     blocks: payload.blocks ?? [],
     createdAt: payload.createdAt ?? now,

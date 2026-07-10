@@ -1,4 +1,5 @@
 import { CMS_BG_PRESETS, CMS_SECTION_TYPES } from './sectionTypes';
+import { HEADLINE_INDENT_PRESETS } from '../design-system/caseStudy/headlineIndents';
 
 export default function LibraryTemplateSettings({ type, settings, onSettingsChange }) {
   const typeDef = CMS_SECTION_TYPES[type];
@@ -74,6 +75,26 @@ export default function LibraryTemplateSettings({ type, settings, onSettingsChan
             >
               Text vpravo
             </button>
+          </div>
+        </fieldset>
+      )}
+
+      {typeDef.hasHeadlineIndent && (
+        <fieldset className="admin-fieldset">
+          <legend>Výchozí odsazení nadpisu</legend>
+          <div className="admin-toggle-group">
+            {HEADLINE_INDENT_PRESETS.map((preset) => (
+              <button
+                key={preset.id}
+                type="button"
+                className={`admin-toggle-btn${
+                  (settings.headlineIndent ?? 'stagger') === preset.id ? ' is-active' : ''
+                }`}
+                onClick={() => update({ headlineIndent: preset.id })}
+              >
+                {preset.label}
+              </button>
+            ))}
           </div>
         </fieldset>
       )}

@@ -14,4 +14,5 @@ export { default as CaseCtaSection } from './sections/CaseCtaSection';
 
 export { CASE_STUDY_SECTIONS } from './demo/sectionRegistry';
 export { INTRO_STACK_LAYOUTS, ZIGZAG_STACK_LAYOUTS } from './mediaStackLayouts';
+export { HEADLINE_INDENT_PRESETS, resolveHeadlineIndents } from './headlineIndents';
 export * from './demo/demoData';

@@ -38,6 +38,8 @@ export default function AdminPagesList() {
         kind: 'cms',
         slug,
         title: 'Nová stránka',
+        menuLabel: '',
+        menuOrder: 100,
         status: 'draft',
         blocks: [],
       });
@@ -46,6 +48,17 @@ export default function AdminPagesList() {
       setError(err.message);
     } finally {
       setCreating(false);
+    }
+  };
+
+  const editMenuLabel = async (page) => {
+    const menuLabel = window.prompt('Název v menu (prázdné = skrytá v menu)', page.menuLabel ?? '');
+    if (menuLabel === null) return;
+    try {
+      await pagesApi.update(page.id, { menuLabel });
+      load();
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -116,6 +129,7 @@ export default function AdminPagesList() {
                 <strong>{page.title}</strong>
                 <span className="admin-list__meta">
                   /p/{page.slug} · {page.status} · {page.blocks?.length ?? 0} sekcí
+                  {page.menuLabel ? ` · menu: ${page.menuLabel}` : ' · skrytá v menu'}
                   {homepagePageId === page.id ? ' · homepage' : ''}
                 </span>
               </div>
@@ -134,6 +148,9 @@ export default function AdminPagesList() {
                 <Link to={`/admin/pages/${page.id}`} className="admin-btn admin-btn--ghost">
                   Skládat
                 </Link>
+                <button type="button" className="admin-btn admin-btn--ghost" onClick={() => editMenuLabel(page)}>
+                  Menu
+                </button>
                 <button type="button" className="admin-btn admin-btn--ghost" onClick={() => renamePage(page)}>
                   Přejmenovat
                 </button>
@@ -154,6 +171,7 @@ export default function AdminPagesList() {
               <strong>{page.title}</strong>
               <span className="admin-list__meta">
                 {page.route} · statická stránka · obsah se neupravuje v CMS
+                {page.menuLabel ? ` · menu: ${page.menuLabel}` : ' · skrytá v menu'}
                 {homepagePageId === page.id ? ' · homepage' : ''}
               </span>
             </div>
@@ -168,6 +186,9 @@ export default function AdminPagesList() {
               <Link to={page.route} className="admin-btn admin-btn--ghost" target="_blank">
                 Náhled
               </Link>
+              <button type="button" className="admin-btn admin-btn--ghost" onClick={() => editMenuLabel(page)}>
+                Menu
+              </button>
               <button type="button" className="admin-btn admin-btn--ghost" onClick={() => renamePage(page)}>
                 Přejmenovat
               </button>

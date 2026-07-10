@@ -2,9 +2,14 @@ import CaseMediaStack from '../../design-system/caseStudy/primitives/CaseMediaSt
 import CaseSceneProofs from '../../design-system/caseStudy/primitives/CaseSceneProofs';
 import CaseShift from '../../design-system/caseStudy/primitives/CaseShift';
 import CaseCtaSection from '../../design-system/caseStudy/sections/CaseCtaSection';
+import { resolveHeadlineIndents } from '../../design-system/caseStudy/headlineIndents';
 import { blockToProps } from '../sectionTypes';
 import EditableLogo from './EditableLogo';
 import { EditableHeadline, EditableProse, EditableText } from './EditableText';
+
+function resolvedHeadline(headline, settings) {
+  return resolveHeadlineIndents(headline ?? { lines: ['Nadpis'] }, settings);
+}
 
 function MediaEditor({ media = [], onChange, readOnly, stackLayout = 'stagger', stackType = 'zigzag' }) {
   const editItem = (index) => {
@@ -54,7 +59,15 @@ function MediaEditor({ media = [], onChange, readOnly, stackLayout = 'stagger', 
   );
 }
 
-function IntroSection({ content, onContentChange, readOnly, stackLayout, layout = 'default' }) {
+function IntroSection({ content, settings = {}, onContentChange, readOnly, stackLayout, layout = 'default' }) {
+  const headline = resolvedHeadline(content.headline, settings);
+  const onHeadlineChange = (nextHeadline) => {
+    onContentChange({
+      ...content,
+      headline: resolveHeadlineIndents(nextHeadline, settings),
+    });
+  };
+
   if (layout === 'hero-split') {
     return (
       <section className="pilulka-chapter pilulka-chapter--intro pilulka-chapter--hero-split" data-section="intro">
@@ -68,8 +81,8 @@ function IntroSection({ content, onContentChange, readOnly, stackLayout, layout 
                 stackType="intro"
               />
               <EditableHeadline
-                headline={content.headline ?? { lines: ['Nadpis'] }}
-                onChange={(headline) => onContentChange({ ...content, headline })}
+                headline={headline}
+                onChange={onHeadlineChange}
                 readOnly={readOnly}
                 as="h1"
               />
@@ -118,8 +131,8 @@ function IntroSection({ content, onContentChange, readOnly, stackLayout, layout 
             stackType="intro"
           />
           <EditableHeadline
-            headline={content.headline ?? { lines: ['Nadpis'] }}
-            onChange={(headline) => onContentChange({ ...content, headline })}
+            headline={headline}
+            onChange={onHeadlineChange}
             readOnly={readOnly}
             as="h1"
           />
@@ -147,6 +160,13 @@ function ZigzagSection({ content, settings, onContentChange, readOnly, stackLayo
   const flip = settings.flip ?? false;
   const isCaseLink = layout === 'case-link' || layout === 'case-link-logo';
   const logoAboveProse = layout === 'case-link-logo';
+  const headline = resolvedHeadline(content.headline, settings);
+  const onHeadlineChange = (nextHeadline) => {
+    onContentChange({
+      ...content,
+      headline: resolveHeadlineIndents(nextHeadline, settings),
+    });
+  };
 
   if (layout === 'split-prose') {
     return (
@@ -157,8 +177,8 @@ function ZigzagSection({ content, settings, onContentChange, readOnly, stackLayo
         <div className="pilulka-chapter__split-row">
           <div className="pilulka-chapter__split-head">
             <EditableHeadline
-              headline={content.headline ?? { lines: ['Nadpis'] }}
-              onChange={(headline) => onContentChange({ ...content, headline })}
+              headline={headline}
+              onChange={onHeadlineChange}
               readOnly={readOnly}
             />
           </div>
@@ -204,8 +224,8 @@ function ZigzagSection({ content, settings, onContentChange, readOnly, stackLayo
           />
           <div className="pilulka-chapter__overlay-layout">
             <EditableHeadline
-              headline={content.headline ?? { lines: ['Nadpis'] }}
-              onChange={(headline) => onContentChange({ ...content, headline })}
+              headline={headline}
+              onChange={onHeadlineChange}
               readOnly={readOnly}
             />
             <div className="pilulka-chapter__overlay-side">
@@ -246,37 +266,71 @@ function ZigzagSection({ content, settings, onContentChange, readOnly, stackLayo
             />
           )}
           <EditableHeadline
-            headline={content.headline ?? { lines: ['Nadpis'] }}
-            onChange={(headline) => onContentChange({ ...content, headline })}
+            headline={headline}
+            onChange={onHeadlineChange}
             readOnly={readOnly}
             uniform={content.headline?.uniform}
           />
-          {logoAboveProse && (
-            <EditableLogo
-              logo={content.logo}
-              readOnly={readOnly}
-              onChange={(logo) => onContentChange({ ...content, logo })}
-            />
-          )}
-          <EditableProse
-            paragraphs={content.paragraphs}
-            onChange={(paragraphs) => onContentChange({ ...content, paragraphs })}
-            readOnly={readOnly}
-          />
-          {content.shift && (
-            <CaseShift before={content.shift.before} after={content.shift.after} />
-          )}
-          {content.sceneProofs && (
-            <CaseSceneProofs
-              proofs={content.sceneProofs}
-              variant={content.sceneProofsVariant}
-              placement="body"
-            />
-          )}
-          {(isCaseLink || content.cta?.label) && (
-            <a className="hustle-link pilulka-chapter__cta" href={content.cta?.href ?? '#'}>
-              {content.cta?.label ?? 'VÍCE'}
-            </a>
+          {isCaseLink ? (
+            <div className="pilulka-chapter__body-flow">
+              {logoAboveProse && (
+                <EditableLogo
+                  logo={content.logo}
+                  readOnly={readOnly}
+                  onChange={(logo) => onContentChange({ ...content, logo })}
+                />
+              )}
+              <EditableProse
+                paragraphs={content.paragraphs}
+                onChange={(paragraphs) => onContentChange({ ...content, paragraphs })}
+                readOnly={readOnly}
+              />
+              {content.shift && (
+                <CaseShift before={content.shift.before} after={content.shift.after} />
+              )}
+              {content.sceneProofs && (
+                <CaseSceneProofs
+                  proofs={content.sceneProofs}
+                  variant={content.sceneProofsVariant}
+                  placement="body"
+                />
+              )}
+              {(isCaseLink || content.cta?.label) && (
+                <a className="hustle-link pilulka-chapter__cta" href={content.cta?.href ?? '#'}>
+                  {content.cta?.label ?? 'VÍCE'}
+                </a>
+              )}
+            </div>
+          ) : (
+            <>
+              {logoAboveProse && (
+                <EditableLogo
+                  logo={content.logo}
+                  readOnly={readOnly}
+                  onChange={(logo) => onContentChange({ ...content, logo })}
+                />
+              )}
+              <EditableProse
+                paragraphs={content.paragraphs}
+                onChange={(paragraphs) => onContentChange({ ...content, paragraphs })}
+                readOnly={readOnly}
+              />
+              {content.shift && (
+                <CaseShift before={content.shift.before} after={content.shift.after} />
+              )}
+              {content.sceneProofs && (
+                <CaseSceneProofs
+                  proofs={content.sceneProofs}
+                  variant={content.sceneProofsVariant}
+                  placement="body"
+                />
+              )}
+              {content.cta?.label && (
+                <a className="hustle-link pilulka-chapter__cta" href={content.cta?.href ?? '#'}>
+                  {content.cta.label}
+                </a>
+              )}
+            </>
           )}
         </div>
         <MediaEditor
@@ -291,9 +345,16 @@ function ZigzagSection({ content, settings, onContentChange, readOnly, stackLayo
   );
 }
 
-function KeyLearningsSection({ content, onContentChange, readOnly, grid = 4 }) {
+function KeyLearningsSection({ content, settings = {}, onContentChange, readOnly, grid = 4 }) {
   const items = content.items ?? [];
   const isSix = grid === 6;
+  const title = resolvedHeadline(content.title ?? { lines: ['KEY LEARNINGS'] }, settings);
+  const onTitleChange = (nextTitle) => {
+    onContentChange({
+      ...content,
+      title: resolveHeadlineIndents(nextTitle, settings),
+    });
+  };
 
   const updateItem = (index, patch) => {
     const next = [...items];
@@ -309,8 +370,8 @@ function KeyLearningsSection({ content, onContentChange, readOnly, grid = 4 }) {
       <div className="pilulka-key-learnings__inner">
         <EditableHeadline
           as="h2"
-          headline={content.title ?? { lines: ['KEY LEARNINGS'] }}
-          onChange={(title) => onContentChange({ ...content, title })}
+          headline={title}
+          onChange={onTitleChange}
           readOnly={readOnly}
           className="pilulka-key-learnings__title"
         />
@@ -370,6 +431,7 @@ export default function WysiwygSection({
     section = (
       <IntroSection
         content={block.content ?? {}}
+        settings={block.settings ?? {}}
         onContentChange={handleContent}
         readOnly={readOnly}
         stackLayout={stackLayout}
@@ -391,6 +453,7 @@ export default function WysiwygSection({
     section = (
       <KeyLearningsSection
         content={block.content ?? {}}
+        settings={block.settings ?? {}}
         onContentChange={handleContent}
         readOnly={readOnly}
         grid={props?.grid ?? 4}

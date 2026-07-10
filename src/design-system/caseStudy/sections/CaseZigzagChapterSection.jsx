@@ -34,7 +34,26 @@ function ChapterText({
   logo,
   showCta = false,
   logoAboveProse = false,
+  bodyFlow = false,
 }) {
+  const body = (
+    <>
+      {logoAboveProse && <ClientLogo logo={logo} />}
+      <CaseProse paragraphs={chapter.paragraphs} />
+      {chapter.shift && (
+        <CaseShift before={chapter.shift.before} after={chapter.shift.after} />
+      )}
+      {chapter.sceneProofs && (
+        <CaseSceneProofs
+          proofs={chapter.sceneProofs}
+          variant={chapter.sceneProofsVariant}
+          placement="body"
+        />
+      )}
+      {showCta && <ChapterCta cta={chapter.cta} />}
+    </>
+  );
+
   return (
     <div className="pilulka-chapter__text">
       {index === 0 && logo && !logoAboveProse && (
@@ -52,19 +71,7 @@ function ChapterText({
         lineIndents={chapter.headline.lineIndents}
         uniform={chapter.headline.uniform}
       />
-      {logoAboveProse && <ClientLogo logo={logo} />}
-      <CaseProse paragraphs={chapter.paragraphs} />
-      {chapter.shift && (
-        <CaseShift before={chapter.shift.before} after={chapter.shift.after} />
-      )}
-      {chapter.sceneProofs && (
-        <CaseSceneProofs
-          proofs={chapter.sceneProofs}
-          variant={chapter.sceneProofsVariant}
-          placement="body"
-        />
-      )}
-      {showCta && <ChapterCta cta={chapter.cta} />}
+      {bodyFlow ? <div className="pilulka-chapter__body-flow">{body}</div> : body}
     </div>
   );
 }
@@ -194,6 +201,7 @@ export default function CaseZigzagChapterSection({
           logo={logo}
           logoAboveProse={layout === 'case-link-logo'}
           showCta={isCaseLink || Boolean(cta)}
+          bodyFlow={isCaseLink}
         />
         <CaseMediaStack
           items={media}

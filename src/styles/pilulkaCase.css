@@ -191,7 +191,8 @@ html.pilulka-case-mode body {
 }
 
 .pilulka-chapter__intro-row .pilulka-chapter__prose {
-  max-width: min(36em, 100%);
+  max-width: min(24em, 100%);
+  margin-inline: auto;
 }
 
 .pilulka-chapter__scene-proofs--aside {
@@ -376,7 +377,12 @@ html.pilulka-case-mode body {
 }
 
 .pilulka-chapter__prose {
-  max-width: min(36em, 100%);
+  max-width: min(24em, 100%);
+  margin-inline: auto;
+}
+
+.pilulka-chapter--split-prose .pilulka-chapter__prose {
+  margin-inline: 0;
 }
 
 .pilulka-chapter__prose p {
@@ -1087,6 +1093,16 @@ html.pilulka-case-mode body {
 
 /* —— Zigzag case-link —— */
 
+.pilulka-chapter--case-link .pilulka-chapter__body-flow {
+  max-width: min(24em, 100%);
+  margin-inline: auto;
+}
+
+.pilulka-chapter--case-link .pilulka-chapter__body-flow .pilulka-chapter__prose {
+  max-width: none;
+  margin-inline: 0;
+}
+
 .pilulka-chapter--case-link .pilulka-chapter__client-logo {
   display: block;
   height: clamp(28px, 3.5vw, 44px);
@@ -1094,16 +1110,17 @@ html.pilulka-case-mode body {
   margin: 0 0 clamp(20px, 3vh, 28px);
 }
 
-.pilulka-chapter--case-link .pilulka-chapter__text > .wysiwyg-logo {
+.pilulka-chapter--case-link .pilulka-chapter__body-flow .wysiwyg-logo {
   margin: 0 0 clamp(20px, 3vh, 28px);
 }
 
-.pilulka-chapter--case-link .pilulka-chapter__text > .wysiwyg-logo .pilulka-case-logo {
+.pilulka-chapter--case-link .pilulka-chapter__body-flow .wysiwyg-logo .pilulka-case-logo {
   margin-bottom: 0;
 }
 
-.pilulka-chapter--case-link .pilulka-chapter__cta {
-  margin-top: clamp(24px, 3.5vh, 32px);
+.pilulka-chapter--case-link .pilulka-chapter__body-flow .pilulka-chapter__cta {
+  display: inline-block;
+  margin: clamp(24px, 3.5vh, 32px) 0 0;
 }
 
 /* —— CTA contact page (zigzag layout) —— */

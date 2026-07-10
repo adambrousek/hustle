@@ -99,7 +99,35 @@ export default function AdminPageEditor() {
             className="wysiwyg-editor__title-input"
             value={page.title}
             onChange={(e) => setPage({ ...page, title: e.target.value })}
+            placeholder="Název stránky"
+            aria-label="Název stránky"
           />
+          <input
+            className="wysiwyg-editor__menu-input"
+            value={page.menuLabel ?? ''}
+            onChange={(e) => setPage({ ...page, menuLabel: e.target.value })}
+            placeholder="Název v menu"
+            aria-label="Název v menu"
+          />
+          <input
+            className="wysiwyg-editor__order-input"
+            type="number"
+            value={page.menuOrder ?? 100}
+            onChange={(e) =>
+              setPage({ ...page, menuOrder: Number(e.target.value) || 100 })
+            }
+            aria-label="Pořadí v menu"
+            title="Pořadí v menu"
+          />
+          <select
+            className="wysiwyg-editor__status-select"
+            value={page.status ?? 'draft'}
+            onChange={(e) => setPage({ ...page, status: e.target.value })}
+            aria-label="Stav stránky"
+          >
+            <option value="draft">Koncept</option>
+            <option value="published">Publikováno</option>
+          </select>
           <span className="wysiwyg-editor__slug">/p/{page.slug}</span>
         </div>
         <div className="wysiwyg-editor__bar-right">

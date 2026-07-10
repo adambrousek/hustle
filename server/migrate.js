@@ -134,6 +134,8 @@ const LEGACY_PAGES = [
     id: 'legacy-home',
     kind: 'legacy',
     title: 'Homepage',
+    menuLabel: 'O NÁS',
+    menuOrder: 10,
     route: '/',
     slug: '',
     status: 'published',
@@ -143,6 +145,8 @@ const LEGACY_PAGES = [
     id: 'legacy-portfolio',
     kind: 'legacy',
     title: 'Portfolio',
+    menuLabel: 'PORTFOLIO',
+    menuOrder: 20,
     route: '/portfolio',
     slug: '',
     status: 'published',
@@ -152,6 +156,8 @@ const LEGACY_PAGES = [
     id: 'legacy-kontakt',
     kind: 'legacy',
     title: 'Kontakt',
+    menuLabel: 'KONTAKT',
+    menuOrder: 40,
     route: '/kontakt',
     slug: '',
     status: 'published',
@@ -161,12 +167,21 @@ const LEGACY_PAGES = [
     id: 'legacy-design-system',
     kind: 'legacy',
     title: 'Design System',
+    menuLabel: 'HOMEPAGE',
+    menuOrder: 30,
     route: '/homepage',
     slug: '',
     status: 'published',
     blocks: [],
   },
 ];
+
+const LEGACY_MENU_DEFAULTS = Object.fromEntries(
+  LEGACY_PAGES.map((page) => [
+    page.id,
+    { menuLabel: page.menuLabel, menuOrder: page.menuOrder },
+  ]),
+);
 
 export async function ensureLegacyPages() {
   await migratePageBlockContent();
@@ -191,11 +206,32 @@ export async function ensureLegacyPages() {
 
   const refreshed = await listPages();
   const withKind = refreshed.map((page) => {
-    if (page.kind) return page;
-    return { ...page, kind: 'cms' };
+    let next = page;
+    if (!page.kind) {
+      next = { ...next, kind: 'cms' };
+    }
+
+    const defaults = LEGACY_MENU_DEFAULTS[page.id];
+    if (defaults && !page.menuLabel) {
+      next = {
+        ...next,
+        menuLabel: defaults.menuLabel,
+        menuOrder: page.menuOrder ?? defaults.menuOrder,
+      };
+    }
+
+    if (next.menuOrder == null) {
+      next = { ...next, menuOrder: 100 };
+    }
+
+    if (next.menuLabel == null) {
+      next = { ...next, menuLabel: '' };
+    }
+
+    return next;
   });
 
-  if (withKind.some((p, i) => p.kind !== refreshed[i]?.kind)) {
+  if (withKind.some((p, i) => JSON.stringify(p) !== JSON.stringify(refreshed[i]))) {
     await writePages(withKind);
     changed = true;
   }

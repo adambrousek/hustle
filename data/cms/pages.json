@@ -1,41 +1,77 @@
 [
   {
-    "id": "b2000000-0000-4000-8000-000000000001",
-    "slug": "demo",
-    "title": "Demo stránka",
+    "id": "legacy-design-system",
+    "kind": "legacy",
+    "slug": "",
+    "route": "/homepage",
+    "title": "Design System",
+    "menuLabel": "HOMEPAGE",
+    "menuOrder": 30,
+    "status": "published",
+    "blocks": [],
+    "createdAt": "2026-07-10T19:20:58.362Z",
+    "updatedAt": "2026-07-10T19:20:58.774Z"
+  },
+  {
+    "id": "legacy-design-system",
+    "kind": "legacy",
+    "slug": "",
+    "route": "/homepage",
+    "title": "Design System",
+    "menuLabel": "HOMEPAGE",
+    "menuOrder": 30,
+    "status": "published",
+    "blocks": [],
+    "createdAt": "2026-07-10T19:20:58.422Z",
+    "updatedAt": "2026-07-10T19:20:58.801Z"
+  },
+  {
+    "id": "a094c041-de8a-489b-ada4-9a6de2d897a2",
+    "kind": "cms",
+    "slug": "stranka-mrfboe6v",
+    "route": null,
+    "title": "Home",
     "status": "published",
     "blocks": [
       {
-        "id": "block-1",
-        "librarySectionId": "a1000000-0000-4000-8000-000000000001",
+        "id": "076aa18e-eb82-4952-ba43-a04f1cc0ab10",
         "type": "intro",
-        "settings": {
-          "bg": "#006858",
-          "themeColor": "#006858",
-          "chromeBottom": "#003830"
-        },
+        "librarySectionId": "a1000000-0000-4000-8000-000000000009",
         "content": {
-          "logo": {
-            "src": "/logos/pilulka.svg",
-            "alt": "Demo logo"
-          },
+          "layout": "hero-split",
           "headline": {
             "lines": [
-              "LOREM IPSUM",
-              "DOLOR SIT",
-              "AMET"
+              "SOCIAL",
+              "MEDIA",
+              "AGENTURA"
             ],
             "lineIndents": [
               "0",
-              "8vw",
-              "3vw"
+              "7vw",
+              "2.5vw"
             ]
           },
+          "subhead": {
+            "lines": [
+              "PRO ZNAČKY,",
+              "KTERÉ NECHTĚJÍ",
+              "ZNÍT JAKO ZNAČKY."
+            ],
+            "lineIndents": [
+              "0",
+              "0",
+              "0"
+            ],
+            "uniform": true
+          },
           "paragraphs": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "Každá značka má nápady, které chtějí na sítě. Ne všechny tam patří. Proto začínáme Content Blueprintem.",
+            "Společně najdeme, co má značka říkat, co může pustit k vodě a proč ji má někdo chtít sledovat."
           ],
+          "cta": {
+            "label": "ZAJÍMÁ MĚ CONTENT BLUEPRINT",
+            "href": "/kontakt"
+          },
           "media": [
             {
               "type": "video",
@@ -48,225 +84,80 @@
               "className": "proof-img--intro-accent"
             }
           ],
-          "visualVariant": "pilulka"
+          "visualVariant": "red"
+        },
+        "settings": {
+          "bg": "#F01818",
+          "themeColor": "#F01818",
+          "chromeBottom": "#CD0010",
+          "variantId": "intro-hero-split",
+          "layout": "hero-split",
+          "stackLayout": "offset",
+          "flip": false
         }
       },
       {
-        "id": "block-2",
-        "librarySectionId": "a1000000-0000-4000-8000-000000000003",
+        "id": "03f5da89-96d5-47e2-b843-c49949e7d440",
         "type": "zigzag",
+        "librarySectionId": "a1000000-0000-4000-8000-000000000011",
+        "content": {
+          "layout": "case-link-logo",
+          "id": "case-link-logo",
+          "logo": {
+            "src": "/logos/ceska-sporitelna.svg",
+            "alt": "Česká spořitelna"
+          },
+          "headline": {
+            "lines": [
+              "DĚLÁME PROFILY,",
+              "KTERÉ PATŘÍ",
+              "MEZI NEJLEPŠÍ",
+              "V ČESKU"
+            ],
+            "lineIndents": [
+              "0",
+              "4vw",
+              "8vw",
+              "2vw"
+            ]
+          },
+          "paragraphs": [
+            "Už přes pět let stojíme za sociálními sítěmi České spořitelny. Z kanálů velké banky jsme postupně vytvořili jeden z nejvýraznějších brandových profilů na českém trhu a sbíráme za profily ocenění.",
+            "Finanční témata jsme převedli do obsahu, který je srozumitelný, lidský a relevantní i pro mladší publikum."
+          ],
+          "cta": {
+            "label": "VÍCE",
+            "href": "/case-study"
+          },
+          "media": [
+            {
+              "type": "video",
+              "src": "/videos/pilulka-portfolio-hover.mp4"
+            },
+            {
+              "type": "video",
+              "src": "/videos/pilulka-2.mp4"
+            },
+            {
+              "src": "/images/portfolio/pilulka-preview.png"
+            }
+          ],
+          "visualVariant": "cs"
+        },
         "settings": {
           "bg": "#1868F0",
           "themeColor": "#1868F0",
-          "chromeBottom": "#0E48B8"
-        },
-        "content": {
-          "id": "zigzag",
-          "headline": {
-            "lines": [
-              "LOREM IPSUM",
-              "DOLOR SIT",
-              "AMET CONSECTETUR"
-            ],
-            "lineIndents": [
-              "0",
-              "6vw",
-              "12vw"
-            ]
-          },
-          "paragraphs": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          ],
-          "media": [
-            {
-              "type": "video",
-              "src": "/videos/pilulka-portfolio-hover.mp4"
-            },
-            {
-              "type": "video",
-              "src": "/videos/pilulka-2.mp4"
-            },
-            {
-              "src": "/images/portfolio/pilulka-preview.png"
-            }
-          ],
+          "chromeBottom": "#0E48B8",
+          "variantId": "zigzag-case-link-logo",
+          "stackLayout": "fan",
+          "layout": "case-link-logo",
           "flip": false,
-          "visualVariant": "pilulka"
+          "headlineIndent": "spread"
         }
-      },
-      {
-        "id": "block-3",
-        "librarySectionId": "a1000000-0000-4000-8000-000000000004",
-        "type": "zigzag",
-        "settings": {
-          "bg": "#0058B0",
-          "themeColor": "#0058B0",
-          "chromeBottom": "#002858",
-          "stackLayout": "fan"
-        },
-        "content": {
-          "id": "zigzag-flip",
-          "headline": {
-            "lines": [
-              "FLIP VARIANT",
-              "MEDIA VLEVO",
-              "TEXT VPRAVO"
-            ],
-            "lineIndents": [
-              "0",
-              "5vw",
-              "10vw"
-            ]
-          },
-          "paragraphs": [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          ],
-          "media": [
-            {
-              "type": "video",
-              "src": "/videos/pilulka-portfolio-hover.mp4"
-            },
-            {
-              "type": "video",
-              "src": "/videos/pilulka-2.mp4"
-            },
-            {
-              "src": "/images/portfolio/pilulka-preview.png"
-            }
-          ],
-          "flip": true,
-          "visualVariant": "pilulka"
-        }
-      },
-      {
-        "id": "block-4",
-        "librarySectionId": "a1000000-0000-4000-8000-000000000007",
-        "type": "key-learnings",
-        "settings": {
-          "bg": "#006858",
-          "themeColor": "#006858",
-          "chromeBottom": "#003830"
-        },
-        "content": {
-          "title": {
-            "lines": [
-              "KEY LEARNINGS",
-              "ČTYŘI SLOUPCE"
-            ],
-            "lineIndents": [
-              "0",
-              "8vw"
-            ]
-          },
-          "items": [
-            {
-              "title": [
-                "LOREM",
-                "IPSUM"
-              ],
-              "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            },
-            {
-              "title": [
-                "DOLOR",
-                "SIT"
-              ],
-              "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            },
-            {
-              "title": [
-                "AMET",
-                "ELIT"
-              ],
-              "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            },
-            {
-              "title": [
-                "SED DO",
-                "EIUSMOD"
-              ],
-              "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            }
-          ]
-        }
-      },
-      {
-        "id": "block-5",
-        "type": "cta",
-        "content": {},
-        "settings": {}
       }
     ],
-    "createdAt": "2026-07-10T15:14:38.245Z",
-    "updatedAt": "2026-07-10T15:14:38.245Z",
-    "kind": "cms"
-  },
-  {
-    "id": "legacy-home",
-    "kind": "legacy",
-    "slug": "",
-    "route": "/",
-    "title": "Homepage",
-    "status": "published",
-    "blocks": [],
-    "createdAt": "2026-07-10T15:26:01.867Z",
-    "updatedAt": "2026-07-10T15:26:01.875Z"
-  },
-  {
-    "id": "legacy-portfolio",
-    "kind": "legacy",
-    "slug": "",
-    "route": "/portfolio",
-    "title": "Portfolio",
-    "status": "published",
-    "blocks": [],
-    "createdAt": "2026-07-10T15:26:01.867Z",
-    "updatedAt": "2026-07-10T15:26:01.876Z"
-  },
-  {
-    "id": "legacy-kontakt",
-    "kind": "legacy",
-    "slug": "",
-    "route": "/kontakt",
-    "title": "Kontakt",
-    "status": "published",
-    "blocks": [],
-    "createdAt": "2026-07-10T15:26:01.867Z",
-    "updatedAt": "2026-07-10T15:26:01.876Z"
-  },
-  {
-    "id": "legacy-design-system",
-    "kind": "legacy",
-    "slug": "",
-    "route": "/homepage",
-    "title": "Design System",
-    "status": "published",
-    "blocks": [],
-    "createdAt": "2026-07-10T15:26:01.867Z",
-    "updatedAt": "2026-07-10T15:26:01.876Z"
-  },
-  {
-    "id": "e53abe37-ca73-4c28-b4e1-73824d4d94f8",
-    "kind": "cms",
-    "slug": "stranka-mrfayc89",
-    "route": null,
-    "title": "Nová stránka",
-    "status": "draft",
-    "blocks": [],
-    "createdAt": "2026-07-10T19:02:04.143Z",
-    "updatedAt": "2026-07-10T19:02:04.143Z"
-  },
-  {
-    "id": "5e8fdecf-9246-4213-aaea-6090f5ad9649",
-    "kind": "cms",
-    "slug": "stranka-mrfbfa6f",
-    "route": null,
-    "title": "Nová stránka",
-    "status": "draft",
-    "blocks": [],
-    "createdAt": "2026-07-10T19:15:14.635Z",
-    "updatedAt": "2026-07-10T19:15:14.635Z"
+    "createdAt": "2026-07-10T19:22:19.739Z",
+    "updatedAt": "2026-07-10T19:32:40.400Z",
+    "menuLabel": "test"
   }
 ]

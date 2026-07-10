@@ -34,7 +34,39 @@
   color: #fff;
   font-family: var(--font-body);
   font-size: 14px;
-  min-width: 200px;
+  min-width: 180px;
+}
+
+.wysiwyg-editor__menu-input {
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #141414;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  min-width: 160px;
+}
+
+.wysiwyg-editor__order-input {
+  width: 72px;
+  padding: 8px 10px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #141414;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+.wysiwyg-editor__status-select {
+  padding: 8px 10px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #141414;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
 }
 
 .wysiwyg-editor__slug {

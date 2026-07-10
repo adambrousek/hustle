@@ -1,8 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { pagesApi } from '../cms/api';
+import { buildMenuItems } from '../cms/menu';
+
+const FALLBACK_MENU = [
+  { id: 'fallback-home', label: 'O NÁS', href: '/' },
+  { id: 'fallback-portfolio', label: 'PORTFOLIO', href: '/portfolio' },
+  { id: 'fallback-kontakt', label: 'KONTAKT', href: '/kontakt' },
+];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [menuItems, setMenuItems] = useState(FALLBACK_MENU);
   const location = useLocation();
 
   useEffect(() => {
@@ -15,6 +24,18 @@ export default function Header() {
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
+  useEffect(() => {
+    pagesApi
+      .list()
+      .then((pages) => {
+        const items = buildMenuItems(pages);
+        if (items.length > 0) setMenuItems(items);
+      })
+      .catch(() => {
+        setMenuItems(FALLBACK_MENU);
+      });
   }, []);
 
   return (
@@ -40,18 +61,11 @@ export default function Header() {
       </button>
 
       <nav className="header-nav" id="header-nav" aria-label="Hlavní navigace">
-        <Link to="/" onClick={() => setOpen(false)}>
-          O NÁS
-        </Link>
-        <Link to="/portfolio" onClick={() => setOpen(false)}>
-          PORTFOLIO
-        </Link>
-        <Link to="/homepage" onClick={() => setOpen(false)}>
-          HOMEPAGE
-        </Link>
-        <Link to="/kontakt" onClick={() => setOpen(false)}>
-          KONTAKT
-        </Link>
+        {menuItems.map((item) => (
+          <Link key={item.id} to={item.href} onClick={() => setOpen(false)}>
+            {item.label}
+          </Link>
+        ))}
       </nav>
     </header>
   );
