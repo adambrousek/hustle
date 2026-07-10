@@ -681,18 +681,18 @@ html.pilulka-case-mode body {
     grid-column: auto;
     grid-row: auto;
     align-self: center;
-    width: min(100%, 300px);
+    width: min(88vw, 320px);
     min-height: auto;
     margin: 0 auto;
     overflow: hidden;
   }
 
   .pilulka-chapter__headline {
-    font-size: clamp(32px, 9vw, 52px);
+    font-size: clamp(40px, 11.5vw, 60px);
   }
 
   .pilulka-chapter--intro .pilulka-chapter__headline {
-    font-size: clamp(40px, 11vw, 64px);
+    font-size: clamp(44px, 12vw, 68px);
   }
 
   .claim-line {
@@ -726,7 +726,7 @@ html.pilulka-case-mode body {
     right: auto;
     left: auto;
     transform: none;
-    width: min(72vw, 260px);
+    width: min(80vw, 300px);
     margin: 0 auto;
     overflow: hidden;
   }
@@ -782,8 +782,134 @@ html.pilulka-case-mode body {
     gap: clamp(28px, 5vh, 40px);
   }
 
-  /* Chapter media stacks — contained cluster below text */
-  .pilulka-chapter__stack.proof-visual {
+  /* Zigzag mobile: full-bleed předěl — hlavní video uprostřed, stack po stranách */
+  .pilulka-case--zigzag .pilulka-chapter {
+    overflow-x: clip;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__media-wrap {
+    order: 2;
+    align-self: stretch;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: clamp(4px, 1.5vh, 12px);
+    margin-bottom: clamp(4px, 1.5vh, 12px);
+    overflow: visible;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    display: block;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter:not(.pilulka-chapter--intro) .pilulka-chapter__media-wrap {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    align-items: unset;
+    justify-content: unset;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__stack.proof-visual {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: clamp(220px, 58vw, 340px);
+    min-height: 0;
+    overflow: visible;
+    display: block;
+    aspect-ratio: auto;
+    max-height: none;
+    margin: 0;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img,
+  .pilulka-case--zigzag .pilulka-chapter__stack .case-media-asset,
+  .pilulka-case--zigzag .pilulka-chapter__stack .case-media-asset__video {
+    object-fit: cover !important;
+    aspect-ratio: 9 / 14 !important;
+  }
+
+  /* Hlavní video — střed */
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--b,
+  .pilulka-case--zigzag .pilulka-chapter__stack .case-media-asset.proof-img--b {
+    position: absolute !important;
+    display: block !important;
+    left: 50% !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: min(54vw, 228px) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 3;
+    opacity: 1 !important;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  /* Levý stack — přetéká vlevo */
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--a,
+  .pilulka-case--zigzag .pilulka-chapter__stack .case-media-asset.proof-img--a {
+    position: absolute !important;
+    display: block !important;
+    left: 0 !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: min(42vw, 188px) !important;
+    height: 84% !important;
+    max-height: 84% !important;
+    transform: translate(-46%, -50%) !important;
+    z-index: 1;
+    opacity: 0.9 !important;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  /* Pravý stack — přetéká vpravo */
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--c,
+  .pilulka-case--zigzag .pilulka-chapter__stack .case-media-asset.proof-img--c {
+    position: absolute !important;
+    display: block !important;
+    right: 0 !important;
+    left: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: min(42vw, 188px) !important;
+    height: 84% !important;
+    max-height: 84% !important;
+    transform: translate(46%, -50%) !important;
+    z-index: 1;
+    opacity: 0.9 !important;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  /* Jediné video — centrovat jako hlavní */
+  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img:only-child,
+  .pilulka-case--zigzag .pilulka-chapter__stack .case-media-asset:only-child {
+    left: 50% !important;
+    right: auto !important;
+    width: min(54vw, 228px) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 3;
+    opacity: 1 !important;
+  }
+
+  .pilulka-case--zigzag .pilulka-chapter__stack .case-media-asset__video {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+  }
+
+  /* Chapter media stacks — contained cluster below text (non-zigzag fallback) */
+  .pilulka-case:not(.pilulka-case--zigzag) .pilulka-chapter__stack.proof-visual {
     position: relative;
     inset: auto;
     width: 100%;
@@ -791,9 +917,9 @@ html.pilulka-case-mode body {
     overflow: hidden;
   }
 
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--a,
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--b,
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--c,
+  .pilulka-case:not(.pilulka-case--zigzag) .pilulka-chapter__stack .proof-img--a,
+  .pilulka-case:not(.pilulka-case--zigzag) .pilulka-chapter__stack .proof-img--b,
+  .pilulka-case:not(.pilulka-case--zigzag) .pilulka-chapter__stack .proof-img--c,
   .pilulka-chapter__stack .proof-img:only-child {
     position: absolute !important;
     width: min(42vw, 168px) !important;
@@ -806,20 +932,20 @@ html.pilulka-case-mode body {
     bottom: auto !important;
   }
 
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--a {
+  .pilulka-case:not(.pilulka-case--zigzag) .pilulka-chapter__stack .proof-img--a {
     left: 0 !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
   }
 
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--b {
+  .pilulka-case:not(.pilulka-case--zigzag) .pilulka-chapter__stack .proof-img--b {
     left: 50% !important;
     top: 50% !important;
     transform: translate(-50%, -50%) !important;
     z-index: 2;
   }
 
-  .pilulka-case--zigzag .pilulka-chapter__stack .proof-img--c {
+  .pilulka-case:not(.pilulka-case--zigzag) .pilulka-chapter__stack .proof-img--c {
     right: 0 !important;
     left: auto !important;
     top: 50% !important;
